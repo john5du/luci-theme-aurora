@@ -6,9 +6,6 @@
 .dev/yarn-debug.log*
 .dev/yarn-error.log*
 
-# Editors
-.vscode/
-
 # Env files
 .env
 
