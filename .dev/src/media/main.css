@@ -168,6 +168,12 @@
   }
 }
 
+@layer utilities {
+  .right {
+    @apply flex justify-end;
+  }
+}
+
 @layer components {
   @layer layout {
     @layer header {
@@ -569,7 +575,7 @@
       }
 
       & .right {
-        @apply mt-4 flex justify-end max-md:mt-3;
+        @apply mt-4 max-md:mt-3;
       }
     }
   }
@@ -838,7 +844,7 @@
         }
 
         & .right {
-          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+          @apply flex-shrink-0 gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
         }
         & .button-row {
           @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
