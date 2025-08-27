@@ -169,8 +169,23 @@
 }
 
 @layer utilities {
+  .left {
+    @apply text-left;
+  }
   .right {
-    @apply flex justify-end;
+    @apply text-right;
+  }
+  .top {
+    @apply align-top;
+  }
+  .bottom {
+    @apply align-bottom;
+  }
+  .center {
+    @apply text-center;
+  }
+  .middle {
+    @apply align-middle;
   }
 }
 
@@ -771,6 +786,10 @@
       & .fade-in {
         @apply animate-pulse opacity-0;
       }
+
+      & div[style*="background:#fff"] {
+        @apply dark:border-slate-600 dark:!bg-slate-900;
+      }
     }
 
     .ifacebox {
@@ -799,12 +818,12 @@
   }
 
   @layer modal {
-    .modal-overlay-active #modal_overlay {
-      @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/70 backdrop-blur-sm dark:bg-black/50;
-    }
-
     #modal_overlay {
       @apply pointer-events-none hidden bg-transparent;
+
+      .modal-overlay-active & {
+        @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/70 backdrop-blur-sm dark:bg-black/50;
+      }
 
       & > .modal {
         @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white/95 px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 sm:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
