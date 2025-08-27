@@ -375,7 +375,7 @@
     .cbi-button-reload,
     .cbi-button-edit,
     .cbi-button-start {
-      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:px-2.5 max-md:py-1 max-md:text-xs dark:focus:ring-offset-slate-900;
+      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-2.5 max-md:py-1 max-md:text-xs;
     }
 
     .btn + .btn,
@@ -390,7 +390,7 @@
 
     .cbi-button-positive,
     .cbi-button-apply {
-      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 focus:ring-aurora-sky/30 focus:border-aurora-sky/70 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none max-md:px-2.5 max-md:py-1 max-md:text-xs;
+      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none max-md:px-2.5 max-md:py-1 max-md:text-xs;
     }
 
     .btn-secondary,
@@ -401,7 +401,7 @@
     .cbi-button-remove,
     .cbi-button-kill,
     .drag-handle {
-      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 focus:border-slate-400/80 focus:ring-slate-400/30 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:focus:ring-gray-400/40;
+      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50;
     }
 
     .pager {
@@ -413,7 +413,7 @@
     }
 
     .pager .btn.cbi-button-neutral {
-      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 focus:border-slate-400/80 focus:ring-slate-400/30 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
+      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
     }
 
     .cbi-page-actions {
@@ -581,31 +581,28 @@
   }
 
   @layer dropdown {
-    .dropdown,
-    .cbi-dropdown {
+    .dropdown {
       @apply relative;
-    }
-
-    .dropdown-menu {
-      @apply invisible absolute top-full left-0 z-50 mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
-
-      & li {
-        @apply m-0 list-none;
+      &:hover {
+        .dropdown-menu {
+          @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
+        }
       }
+      .dropdown-menu {
+        @apply invisible absolute top-full left-0 z-50 mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
 
-      & a {
-        @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+        & li {
+          @apply m-0 list-none;
+        }
+
+        & a {
+          @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+        }
       }
-    }
-
-    .dropdown:hover .dropdown-menu {
-      @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
     }
 
     .cbi-dropdown {
-      @apply relative inline-flex items-center;
-
-      @apply rounded-lg border border-slate-200/60 bg-white/90 shadow-sm hover:border-slate-300/80 hover:bg-white dark:border-slate-600/40 dark:bg-slate-800/90 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
+      @apply relative inline-flex items-center rounded-lg px-3 py-1.5 shadow-sm;
 
       & > ul {
         @apply m-0 list-none p-0;
@@ -630,7 +627,7 @@
         }
 
         & > li[selected] {
-          @apply flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300;
+          @apply flex items-center gap-2 text-sm font-medium;
           & > img {
             @apply mr-1 h-4 w-4 flex-none align-middle;
           }
@@ -647,10 +644,10 @@
       }
 
       & > ul.dropdown {
-        @apply invisible absolute left-0 z-50 mt-1 min-w-[140px] overflow-auto rounded-xl border border-slate-200/60 bg-white/95 py-1 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
+        @apply invisible absolute left-0 z-50 mt-1 min-w-[140px] rounded-lg border border-slate-200/60 bg-white/95 py-1 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
 
         & > li {
-          @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 mx-1 w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300;
+          @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 w-full cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300;
         }
 
         & > li[selected] {
@@ -666,7 +663,7 @@
       }
 
       & > .open {
-        @apply ml-2 cursor-pointer border-l border-slate-200 px-2 py-1.5 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
+        @apply cursor-pointer border-l border-slate-200 px-2 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
       }
 
       &[open] > ul.dropdown {
