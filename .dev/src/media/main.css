@@ -799,18 +799,18 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-x-auto rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mb-4 max-md:rounded-lg max-md:border-0 max-md:bg-transparent max-md:p-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:bg-transparent;
+      @apply mb-3 overflow-x-auto rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mx-4 max-md:mb-6 max-md:rounded-2xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 max-md:p-5 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/30;
 
       & h3 {
-        @apply mb-6 border-b border-slate-200/50 pb-4 text-xl font-semibold tracking-tight text-slate-900 max-md:mx-4 max-md:mb-4 max-md:pb-3 max-md:text-lg dark:border-slate-600/40 dark:text-slate-100;
-      }
-
-      & .fade-in {
-        @apply animate-pulse opacity-0;
+        @apply mb-6 border-b border-slate-200/50 pb-4 text-xl font-semibold tracking-tight text-slate-900 max-md:mx-0 max-md:mb-5 max-md:border-b max-md:border-slate-200/30 max-md:pb-4 max-md:text-lg max-md:font-semibold max-md:tracking-tight dark:border-slate-600/40 dark:text-slate-100 max-md:dark:border-slate-700/20;
       }
 
       & div[style*="background:#fff"] {
         @apply dark:border-slate-600 dark:!bg-slate-900;
+      }
+
+      & div[style*="display:grid"] {
+        @apply max-md:!mb-0 max-md:!grid max-md:grid-cols-2 max-md:justify-items-stretch max-md:gap-3;
       }
 
       & .network-status-table {
@@ -822,19 +822,31 @@
       }
 
       & .cbi-section-create {
-        @apply mt-6 flex flex-wrap items-center gap-3 max-md:mx-4 max-md:mt-4;
+        @apply mt-6 flex flex-wrap items-center gap-3 max-md:mx-0 max-md:mt-5 max-md:flex-col max-md:items-stretch max-md:gap-3;
 
         & > div {
-          @apply flex-none;
+          @apply flex-none max-md:w-full max-md:flex-1;
         }
       }
     }
 
     .ifacebox {
-      @apply inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-lg border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-[240px] max-md:rounded-lg max-md:shadow-sm dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25;
+      @apply inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-lg border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
 
       & .ifacebox-head {
-        @apply w-full rounded-t-lg border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-sm font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:px-3 max-md:py-2 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100;
+        @apply w-full rounded-t-lg border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-sm font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-xs max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+
+        &.cbi-tooltip-container {
+          @apply rounded-lg border border-slate-200/50 max-md:rounded-lg max-md:border-slate-200/30 dark:border-slate-600/40 max-md:dark:border-slate-700/25;
+        }
+
+        &:first-child {
+          @apply rounded-t-lg max-md:rounded-t-xl;
+        }
+
+        &:last-child {
+          @apply rounded-b-lg border-b-0 max-md:rounded-b-xl;
+        }
 
         &.active {
           @apply border-aurora-sky bg-aurora-sky text-white;
@@ -843,13 +855,16 @@
         & strong {
           @apply font-semibold tracking-wide;
         }
+        & .zonebadge {
+          @apply rounded-sm transition-all duration-200 max-md:rounded-sm;
+        }
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start rounded-b-lg p-4 text-center leading-relaxed max-md:p-3;
+        @apply flex w-full flex-col items-center justify-start rounded-b-lg p-4 text-center leading-relaxed max-md:rounded-b-xl max-md:p-3 max-md:py-3;
 
         & > span {
-          @apply mb-3 w-full space-y-1.5 text-sm leading-relaxed text-slate-600 max-md:mb-2.5 max-md:space-y-1 max-md:text-xs dark:text-slate-400;
+          @apply mb-3 w-full space-y-1.5 text-sm leading-relaxed text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-xs max-md:leading-relaxed dark:text-slate-400;
 
           & .nowrap {
             @apply block text-sm leading-snug max-md:text-xs;
