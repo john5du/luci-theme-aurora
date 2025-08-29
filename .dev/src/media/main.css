@@ -335,10 +335,12 @@
         #view {
           @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 max-md:mx-0 max-md:mb-4 max-md:rounded-xl max-md:p-4 dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-gray-500/40 dark:hover:shadow-black/60;
 
-          .cbi-map {
-            .cbi-map-descr {
-              @apply mb-6 text-sm leading-relaxed text-slate-600 max-md:mx-4 max-md:mb-4 max-md:text-sm dark:text-slate-400;
-            }
+          .cbi-map-descr {
+            @apply mb-6 text-sm leading-relaxed text-slate-600 max-md:mx-4 max-md:mb-4 max-md:text-sm dark:text-slate-400;
+          }
+
+          .cbi-title-section {
+            @apply mb-6 leading-relaxed max-md:mx-4 max-md:mb-4;
           }
 
           #syslog {
@@ -1272,6 +1274,10 @@
 
     [data-tab-active="true"] {
       @apply block h-auto overflow-visible;
+
+      & div[style*="background:#fff"] {
+        @apply dark:border-slate-600 dark:!bg-slate-900;
+      }
     }
   }
 
