@@ -55,7 +55,7 @@
   --color-aurora-sky-300: oklch(82.5% 0.108 245.306);
   --color-aurora-sky-400: oklch(73.8% 0.159 246.584);
   --color-aurora-sky-500: oklch(68.5% 0.169 237.3);
-  --color-aurora-sky-600: oklch(57.2% 0.182 248.947);
+  --color-aurora-sky-600: oklch(56% 0.2 245);
   --color-aurora-sky-700: oklch(49.1% 0.156 249.823);
   --color-aurora-sky-800: oklch(42.6% 0.127 250.694);
   --color-aurora-sky-900: oklch(37.8% 0.103 251.546);
@@ -204,11 +204,11 @@
 
         & > li {
           @apply relative max-md:w-full max-md:border-b max-md:border-white/5 max-md:last:border-b-0 max-md:dark:border-slate-700/10;
-        }
-      }
 
-      .menu {
-        @apply block rounded px-3 py-2 text-xs font-normal text-slate-600 no-underline transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 max-md:w-full max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:px-6 max-md:py-4 max-md:text-base max-md:font-medium max-md:transition-all max-md:duration-300 max-md:hover:translate-x-2 max-md:hover:bg-white/10 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100 max-md:dark:hover:bg-slate-800/20;
+          .menu {
+            @apply block rounded-md px-3 py-2 text-xs font-normal text-slate-600 no-underline transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 max-md:w-full max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:px-6 max-md:py-4 max-md:text-base max-md:font-medium max-md:transition-all max-md:duration-300 max-md:hover:translate-x-2 max-md:hover:bg-white/10 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100 max-md:dark:hover:bg-slate-800/20;
+          }
+        }
       }
 
       .mobile-controls {
