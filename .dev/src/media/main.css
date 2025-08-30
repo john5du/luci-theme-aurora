@@ -169,22 +169,22 @@
 
 @layer utilities {
   .left {
-    @apply text-left;
+    @apply md:text-left;
   }
   .right {
-    @apply text-right;
+    @apply md:text-right;
   }
   .top {
-    @apply align-top;
+    @apply md:align-top;
   }
   .bottom {
-    @apply align-bottom;
+    @apply md:align-bottom;
   }
   .center {
-    @apply text-center;
+    @apply md:text-center;
   }
   .middle {
-    @apply align-middle;
+    @apply md:align-middle;
   }
 }
 
@@ -212,10 +212,10 @@
       }
 
       .mobile-controls {
-        @apply max-md:order-last max-md:flex max-md:shrink-0 max-md:items-center max-md:gap-2 sm:hidden;
+        @apply max-md:order-last max-md:flex max-md:shrink-0 max-md:items-center max-md:gap-2 md:hidden;
 
         & .mobile-menu-toggle {
-          @apply max-md:inline-flex max-md:h-10 max-md:w-10 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-xl max-md:bg-white/10 max-md:p-2 max-md:backdrop-blur-sm max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 sm:hidden max-md:dark:bg-slate-800/30 max-md:dark:hover:bg-slate-700/40;
+          @apply max-md:inline-flex max-md:h-10 max-md:w-10 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-xl max-md:bg-white/10 max-md:p-2 max-md:backdrop-blur-sm max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 md:hidden max-md:dark:bg-slate-800/30 max-md:dark:hover:bg-slate-700/40;
 
           & svg {
             @apply max-md:h-6 max-md:w-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
@@ -232,7 +232,7 @@
       }
 
       .mobile-menu-overlay {
-        @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:backdrop-blur-md max-md:transition-all max-md:duration-300 sm:hidden;
+        @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:backdrop-blur-md max-md:transition-all max-md:duration-300 md:hidden;
 
         &.mobile-menu-open {
           @apply max-md:visible max-md:opacity-100;
@@ -806,7 +806,11 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-x-auto rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 max-md:p-4 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/30;
+      @apply mb-3 overflow-visible rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 max-md:p-4 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/30;
+
+      #cbi-samba4 & {
+        @apply overflow-x-auto;
+      }
 
       & h3 {
         @apply mb-6 border-b border-slate-200/50 pb-4 text-xl font-semibold tracking-tight text-slate-900 max-md:mx-0 max-md:mb-5 max-md:border-b max-md:border-slate-200/30 max-md:pb-4 max-md:text-lg max-md:font-semibold max-md:tracking-tight dark:border-slate-600/40 dark:text-slate-100 max-md:dark:border-slate-700/20;
@@ -911,7 +915,7 @@
       }
 
       & > .modal {
-        @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white/95 px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 sm:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
+        @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white/95 px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 md:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
 
         &.cbi-modal {
           @apply w-5xl max-md:w-11/12;
@@ -926,7 +930,7 @@
         }
 
         & > pre {
-          @apply overflow-auto rounded-lg border border-slate-300/60 bg-slate-100 p-4 font-mono text-sm text-slate-800 sm:p-4 sm:text-sm dark:border-gray-600/40 dark:bg-gray-800 dark:text-gray-200;
+          @apply overflow-auto rounded-lg border border-slate-300/60 bg-slate-100 p-4 font-mono text-sm text-slate-800 md:p-4 md:text-sm dark:border-gray-600/40 dark:bg-gray-800 dark:text-gray-200;
 
           &.errors {
             @apply border-red-300/60 bg-red-100 text-red-800 dark:border-red-800/30 dark:bg-red-900/20 dark:text-red-300;
@@ -945,10 +949,10 @@
         }
 
         & .right {
-          @apply flex-shrink-0 gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+          @apply flex-shrink-0 gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 md:flex-row md:gap-3 dark:border-slate-700/20;
         }
         & .button-row {
-          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 md:flex-row md:gap-3 dark:border-slate-700/20;
         }
       }
     }
@@ -996,7 +1000,7 @@
     .table,
     .nft-table,
     .nft-rules {
-      @apply w-full table-fixed border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
+      @apply w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
 
       & th,
       & .th {
@@ -1032,24 +1036,34 @@
           @apply bg-gray-50/50 max-md:hidden dark:bg-gray-900/60;
         }
 
-        &:last-child {
+        &:first-child {
           & td:first-child {
-            @apply sm:rounded-bl-lg;
+            @apply md:rounded-tl-lg;
           }
 
           & td:last-child {
-            @apply sm:rounded-br-lg;
+            @apply md:rounded-tr-lg;
+          }
+        }
+
+        &:last-child {
+          & td:first-child {
+            @apply md:rounded-bl-lg;
+          }
+
+          & td:last-child {
+            @apply md:rounded-br-lg;
           }
         }
       }
 
       & tr {
-        @apply sm:border-b sm:border-gray-200 dark:sm:border-gray-600/40;
+        @apply md:border-b md:border-gray-200 dark:md:border-gray-600/40;
       }
 
       & td,
       & .td {
-        @apply border-b border-gray-200 px-4 py-3 text-base text-gray-700 max-md:border-0 max-md:px-2 max-md:py-2 dark:border-gray-600/40 dark:text-gray-200;
+        @apply border-b border-gray-200 px-4 py-3 text-base break-words text-gray-700 max-md:border-0 max-md:px-2 max-md:py-2 dark:border-gray-600/40 dark:text-gray-200;
 
         &.left {
           @apply text-left;
@@ -1077,6 +1091,18 @@
           &::before {
             @apply max-md:mb-1 max-md:block max-md:text-sm max-md:font-medium max-md:tracking-wide max-md:text-gray-500 max-md:uppercase max-md:content-[attr(data-title)':'] dark:max-md:text-gray-400;
           }
+        }
+
+        &.col-1 {
+          @apply w-20 max-w-24 max-md:w-full max-md:max-w-none;
+        }
+
+        &.col-2 {
+          @apply w-32 max-w-40 max-md:w-full max-md:max-w-none;
+        }
+
+        &.col-10 {
+          @apply w-auto max-w-none min-w-80 max-md:w-full max-md:max-w-none max-md:min-w-0;
         }
       }
 
@@ -1127,10 +1153,6 @@
       &.loading {
         @apply opacity-60;
       }
-    }
-
-    .cbi-section h3 {
-      @apply mt-4 mb-3 border-b border-gray-200 pb-2 text-lg font-medium text-gray-800 first:mt-0 max-md:mx-4 max-md:mt-3 max-md:mb-2 max-md:pb-1.5 max-md:text-base dark:border-gray-600/40 dark:text-gray-100;
     }
   }
 
