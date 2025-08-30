@@ -996,11 +996,11 @@
     .table,
     .nft-table,
     .nft-rules {
-      @apply w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-white shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-700;
+      @apply w-full table-fixed border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
 
       & th,
       & .th {
-        @apply sticky top-14 z-10 border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm max-md:hidden dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-100;
+        @apply sticky top-14 z-10 border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm max-md:hidden dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
 
         &:first-child {
           @apply rounded-tl-lg;
@@ -1011,10 +1011,10 @@
         }
 
         &[data-sortable-row="true"] {
-          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700;
+          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700/70;
 
           &:hover::after {
-            @apply ml-2 text-xs font-normal text-gray-400 content-['↕'] dark:text-gray-500;
+            @apply ml-2 text-xs font-normal text-gray-400 content-['↕'] dark:text-gray-400;
           }
         }
       }
@@ -1026,10 +1026,10 @@
 
       & tr,
       & .tr {
-        @apply transition-colors duration-200 hover:bg-gray-50 max-md:grid max-md:grid-cols-2 max-md:items-start max-md:gap-2 max-md:border-b max-md:border-gray-200 max-md:bg-white max-md:px-3 max-md:py-3 dark:hover:bg-gray-700 dark:max-md:border-gray-600 dark:max-md:bg-gray-800;
+        @apply transition-colors duration-200 hover:bg-gray-50 max-md:grid max-md:grid-cols-2 max-md:items-start max-md:gap-2 max-md:border-b max-md:border-gray-200 max-md:bg-white max-md:px-3 max-md:py-3 dark:hover:bg-gray-700/50 dark:max-md:border-gray-600/40 dark:max-md:bg-gray-800/60;
 
         &.table-titles {
-          @apply bg-gray-50/50 max-md:hidden dark:bg-gray-900/50;
+          @apply bg-gray-50/50 max-md:hidden dark:bg-gray-900/60;
         }
 
         &:last-child {
@@ -1044,12 +1044,12 @@
       }
 
       & tr {
-        @apply sm:border-b sm:border-gray-200 dark:sm:border-gray-600;
+        @apply sm:border-b sm:border-gray-200 dark:sm:border-gray-600/40;
       }
 
       & td,
       & .td {
-        @apply border-b border-gray-200 px-4 py-3 text-base text-gray-700 max-md:border-0 max-md:px-2 max-md:py-2 dark:border-gray-600 dark:text-gray-300;
+        @apply border-b border-gray-200 px-4 py-3 text-base text-gray-700 max-md:border-0 max-md:px-2 max-md:py-2 dark:border-gray-600/40 dark:text-gray-200;
 
         &.left {
           @apply text-left;
@@ -1060,7 +1060,7 @@
         }
 
         &:contains("-") {
-          @apply text-gray-400 italic dark:text-gray-500;
+          @apply text-gray-400 italic dark:text-gray-400;
         }
 
         &:first-child {
@@ -1081,19 +1081,19 @@
       }
 
       & .cbi-rowstyle-1 {
-        @apply bg-white max-md:bg-gray-50/30 dark:bg-gray-800 max-md:dark:bg-gray-800/50;
+        @apply bg-white max-md:bg-gray-50/30 dark:bg-gray-800/60 max-md:dark:bg-gray-800/40;
       }
 
       & .cbi-rowstyle-2 {
-        @apply bg-gray-50/50 max-md:bg-white dark:bg-gray-700/30 max-md:dark:bg-gray-800;
+        @apply bg-gray-50/50 max-md:bg-white dark:bg-gray-700/60 max-md:dark:bg-gray-800/50;
       }
 
       &:empty::before {
-        @apply block py-12 text-center text-gray-400 content-['暂无数据'] max-md:py-8 max-md:text-xs dark:text-gray-500;
+        @apply block py-12 text-center text-gray-400 content-['暂无数据'] max-md:py-8 max-md:text-xs dark:text-gray-400;
       }
 
       & tr:not(:last-child) {
-        @apply max-md:border-b max-md:border-gray-200 max-md:dark:border-gray-600;
+        @apply max-md:border-b max-md:border-gray-200 max-md:dark:border-gray-600/40;
       }
 
       & td:first-child {
@@ -1130,7 +1130,7 @@
     }
 
     .cbi-section h3 {
-      @apply mt-4 mb-3 border-b border-gray-200 pb-2 text-lg font-medium text-gray-800 first:mt-0 max-md:mx-4 max-md:mt-3 max-md:mb-2 max-md:pb-1.5 max-md:text-base dark:border-gray-600 dark:text-gray-200;
+      @apply mt-4 mb-3 border-b border-gray-200 pb-2 text-lg font-medium text-gray-800 first:mt-0 max-md:mx-4 max-md:mt-3 max-md:mb-2 max-md:pb-1.5 max-md:text-base dark:border-gray-600/40 dark:text-gray-100;
     }
   }
 
