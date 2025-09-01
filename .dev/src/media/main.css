@@ -169,10 +169,8 @@
 
 @layer components {
   @layer layout {
-    @layer header {
-      header {
-        @apply fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
-      }
+    header {
+      @apply fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
 
       .brand {
         @apply hover:text-aurora-sky inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 max-md:order-1 max-md:flex-1 max-md:text-lg dark:text-slate-100;
@@ -205,62 +203,6 @@
 
             & svg {
               @apply max-md:rotate-180;
-            }
-          }
-        }
-      }
-
-      .mobile-menu-overlay {
-        @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:backdrop-blur-md max-md:transition-all max-md:duration-300 md:hidden;
-
-        &.mobile-menu-open {
-          @apply max-md:visible max-md:opacity-100;
-
-          & .mobile-nav {
-            @apply max-md:translate-x-0;
-          }
-        }
-      }
-
-      .mobile-nav {
-        @apply max-md:absolute max-md:top-0 max-md:right-0 max-md:flex max-md:h-full max-md:w-80 max-md:translate-x-full max-md:flex-col max-md:bg-white/95 max-md:shadow-2xl max-md:backdrop-blur-xl max-md:backdrop-saturate-150 max-md:transition-transform max-md:duration-300 max-md:dark:bg-slate-900/95;
-
-        & .mobile-nav-header {
-          @apply max-md:flex max-md:items-center max-md:justify-end max-md:p-6 max-md:pb-3;
-
-          & .mobile-nav-title {
-            @apply max-md:m-0 max-md:text-lg max-md:font-semibold max-md:text-slate-900 max-md:dark:text-slate-100;
-          }
-
-          & .mobile-nav-close {
-            @apply max-md:flex max-md:h-12 max-md:w-12 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-lg max-md:bg-white/10 max-md:p-2 max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 max-md:dark:bg-slate-800/20 max-md:dark:hover:bg-slate-700/30;
-
-            & svg {
-              @apply max-md:h-6 max-md:w-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
-            }
-          }
-        }
-
-        & .mobile-nav-list {
-          @apply max-md:m-0 max-md:flex max-md:flex-1 max-md:list-none max-md:flex-col max-md:gap-0 max-md:overflow-y-auto max-md:p-0 max-md:px-6;
-
-          & .mobile-nav-item {
-            @apply max-md:border-b max-md:border-white/5 max-md:last:border-b-0 max-md:dark:border-slate-700/10;
-
-            & .mobile-nav-link {
-              @apply max-md:flex max-md:w-full max-md:items-center max-md:px-0 max-md:py-4 max-md:text-base max-md:font-medium max-md:text-slate-700 max-md:no-underline max-md:transition-all max-md:duration-300 max-md:hover:translate-x-1 max-md:hover:bg-white/10 max-md:hover:text-slate-900 max-md:dark:text-slate-300 max-md:dark:hover:bg-slate-800/20 max-md:dark:hover:text-slate-100;
-            }
-
-            & .mobile-nav-submenu {
-              @apply max-md:m-0 max-md:list-none max-md:overflow-hidden max-md:bg-white/5 max-md:p-0 max-md:transition-all max-md:duration-300 max-md:ease-in-out max-md:dark:bg-slate-800/10;
-
-              & .mobile-nav-subitem {
-                @apply max-md:border-b max-md:border-white/5 max-md:last:border-b-0 max-md:dark:border-slate-700/10;
-
-                & .mobile-nav-sublink {
-                  @apply max-md:flex max-md:w-full max-md:items-center max-md:py-3 max-md:pr-0 max-md:pl-4 max-md:text-sm max-md:font-normal max-md:text-slate-600 max-md:no-underline max-md:transition-all max-md:duration-300 max-md:hover:translate-x-1 max-md:hover:bg-white/10 max-md:hover:text-slate-800 max-md:dark:text-slate-400 max-md:dark:hover:bg-slate-800/15 max-md:dark:hover:text-slate-200;
-                }
-              }
             }
           }
         }
@@ -310,63 +252,115 @@
       }
     }
 
-    @layer content {
-      #maincontent {
-        @apply mx-auto min-h-screen w-11/12 !max-w-6xl px-4 pt-16 max-md:w-full max-md:px-0 max-md:pt-14;
+    .mobile-menu-overlay {
+      @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:backdrop-blur-md max-md:transition-all max-md:duration-300 md:hidden;
 
-        #view {
-          @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 max-md:mx-0 max-md:mb-2 max-md:rounded-none max-md:border-0 max-md:bg-white/10 max-md:bg-none max-md:p-0 max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-gray-500/40 dark:hover:shadow-black/60 max-md:dark:bg-gray-900/95 max-md:dark:bg-none;
+      &.mobile-menu-open {
+        @apply max-md:visible max-md:opacity-100;
 
-          .cbi-map-descr {
-            @apply mb-6 text-sm leading-relaxed text-slate-600 max-md:mx-2 max-md:mb-3 max-md:text-sm dark:text-slate-400;
+        & .mobile-nav {
+          @apply max-md:translate-x-0;
+        }
+      }
+
+      .mobile-nav {
+        @apply max-md:absolute max-md:top-0 max-md:right-0 max-md:flex max-md:h-full max-md:w-80 max-md:translate-x-full max-md:flex-col max-md:bg-white/95 max-md:shadow-2xl max-md:backdrop-blur-xl max-md:backdrop-saturate-150 max-md:transition-transform max-md:duration-300 max-md:dark:bg-slate-900/95;
+
+        & .mobile-nav-header {
+          @apply max-md:flex max-md:items-center max-md:justify-end max-md:p-6 max-md:pb-3;
+
+          & .mobile-nav-title {
+            @apply max-md:m-0 max-md:text-lg max-md:font-semibold max-md:text-slate-900 max-md:dark:text-slate-100;
           }
 
-          .cbi-title-section {
-            @apply mb-6 leading-relaxed max-md:mx-2 max-md:mb-3;
-          }
+          & .mobile-nav-close {
+            @apply max-md:flex max-md:h-12 max-md:w-12 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-lg max-md:bg-white/10 max-md:p-2 max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 max-md:dark:bg-slate-800/20 max-md:dark:hover:bg-slate-700/30;
 
-          #syslog {
-            @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
+            & svg {
+              @apply max-md:h-6 max-md:w-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
+            }
+          }
+        }
+
+        & .mobile-nav-list {
+          @apply max-md:m-0 max-md:flex max-md:flex-1 max-md:list-none max-md:flex-col max-md:gap-0 max-md:overflow-y-auto max-md:p-0 max-md:px-6;
+
+          & .mobile-nav-item {
+            @apply max-md:border-b max-md:border-white/5 max-md:last:border-b-0 max-md:dark:border-slate-700/10;
+
+            & .mobile-nav-link {
+              @apply max-md:flex max-md:w-full max-md:items-center max-md:px-0 max-md:py-4 max-md:text-base max-md:font-medium max-md:text-slate-700 max-md:no-underline max-md:transition-all max-md:duration-300 max-md:hover:translate-x-1 max-md:hover:bg-white/10 max-md:hover:text-slate-900 max-md:dark:text-slate-300 max-md:dark:hover:bg-slate-800/20 max-md:dark:hover:text-slate-100;
+            }
+
+            & .mobile-nav-submenu {
+              @apply max-md:m-0 max-md:list-none max-md:overflow-hidden max-md:bg-white/5 max-md:p-0 max-md:transition-all max-md:duration-300 max-md:ease-in-out max-md:dark:bg-slate-800/10;
+
+              & .mobile-nav-subitem {
+                @apply max-md:border-b max-md:border-white/5 max-md:last:border-b-0 max-md:dark:border-slate-700/10;
+
+                & .mobile-nav-sublink {
+                  @apply max-md:flex max-md:w-full max-md:items-center max-md:py-3 max-md:pr-0 max-md:pl-4 max-md:text-sm max-md:font-normal max-md:text-slate-600 max-md:no-underline max-md:transition-all max-md:duration-300 max-md:hover:translate-x-1 max-md:hover:bg-white/10 max-md:hover:text-slate-800 max-md:dark:text-slate-400 max-md:dark:hover:bg-slate-800/15 max-md:dark:hover:text-slate-200;
+                }
+              }
+            }
           }
         }
       }
     }
 
-    @layer footer {
-      footer {
-        @apply mt-auto flex flex-wrap items-center justify-center border-t border-slate-200 py-2 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400;
+    #maincontent {
+      @apply mx-auto min-h-screen w-11/12 !max-w-6xl px-4 pt-16 max-md:w-full max-md:px-0 max-md:pt-14;
 
-        & span {
-          @apply inline-block text-center;
+      #view {
+        @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 max-md:mx-0 max-md:mb-2 max-md:rounded-none max-md:border-0 max-md:bg-white/10 max-md:bg-none max-md:p-0 max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-gray-500/40 dark:hover:shadow-black/60 max-md:dark:bg-gray-900/95 max-md:dark:bg-none;
+
+        .cbi-map-descr {
+          @apply mb-6 text-sm leading-relaxed text-slate-600 max-md:mx-2 max-md:mb-3 max-md:text-sm dark:text-slate-400;
+        }
+
+        .cbi-title-section {
+          @apply mb-6 leading-relaxed max-md:mx-2 max-md:mb-3;
+        }
+
+        #syslog {
+          @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
+        }
+      }
+    }
+
+    footer {
+      @apply mt-auto flex flex-wrap items-center justify-center border-t border-slate-200 py-2 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400;
+
+      & span {
+        @apply inline-block text-center;
+      }
+
+      & a {
+        @apply text-aurora-sky hover:text-aurora-sky-600 no-underline;
+      }
+
+      & .breadcrumb {
+        @apply m-0 mb-4 flex rounded border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800;
+
+        & li {
+          @apply list-none;
+
+          &:not(:last-child)::after {
+            @apply px-2 text-slate-400 content-['|'];
+          }
+
+          &.active a {
+            @apply text-slate-600 dark:text-slate-300;
+          }
         }
 
         & a {
-          @apply text-aurora-sky hover:text-aurora-sky-600 no-underline;
+          @apply text-aurora-sky hover:text-aurora-sky-600;
         }
+      }
 
-        & .breadcrumb {
-          @apply m-0 mb-4 flex rounded border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800;
-
-          & li {
-            @apply list-none;
-
-            &:not(:last-child)::after {
-              @apply px-2 text-slate-400 content-['|'];
-            }
-
-            &.active a {
-              @apply text-slate-600 dark:text-slate-300;
-            }
-          }
-
-          & a {
-            @apply text-aurora-sky hover:text-aurora-sky-600;
-          }
-        }
-
-        & ul.breadcrumb {
-          @apply ml-auto;
-        }
+      & ul.breadcrumb {
+        @apply ml-auto;
       }
     }
   }
@@ -929,44 +923,45 @@
         & .button-row {
           @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 md:flex-row md:gap-3 dark:border-slate-700/20;
         }
-      }
-    }
 
-    .modal.login {
-      @apply mx-auto w-full max-w-sm rounded-xl border border-slate-200 bg-white shadow-lg max-md:mx-4 max-md:w-11/12 dark:border-slate-700 dark:bg-slate-800;
+        &.login {
+          @apply mx-auto w-full max-w-sm rounded-xl border border-slate-200 bg-white shadow-lg max-md:mx-4 max-md:w-11/12 dark:border-slate-700 dark:bg-slate-800;
 
-      & > h4 {
-        @apply px-6 pt-8 pb-6 text-center text-lg font-semibold text-slate-900 max-md:pt-6 max-md:pb-4 max-md:text-base dark:text-slate-100;
-      }
-      & .cbi-map {
-        @apply px-6 pb-2 max-md:px-4;
-
-        & .cbi-section {
-          @apply space-y-4 max-md:space-y-3;
-
-          & .cbi-section-node {
-            @apply space-y-4 max-md:space-y-3;
+          & > h4 {
+            @apply px-6 pt-8 pb-6 text-center text-lg font-semibold text-slate-900 max-md:pt-6 max-md:pb-4 max-md:text-base dark:text-slate-100;
           }
 
-          & .cbi-value {
-            @apply space-y-1;
+          & .cbi-map {
+            @apply px-6 pb-2 max-md:px-4;
 
-            & .cbi-value-title {
-              @apply text-sm font-medium text-slate-700 max-md:text-xs dark:text-slate-300;
-            }
+            & .cbi-section {
+              @apply space-y-4 max-md:space-y-3;
 
-            & .cbi-value-field {
-              & input[type="text"],
-              & input[type="password"] {
-                @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 placeholder-slate-500 focus:ring-2 focus:outline-none max-md:text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400;
+              & .cbi-section-node {
+                @apply space-y-4 max-md:space-y-3;
+              }
+
+              & .cbi-value {
+                @apply space-y-1;
+
+                & .cbi-value-title {
+                  @apply text-sm font-medium text-slate-700 max-md:text-xs dark:text-slate-300;
+                }
+
+                & .cbi-value-field {
+                  & input[type="text"],
+                  & input[type="password"] {
+                    @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 placeholder-slate-500 focus:ring-2 focus:outline-none max-md:text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400;
+                  }
+                }
               }
             }
           }
-        }
-      }
 
-      & .btn.cbi-button-positive {
-        @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 mb-6 rounded-lg px-4 py-2 text-sm font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:mb-4 max-md:text-sm dark:focus:ring-offset-slate-800;
+          & .btn.cbi-button-positive {
+            @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 mb-6 rounded-lg px-4 py-2 text-sm font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:mb-4 max-md:text-sm dark:focus:ring-offset-slate-800;
+          }
+        }
       }
     }
   }
