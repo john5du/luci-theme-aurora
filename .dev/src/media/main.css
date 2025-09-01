@@ -167,27 +167,6 @@
   }
 }
 
-@layer utilities {
-  .left {
-    @apply md:text-left;
-  }
-  .right {
-    @apply md:text-right;
-  }
-  .top {
-    @apply md:align-top;
-  }
-  .bottom {
-    @apply md:align-bottom;
-  }
-  .center {
-    @apply md:text-center;
-  }
-  .middle {
-    @apply md:align-middle;
-  }
-}
-
 @layer components {
   @layer layout {
     @layer header {
@@ -643,12 +622,6 @@
           @apply h-4 w-4 flex-none align-middle;
         }
         & > span {
-          &.zonebadge {
-            &[style*="--zone-color-rgb:238, 238, 238"] {
-              @apply dark:!bg-slate-700/60;
-            }
-          }
-
           @apply truncate;
         }
       }
@@ -717,19 +690,25 @@
 
   @layer progress {
     .cbi-progressbar {
-      @apply h-3 w-full overflow-hidden rounded-full bg-slate-300 max-md:h-2.5 dark:bg-slate-700;
-    }
+      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-2.5 max-md:before:text-[10px] max-md:before:leading-tight dark:bg-slate-700 before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
 
-    .cbi-progressbar > div {
-      @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
-    }
-
-    .cbi-progressbar {
-      @apply relative cursor-help before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:before:text-[10px] max-md:before:leading-tight before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
+      & > div {
+        @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
+      }
     }
   }
 
   @layer badge {
+    .zonebadge {
+      @apply rounded-sm transition-all duration-200 max-md:rounded-sm;
+
+      .cbi-dropdown & {
+        &[style*="--zone-color-rgb:238, 238, 238"] {
+          @apply dark:!bg-slate-700/60;
+        }
+      }
+    }
+
     .ifacebadge {
       @apply inline-flex cursor-default items-center gap-2 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
 
@@ -764,17 +743,17 @@
       &:empty::before {
         @apply text-slate-400 content-['—'] dark:text-slate-500;
       }
-    }
 
-    .cbi-dropdown .ifacebadge {
-      @apply border-slate-200/50 bg-slate-100/80 px-3 py-2 text-sm text-slate-700 shadow-sm hover:border-slate-300/60 hover:bg-slate-200/90 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/60;
+      .cbi-dropdown & {
+        @apply border-slate-200/50 bg-slate-100/80 px-3 py-2 text-sm text-slate-700 shadow-sm hover:border-slate-300/60 hover:bg-slate-200/90 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/60;
 
-      & img {
-        @apply mr-2 h-4 w-4 max-md:mr-1.5;
-      }
+        & img {
+          @apply mr-2 h-4 w-4 max-md:mr-1.5;
+        }
 
-      & em {
-        @apply text-slate-400 italic dark:text-slate-500;
+        & em {
+          @apply text-slate-400 italic dark:text-slate-500;
+        }
       }
     }
   }
@@ -865,10 +844,6 @@
 
         & strong {
           @apply font-semibold tracking-wide;
-        }
-
-        & .zonebadge {
-          @apply rounded-sm transition-all duration-200 max-md:rounded-sm;
         }
 
         &[style*="background-color: rgb(238, 238, 238)"] {
@@ -1337,5 +1312,26 @@
     [id^="container."] {
       @apply relative;
     }
+  }
+}
+
+@layer utilities {
+  .left {
+    @apply md:text-left;
+  }
+  .right {
+    @apply md:text-right;
+  }
+  .top {
+    @apply md:align-top;
+  }
+  .bottom {
+    @apply md:align-bottom;
+  }
+  .center {
+    @apply md:text-center;
+  }
+  .middle {
+    @apply md:align-middle;
   }
 }
