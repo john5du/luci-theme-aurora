@@ -118,7 +118,7 @@
     }
 
     body {
-      @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-[''] dark:bg-gradient-to-br dark:text-slate-100;
+      @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-['\00A0'] dark:bg-gradient-to-br dark:text-slate-100;
       h1,
       h2,
       h3,
@@ -215,7 +215,7 @@
           @apply relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-transparent transition-all duration-200 hover:bg-white/10 active:scale-95 active:bg-white/15 max-md:h-10 max-md:w-10 dark:hover:bg-slate-800/20 dark:active:bg-slate-700/30;
 
           &::before {
-            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-70 brightness-[0.3] contrast-100 transition-opacity duration-200 content-[''];
+            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-70 brightness-[0.3] contrast-100 transition-opacity duration-200 content-['\00A0'];
           }
 
           &:hover::before {
@@ -346,7 +346,7 @@
           @apply list-none;
 
           &:not(:last-child)::after {
-            @apply px-2 text-slate-400 content-['|'];
+            @apply px-2 text-slate-400 content-['\007C'];
           }
 
           &.active a {
@@ -382,7 +382,7 @@
       @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
 
       &:checked::after {
-        @apply pointer-events-none absolute top-1/2 left-1/2 block h-[0.4rem] w-[0.4rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white content-[''];
+        @apply pointer-events-none absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2 text-white content-['\2022'];
       }
     }
 
@@ -425,7 +425,7 @@
       @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
 
       &:checked::after {
-        @apply pointer-events-none absolute top-1/2 left-1/2 block h-[0.6rem] w-[0.35rem] -translate-x-1/2 -translate-y-1/2 -rotate-315 border-r border-b border-white content-[''];
+        @apply pointer-events-none absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2 text-white content-['\2713'];
       }
     }
 
@@ -724,7 +724,7 @@
       }
 
       &:empty::before {
-        @apply text-slate-400 content-['—'] dark:text-slate-500;
+        @apply text-slate-400 content-['\2014'] dark:text-slate-500;
       }
 
       .cbi-dropdown & {
@@ -977,7 +977,7 @@
           @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700/70;
 
           &:hover::after {
-            @apply ml-2 text-xs font-normal text-gray-400 content-['↕'] dark:text-gray-400;
+            @apply ml-2 text-xs font-normal text-gray-400 content-['\2195'] dark:text-gray-400;
           }
         }
       }
@@ -1048,7 +1048,7 @@
           @apply max-md:relative;
 
           &::before {
-            @apply max-md:mb-1 max-md:block max-md:text-sm max-md:font-medium max-md:tracking-wide max-md:text-gray-500 max-md:uppercase max-md:content-[attr(data-title)':'] dark:max-md:text-gray-400;
+            @apply max-md:mb-1 max-md:block max-md:text-sm max-md:font-medium max-md:tracking-wide max-md:text-gray-500 max-md:uppercase max-md:content-[attr(data-title)'\003A'] dark:max-md:text-gray-400;
           }
         }
 
@@ -1074,7 +1074,7 @@
       }
 
       &:empty::before {
-        @apply block py-12 text-center text-gray-400 content-['暂无数据'] max-md:py-8 max-md:text-xs dark:text-gray-400;
+        @apply block py-12 text-center text-gray-400 content-['\2014'] max-md:py-8 max-md:text-xs dark:text-gray-400;
       }
 
       & tr:not(:last-child) {
@@ -1158,8 +1158,7 @@
         }
 
         &::after {
-          @apply pointer-events-auto absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border border-slate-200/50 bg-slate-100/80 text-sm font-medium text-slate-600 transition-all duration-200 hover:border-red-200 hover:bg-red-50 hover:text-red-600 max-md:top-2.5 max-md:right-2.5 max-md:h-5 max-md:w-5 max-md:text-xs dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:border-red-700/50 dark:hover:bg-red-900/20 dark:hover:text-red-400;
-          content: "×";
+          @apply pointer-events-auto absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border border-slate-200/50 bg-slate-100/80 text-sm font-medium text-slate-600 transition-all duration-200 content-['\00D7'] hover:border-red-200 hover:bg-red-50 hover:text-red-600 max-md:top-2.5 max-md:right-2.5 max-md:h-5 max-md:w-5 max-md:text-xs dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:border-red-700/50 dark:hover:bg-red-900/20 dark:hover:text-red-400;
         }
 
         & > span {
@@ -1180,51 +1179,6 @@
 
         & .cbi-input-text {
           @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-w-0 flex-1 rounded-l-lg border-0 bg-transparent px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition-all duration-200 focus:ring-0 focus:outline-none max-md:px-3 max-md:py-2.5 max-md:text-sm dark:text-slate-100 dark:placeholder-slate-500;
-        }
-
-        & .cbi-dropdown {
-          @apply min-w-0 flex-1 rounded-lg border-0 bg-transparent px-0 py-0 shadow-none;
-
-          & > ul:not(.dropdown) {
-            @apply px-4 py-3 max-md:px-3 max-md:py-2.5;
-
-            & > li[selected] {
-              @apply truncate text-sm text-slate-600 max-md:text-sm dark:text-slate-400;
-            }
-          }
-
-          & > ul.dropdown {
-            @apply top-full left-0 z-50 mt-2 min-w-full rounded-lg border border-slate-300/60 bg-white/95 py-2 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
-
-            & > li {
-              @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 px-4 py-2.5 text-sm max-md:px-3 max-md:py-2;
-
-              & strong {
-                @apply font-medium text-slate-800 dark:text-slate-200;
-              }
-            }
-
-            & > li[selected] {
-              @apply bg-aurora-sky/15 text-aurora-sky-800 dark:bg-aurora-sky/20 dark:text-aurora-sky-200;
-            }
-
-            & > li:has(.create-item-input) {
-              @apply p-0;
-
-              & .create-item-input {
-                @apply w-full border-0 bg-transparent px-4 py-2.5 text-sm placeholder-slate-400 focus:outline-none max-md:px-3 max-md:py-2 dark:placeholder-slate-500;
-              }
-            }
-          }
-
-          & .more,
-          & .open {
-            @apply px-3 py-3 text-slate-400 hover:text-slate-600 max-md:px-2.5 max-md:py-2.5 max-md:text-sm dark:text-slate-500 dark:hover:text-slate-300;
-          }
-
-          & .open {
-            @apply border-l border-slate-200/60 dark:border-slate-600/50;
-          }
         }
 
         & .cbi-button-add {
