@@ -132,10 +132,29 @@ export default defineConfig(({ mode }) => {
       createRedirectPlugin(),
     ],
 
+    css: {
+      postcss: {
+        plugins: [
+          {
+            postcssPlugin: "remove-layers",
+            Once(root) {
+              function removeLayers(node) {
+                node.walkAtRules("layer", (rule) => {
+                  removeLayers(rule);
+                  rule.replaceWith(rule.nodes);
+                });
+              }
+              removeLayers(root);
+            },
+          },
+        ],
+      },
+    },
+
     build: {
       outDir: BUILD_OUTPUT,
+      emptyOutDir: false,
       cssMinify: "lightningcss",
-
       rollupOptions: {
         input: {
           main: resolve(CURRENT_DIR, "src/media/main.css"),
