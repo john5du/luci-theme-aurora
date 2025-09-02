@@ -604,10 +604,10 @@
     }
 
     .cbi-dropdown {
-      @apply relative inline-flex items-center rounded-lg px-3 py-1.5 shadow-sm;
+      @apply relative inline-flex items-center rounded-lg p-0 shadow-sm;
 
       & > ul {
-        @apply m-0 list-none p-0;
+        @apply m-0 list-none;
         & > li {
           @apply m-0 flex list-none items-center gap-2 p-0 text-sm font-medium;
           & > label {
@@ -629,7 +629,10 @@
             @apply hidden;
           }
           & > li[selected] {
-            @apply flex;
+            @apply px-3 py-1.5;
+            &[display] {
+              @apply flex;
+            }
             & .hide-open {
               @apply block;
             }
@@ -665,8 +668,15 @@
         @apply hidden;
       }
 
+      &[multiple][more],
+      &[multiple][empty] {
+        & > .more {
+          @apply flex px-3 py-1.5;
+        }
+      }
+
       & > .open {
-        @apply cursor-pointer border-l border-slate-200 px-2 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
+        @apply flex flex-1 cursor-pointer items-center border-l border-slate-400 px-2 py-0.5 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-500 dark:text-slate-500 dark:hover:text-slate-300;
       }
     }
   }
