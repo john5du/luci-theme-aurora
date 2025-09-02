@@ -971,9 +971,16 @@
     .nft-rules {
       @apply w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
 
+      #view > & {
+        & th,
+        & .th {
+          @apply sticky top-14 z-10;
+        }
+      }
+
       & th,
       & .th {
-        @apply sticky top-14 z-10 border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm max-md:hidden dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
+        @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm max-md:hidden dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
 
         &:first-child {
           @apply rounded-tl-lg;
@@ -1133,7 +1140,7 @@
         @apply mt-3 max-md:mt-2;
       }
       & > .cbi-value-field {
-        @apply flex flex-1 flex-col items-stretch gap-3 max-md:mx-2 max-md:gap-2;
+        @apply flex flex-1 flex-col items-stretch gap-3;
 
         &:not(:has(.cbi-dynlist)) {
           @apply flex-row flex-wrap items-center;
@@ -1143,61 +1150,37 @@
           @apply hidden;
         }
 
-        & > *:not(.cbi-dynlist) {
-          @apply inline-flex items-center gap-2 max-md:gap-1;
-        }
-
         & .cbi-value-description {
-          @apply mt-0 ml-3 inline-block leading-normal max-md:mt-1 max-md:ml-0;
+          @apply ml-3 inline-block leading-normal text-slate-500 dark:text-slate-400;
         }
 
         & output {
-          @apply mr-3 max-md:mr-2;
+          @apply mr-3;
         }
       }
     }
 
     .cbi-dynlist {
-      @apply space-y-3 max-md:mx-2 max-md:space-y-2;
+      @apply inline-flex w-max flex-col items-start gap-3;
 
       & .item {
-        @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 pointer-events-none relative flex cursor-move flex-col items-start gap-2 overflow-visible rounded-lg border border-slate-200/60 bg-white/95 px-4 py-3 pr-12 transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md focus:ring-2 focus:outline-none max-md:gap-1.5 max-md:px-3 max-md:py-2.5 max-md:pr-10 dark:border-slate-600/40 dark:bg-slate-800/95 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/10;
-
-        & > * {
-          @apply pointer-events-auto;
-        }
+        @apply relative inline-flex cursor-move flex-col items-start gap-2 self-stretch rounded-lg border border-slate-200 bg-white py-3 pr-10 pl-4 transition-colors duration-150 hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-800/95 dark:hover:bg-slate-800;
 
         &::after {
-          @apply pointer-events-auto absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border border-slate-200/50 bg-slate-100/80 text-sm font-medium text-slate-600 transition-all duration-200 content-['\00D7'] hover:border-red-200 hover:bg-red-50 hover:text-red-600 max-md:top-2.5 max-md:right-2.5 max-md:h-5 max-md:w-5 max-md:text-xs dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:border-red-700/50 dark:hover:bg-red-900/20 dark:hover:text-red-400;
+          @apply absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-md bg-slate-100 text-sm font-medium text-slate-600 content-['\00D7'] hover:bg-red-50 hover:text-red-600 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-red-900/20 dark:hover:text-red-400;
         }
 
         & > span {
-          @apply w-full font-mono text-sm leading-relaxed break-all text-slate-800 select-all max-md:text-xs dark:text-slate-100;
+          @apply font-mono text-sm leading-relaxed break-all text-slate-800 select-all dark:text-slate-100;
         }
 
         &.flash {
-          @apply border-aurora-sky/60 bg-aurora-sky/5 animate-pulse;
-        }
-
-        &:active {
-          @apply scale-[0.98] shadow-lg;
+          @apply bg-aurora-sky/5;
         }
       }
 
       & .add-item {
-        @apply flex w-full items-stretch gap-0 rounded-lg border-2 border-dashed border-slate-300/60 bg-white/95 transition-all duration-200 hover:border-slate-400/70 hover:bg-white hover:shadow-sm max-md:rounded-md dark:border-slate-600/50 dark:bg-slate-800/95 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
-
-        & .cbi-input-text {
-          @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-w-0 flex-1 rounded-l-lg border-0 bg-transparent px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition-all duration-200 focus:ring-0 focus:outline-none max-md:px-3 max-md:py-2.5 max-md:text-sm dark:text-slate-100 dark:placeholder-slate-500;
-        }
-
-        & .cbi-button-add {
-          @apply hover:bg-aurora-sky hover:border-aurora-sky dark:hover:bg-aurora-sky dark:hover:border-aurora-sky flex h-auto items-center justify-center rounded-r-lg border-l border-slate-200/60 bg-slate-50/80 px-4 py-3 text-base font-medium text-slate-600 transition-all duration-200 hover:text-white max-md:px-3 max-md:py-2.5 max-md:text-sm dark:border-slate-600/50 dark:bg-slate-700/60 dark:text-slate-400 dark:hover:text-white;
-        }
-      }
-
-      & .control-group {
-        @apply inline-flex items-stretch gap-0 max-md:gap-0;
+        @apply inline-flex items-center gap-2 self-stretch rounded-lg border border-slate-300/60 bg-white/60 px-2.5 py-2 hover:bg-white/70 dark:border-slate-600/40 dark:bg-slate-800/60 dark:hover:bg-slate-800/70;
       }
     }
   }
