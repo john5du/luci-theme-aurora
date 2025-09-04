@@ -781,7 +781,11 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-x-auto rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 max-md:p-4 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/30;
+      @apply mb-3 overflow-x-auto rounded-lg p-6 backdrop-blur-sm transition-all duration-300 empty:hidden max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:p-4 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl max-md:dark:shadow-black/30;
+
+      #maincontent & {
+        @apply border border-slate-200/40 bg-white/95 shadow-lg hover:border-slate-300/50 hover:shadow-xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 dark:border-slate-600/30 dark:bg-slate-800/95 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98;
+      }
 
       & h3 {
         @apply mb-6 border-b border-slate-200/50 pb-4 text-xl font-semibold tracking-tight text-slate-900 max-md:mx-0 max-md:mb-5 max-md:border-b max-md:border-slate-200/30 max-md:pb-4 max-md:text-lg max-md:font-semibold max-md:tracking-tight dark:border-slate-600/40 dark:text-slate-100 max-md:dark:border-slate-700/20;
@@ -878,11 +882,11 @@
       @apply pointer-events-none hidden bg-transparent;
 
       .modal-overlay-active & {
-        @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/70 backdrop-blur-sm dark:bg-black/50;
+        @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-black/50 backdrop-blur-sm;
       }
 
       & > .modal {
-        @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white/95 px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 md:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
+        @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 md:mx-auto dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
 
         &.cbi-modal {
           @apply w-5xl max-md:w-11/12;
