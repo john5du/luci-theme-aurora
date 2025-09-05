@@ -173,7 +173,7 @@
       @apply fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
 
       .brand {
-        @apply hover:text-aurora-sky inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 max-md:order-1 max-md:flex-1 max-md:text-lg dark:text-slate-100;
+        @apply hover:text-aurora-sky dark:hover:text-aurora-teal-400 inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 max-md:order-1 max-md:flex-1 max-md:text-lg dark:text-slate-100;
       }
 
       .nav {
@@ -346,7 +346,7 @@
       }
 
       & a {
-        @apply text-aurora-sky hover:text-aurora-sky-600 no-underline;
+        @apply text-aurora-sky hover:text-aurora-sky-600 dark:text-aurora-teal-400 dark:hover:text-aurora-teal-300 no-underline;
       }
 
       & .breadcrumb {
@@ -365,7 +365,7 @@
         }
 
         & a {
-          @apply text-aurora-sky hover:text-aurora-sky-600;
+          @apply text-aurora-sky hover:text-aurora-sky-600 dark:text-aurora-teal-400 dark:hover:text-aurora-teal-300;
         }
       }
 
@@ -389,7 +389,7 @@
 
   @layer radio {
     input[type="radio"] {
-      @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
+      @apply text-aurora-sky focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-teal-600 dark:checked:bg-aurora-teal-600 relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60;
 
       &:checked::after {
         @apply pointer-events-none absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2 text-white content-['\2022'];
@@ -432,7 +432,7 @@
   @layer checkbox {
     input[type="checkbox"],
     .cbi-input-checkbox {
-      @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
+      @apply text-aurora-sky focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-teal-600 dark:checked:bg-aurora-teal-600 relative h-4 w-4 cursor-pointer appearance-none rounded border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60;
 
       &:checked::after {
         @apply pointer-events-none absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2 text-white content-['\2713'];
@@ -462,7 +462,7 @@
     button,
     .btn,
     .cbi-button {
-      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-4 max-md:py-2.5 max-md:text-sm;
+      @apply bg-aurora-sky hover:bg-aurora-sky-600 dark:bg-aurora-teal-600 dark:hover:bg-aurora-teal-700 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-4 max-md:py-2.5 max-md:text-sm;
       &[disabled] {
         @apply cursor-not-allowed opacity-50 saturate-75 hover:cursor-not-allowed hover:opacity-50;
       }
@@ -480,7 +480,7 @@
 
     .cbi-button-positive,
     .cbi-button-apply {
-      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none max-md:px-4 max-md:py-2.5 max-md:text-sm;
+      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-teal-600/50 dark:bg-aurora-teal-600/15 dark:text-aurora-teal-400 dark:hover:border-aurora-teal-600/70 dark:hover:bg-aurora-teal-600/20 dark:hover:text-aurora-teal-300 border font-medium antialiased shadow-none max-md:px-4 max-md:py-2.5 max-md:text-sm;
     }
 
     .btn-secondary,
@@ -564,13 +564,13 @@
         }
 
         & a {
-          @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+          @apply focus-visible:ring-aurora-sky/30 dark:focus-visible:ring-aurora-teal-400/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
         }
       }
     }
 
     .cbi-dropdown {
-      @apply relative inline-flex min-w-fit flex-shrink-0 items-center rounded-lg p-0 whitespace-nowrap shadow-sm;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 relative inline-flex min-w-fit flex-shrink-0 items-center rounded-lg border border-slate-300/70 p-0 whitespace-nowrap shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60;
 
       & > ul {
         @apply m-0 list-none;
@@ -617,20 +617,23 @@
           @apply invisible absolute left-0 z-50 mt-1 w-fit min-w-full overflow-y-auto rounded-lg border border-slate-200/60 bg-white/95 py-1 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
 
           & > li {
-            @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 w-full cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300;
+            @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-teal-600/15 w-full cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300;
             & .hide-close {
               @apply flex flex-col;
             }
           }
 
           & > li[selected] {
-            @apply bg-aurora-sky/20 text-aurora-sky-800 dark:bg-aurora-sky/25 dark:text-aurora-sky-200;
+            @apply bg-aurora-sky/20 text-aurora-sky-800 dark:bg-aurora-teal-600/25 dark:text-aurora-teal-200;
           }
         }
       }
 
-      &[open] > ul.dropdown {
-        @apply visible;
+      &[open] {
+        @apply border-aurora-sky ring-aurora-sky/20 dark:border-aurora-teal-400 dark:ring-aurora-teal-400/30 ring-2;
+        & > ul.dropdown {
+          @apply visible;
+        }
       }
 
       & > .more {
@@ -655,7 +658,7 @@
       @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-2.5 max-md:before:text-[10px] max-md:before:leading-tight dark:bg-slate-700 before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
 
       & > div {
-        @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
+        @apply from-aurora-sky to-aurora-teal dark:from-aurora-teal-600 dark:text-shadow-aurora-night-slate-800 h-full bg-gradient-to-r transition-all duration-300;
       }
     }
   }
@@ -801,7 +804,7 @@
         }
 
         &.active {
-          @apply border-aurora-sky bg-aurora-sky text-white;
+          @apply border-aurora-sky bg-aurora-sky dark:border-aurora-teal-600 dark:bg-aurora-teal-600 text-white;
         }
 
         & strong {
