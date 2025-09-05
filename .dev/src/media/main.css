@@ -326,6 +326,16 @@
           @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
         }
       }
+
+      .control-group,
+      .cbi-page-actions > div,
+      .cbi-section-actions > div {
+        @apply flex flex-row flex-nowrap items-center gap-2 max-md:gap-1;
+      }
+
+      .cbi-page-actions {
+        @apply mt-6 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-4 max-md:mx-2 max-md:mt-4 max-md:gap-2 max-md:pt-3 dark:border-slate-700/30;
+      }
     }
 
     footer {
@@ -451,20 +461,19 @@
   @layer button {
     button,
     .btn,
-    .cbi-button,
-    .cbi-button-add,
-    .cbi-button-reload,
-    .cbi-button-edit,
-    .cbi-button-start {
+    .cbi-button {
       @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-4 max-md:py-2.5 max-md:text-sm;
+      &[disabled] {
+        @apply cursor-not-allowed opacity-50 saturate-75 hover:cursor-not-allowed hover:opacity-50;
+      }
+      .td & {
+        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:px-3 max-md:py-1.5 max-md:text-sm;
+      }
     }
 
-    .btn + .btn,
-    .cbi-button + .cbi-button,
     button + button,
     .btn + .cbi-button,
     .cbi-button + .btn,
-    .cbi-section-node .cbi-button,
     .cbi-section-node .btn {
       @apply ml-2 max-md:ml-1.5;
     }
@@ -483,49 +492,6 @@
     .cbi-button-kill,
     .drag-handle {
       @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 max-md:px-4 max-md:py-2.5 max-md:text-sm dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50;
-    }
-
-    .pager {
-      @apply flex items-center justify-center gap-4 py-4 max-md:gap-2 max-md:py-3;
-    }
-
-    .pager .text {
-      @apply text-sm font-medium text-slate-600 max-md:text-xs dark:text-gray-300;
-    }
-
-    .pager .btn.cbi-button-neutral {
-      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 max-md:px-4 max-md:py-2.5 max-md:text-sm dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
-    }
-
-    .cbi-page-actions {
-      @apply mt-6 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-4 max-md:mx-2 max-md:mt-4 max-md:gap-2 max-md:pt-3 dark:border-slate-700/30;
-    }
-
-    .cbi-section-actions div {
-      @apply flex flex-row flex-nowrap items-center gap-2 max-md:gap-1;
-    }
-
-    .td.cbi-section-actions {
-      @apply p-2 max-md:p-1;
-
-      & div {
-        @apply justify-start;
-      }
-
-      & .btn,
-      & .cbi-button {
-        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:px-3 max-md:py-1.5 max-md:text-sm;
-      }
-    }
-
-    .control-group {
-      @apply flex flex-wrap items-center gap-3 max-md:gap-2;
-    }
-
-    button[disabled],
-    .btn[disabled],
-    .cbi-button[disabled] {
-      @apply cursor-not-allowed opacity-50 saturate-75 hover:cursor-not-allowed hover:opacity-50;
     }
   }
 
