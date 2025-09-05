@@ -1018,15 +1018,15 @@
         }
 
         &.col-1 {
-          @apply w-20 max-w-24 max-md:w-full max-md:max-w-none;
+          @apply w-28 max-w-32 whitespace-normal max-md:w-full max-md:max-w-none;
         }
 
         &.col-2 {
-          @apply w-32 max-w-40 max-md:w-full max-md:max-w-none;
+          @apply w-36 max-w-40 whitespace-normal max-md:w-full max-md:max-w-none;
         }
 
         &.col-10 {
-          @apply w-auto max-w-none min-w-80 max-md:w-full max-md:max-w-none max-md:min-w-0;
+          @apply w-auto max-md:w-full max-md:max-w-none max-md:min-w-0;
         }
       }
     }
@@ -1148,21 +1148,21 @@
 
 @layer utilities {
   .left {
-    @apply md:text-left;
+    @apply md:!text-left;
   }
   .right {
-    @apply md:text-right;
+    @apply md:!text-right;
   }
   .top {
-    @apply md:align-top;
+    @apply md:!align-top;
   }
   .bottom {
-    @apply md:align-bottom;
+    @apply md:!align-bottom;
   }
   .center {
-    @apply md:text-center;
+    @apply md:!text-center;
   }
   .middle {
-    @apply md:align-middle;
+    @apply md:!align-middle;
   }
 }
