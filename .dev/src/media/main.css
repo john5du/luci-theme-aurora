@@ -643,7 +643,7 @@
 
   @layer progress {
     .cbi-progressbar {
-      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-2.5 max-md:before:text-[10px] max-md:before:leading-tight dark:bg-slate-700 before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
+      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-4 max-md:rounded-lg max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
 
       & > div {
         @apply from-aurora-sky to-aurora-teal dark:from-aurora-teal-600 dark:text-shadow-aurora-night-slate-800 h-full bg-gradient-to-r transition-all duration-300;
@@ -975,7 +975,11 @@
 
       & tr,
       & .tr {
-        @apply transition-colors duration-200 hover:bg-gray-50 max-md:block max-md:border-b max-md:border-gray-200 max-md:bg-white max-md:px-3 max-md:py-3 dark:hover:bg-gray-700/50 dark:max-md:border-gray-600/40 dark:max-md:bg-gray-800/60;
+        @apply transition-colors duration-200 hover:bg-gray-50 max-md:flex max-md:flex-wrap max-md:border-b max-md:border-gray-200 max-md:bg-white max-md:px-2 max-md:py-2 dark:hover:bg-gray-700/50 dark:max-md:border-gray-600/40 dark:max-md:bg-gray-800/60;
+
+        &:has(.cbi-progressbar) {
+          @apply max-md:flex max-md:items-center max-md:justify-center;
+        }
 
         &:first-child {
           & td:first-child {
@@ -1008,7 +1012,15 @@
 
       & td,
       & .td {
-        @apply w-auto border-b border-gray-200 px-4 py-3 text-base break-words text-gray-700 max-md:block max-md:w-full max-md:border-0 max-md:px-0 max-md:py-1.5 dark:border-gray-600/40 dark:text-gray-200;
+        @apply w-auto border-b border-gray-200 px-4 py-3 text-base break-words text-gray-700 max-md:w-1/2 max-md:flex-shrink-0 max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
+
+        &:has(.cbi-progressbar) {
+          @apply flex-1;
+        }
+
+        &::before {
+          @apply hidden content-[attr(data-title)] max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:tracking-wider max-md:text-slate-500 max-md:uppercase max-md:dark:text-slate-400;
+        }
 
         &[width="100%"] {
           @apply w-full;
@@ -1018,15 +1030,15 @@
         }
 
         &.col-1 {
-          @apply w-28 max-w-32 whitespace-normal max-md:w-full max-md:max-w-none;
+          @apply w-28 max-w-32 whitespace-normal;
         }
 
         &.col-2 {
-          @apply w-36 max-w-40 whitespace-normal max-md:w-full max-md:max-w-none;
+          @apply w-36 max-w-40 whitespace-normal;
         }
 
         &.col-10 {
-          @apply w-auto max-md:w-full max-md:max-w-none max-md:min-w-0;
+          @apply w-auto whitespace-normal max-md:w-full max-md:flex-shrink-0;
         }
       }
     }
