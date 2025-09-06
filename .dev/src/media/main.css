@@ -450,12 +450,12 @@
     button,
     .btn,
     .cbi-button {
-      @apply bg-aurora-sky hover:bg-aurora-sky-600 dark:bg-aurora-teal-600 dark:hover:bg-aurora-teal-700 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-4 max-md:py-2.5 max-md:text-sm;
+      @apply bg-aurora-sky hover:bg-aurora-sky-600 dark:bg-aurora-teal-600 dark:hover:bg-aurora-teal-700 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:min-h-11 max-md:px-4 max-md:py-3 max-md:text-base max-md:font-medium;
       &[disabled] {
         @apply cursor-not-allowed opacity-50 saturate-75 hover:cursor-not-allowed hover:opacity-50;
       }
       .td & {
-        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:px-3 max-md:py-1.5 max-md:text-sm;
+        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:min-h-10 max-md:px-3 max-md:py-2 max-md:text-sm;
       }
     }
 
@@ -468,7 +468,7 @@
 
     .cbi-button-positive,
     .cbi-button-apply {
-      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-teal-600/50 dark:bg-aurora-teal-600/15 dark:text-aurora-teal-400 dark:hover:border-aurora-teal-600/70 dark:hover:bg-aurora-teal-600/20 dark:hover:text-aurora-teal-300 border font-medium antialiased shadow-none max-md:px-4 max-md:py-2.5 max-md:text-sm;
+      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-teal-600/50 dark:bg-aurora-teal-600/15 dark:text-aurora-teal-400 dark:hover:border-aurora-teal-600/70 dark:hover:bg-aurora-teal-600/20 dark:hover:text-aurora-teal-300 border font-medium antialiased shadow-none max-md:min-h-11 max-md:px-4 max-md:py-3 max-md:text-base max-md:font-medium;
     }
 
     .btn-secondary,
@@ -479,7 +479,7 @@
     .cbi-button-remove,
     .cbi-button-kill,
     .drag-handle {
-      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 max-md:px-4 max-md:py-2.5 max-md:text-sm dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50;
+      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 max-md:min-h-11 max-md:px-4 max-md:py-3 max-md:text-base max-md:font-medium dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50;
     }
   }
 
