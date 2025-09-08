@@ -312,7 +312,7 @@
       @apply mx-auto min-h-screen w-11/12 !max-w-6xl px-4 pt-16 max-md:w-full max-md:px-0 max-md:pt-14;
 
       #view {
-        @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 max-md:mx-0 max-md:mb-2 max-md:rounded-none max-md:border-0 max-md:bg-white/10 max-md:bg-none max-md:p-0 max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-gray-500/40 dark:hover:shadow-black/60 max-md:dark:bg-gray-900/95 max-md:dark:bg-none;
+        @apply mx-0 mb-2 w-full p-0 shadow-none transition-all duration-300 empty:hidden md:mb-6 md:rounded-2xl md:border md:border-slate-400/20 md:bg-gradient-to-br md:from-white/95 md:via-white/90 md:to-white/85 md:p-6 md:shadow-xl md:backdrop-blur-xl md:backdrop-saturate-150 md:hover:border-slate-400/30 md:hover:shadow-2xl md:hover:shadow-slate-400/30 md:dark:border-gray-600/30 md:dark:from-gray-900/95 md:dark:via-gray-800/90 md:dark:to-gray-900/85 md:dark:shadow-black/50 md:dark:hover:border-gray-500/40 md:dark:hover:shadow-black/60;
 
         .cbi-map-descr {
           @apply mb-6 text-sm leading-relaxed text-slate-600 max-md:mx-2 max-md:mb-3 max-md:text-sm dark:text-slate-400;
@@ -761,15 +761,11 @@
       }
 
       & div[style*="display:grid"] {
-        @apply max-md:!mb-0 max-md:!grid max-md:grid-cols-2 max-md:justify-items-stretch max-md:gap-3;
+        @apply max-md:!grid-cols-2 max-md:gap-3;
       }
 
       & .network-status-table {
-        @apply flex flex-wrap justify-start gap-6 max-md:flex-col max-md:gap-4;
-
-        & .ifacebox {
-          @apply w-80 flex-none max-md:w-full;
-        }
+        @apply mb-3 flex flex-wrap justify-around max-md:flex-col max-md:gap-4;
       }
 
       & .cbi-section-create {
@@ -936,7 +932,7 @@
   @layer table {
     .table,
     table {
-      @apply w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
+      @apply mb-3 w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
       &[width="100%"] {
         @apply w-full;
       }
@@ -1186,6 +1182,6 @@
     @apply md:!align-middle;
   }
   .nowrap:not(span) {
-    @apply whitespace-nowrap;
+    @apply md:whitespace-nowrap;
   }
 }
