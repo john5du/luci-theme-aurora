@@ -712,26 +712,34 @@
   }
 
   @layer tooltip {
+    .cbi-tooltip {
+      @apply absolute z-110 max-w-xs rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 shadow-lg transition-opacity duration-250 ease-in dark:bg-slate-900 dark:text-slate-100;
+      &.error {
+        @apply border border-red-200/40 bg-gradient-to-br from-red-50 via-red-100 to-red-50 text-red-900 shadow-red-500/10 dark:border-red-500/30 dark:from-red-900/40 dark:via-red-800/30 dark:to-red-900/40 dark:text-red-200 dark:shadow-red-400/10;
+      }
+      &.success {
+        @apply border border-emerald-200/40 bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-50 text-emerald-900 shadow-emerald-500/10 dark:border-emerald-500/30 dark:from-emerald-900/40 dark:via-emerald-800/30 dark:to-emerald-900/40 dark:text-emerald-200 dark:shadow-emerald-400/10;
+      }
+      &.info {
+        @apply border border-blue-200/40 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 text-blue-900 shadow-blue-500/10 dark:border-blue-500/30 dark:from-blue-900/40 dark:via-blue-800/30 dark:to-blue-900/40 dark:text-blue-200 dark:shadow-blue-400/10;
+      }
+      &.notice {
+        @apply border border-amber-200/40 bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50 text-amber-900 shadow-amber-500/10 dark:border-amber-500/30 dark:from-amber-900/40 dark:via-amber-800/30 dark:to-amber-900/40 dark:text-amber-200 dark:shadow-amber-400/10;
+      }
+    }
+
     .cbi-tooltip-container {
       @apply relative cursor-help whitespace-nowrap;
 
       & .cbi-tooltip {
         @apply hidden;
 
-        &.left {
-          @apply right-0 left-auto w-40 transform-none;
-        }
-
-        & .nowrap {
-          @apply whitespace-nowrap;
-        }
-
         & strong {
           @apply font-semibold;
         }
       }
       &:hover .cbi-tooltip {
-        @apply absolute z-50 block max-w-xs rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 shadow-lg dark:bg-slate-900 dark:text-slate-100;
+        @apply block;
       }
     }
   }
@@ -1012,7 +1020,7 @@
 
       & td,
       & .td {
-        @apply w-auto border-b border-gray-200 px-4 py-3 text-base break-words text-gray-700 max-md:w-1/2 max-md:flex-shrink-0 max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
+        @apply w-auto border-b border-gray-200 px-3 py-3 text-base break-words text-gray-700 max-md:w-1/2 max-md:flex-shrink-0 max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
 
         &:has(.cbi-progressbar) {
           @apply flex-1;
@@ -1176,5 +1184,8 @@
   }
   .middle {
     @apply md:!align-middle;
+  }
+  .nowrap:not(span) {
+    @apply whitespace-nowrap;
   }
 }
