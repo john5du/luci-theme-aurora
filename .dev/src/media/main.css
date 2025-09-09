@@ -365,13 +365,11 @@
 
   @layer input {
     input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="number"],
-    input[type="tel"],
-    input[type="url"],
-    input[type="search"] {
+    input[type="password"] {
       @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
+      .table.cbi-section-table & {
+        @apply w-full;
+      }
     }
   }
 
@@ -581,7 +579,7 @@
           }
         }
         &:not(.dropdown) {
-          @apply flex flex-nowrap items-center gap-2;
+          @apply flex flex-1 flex-nowrap items-center gap-2;
           & > li {
             @apply hidden;
             &[selected] {
@@ -631,12 +629,12 @@
       &[multiple][more],
       &[multiple][empty] {
         & > .more {
-          @apply flex px-3 py-1.5;
+          @apply flex flex-none shrink-0 px-3 py-1.5;
         }
       }
 
       & > .open {
-        @apply flex flex-1 cursor-pointer items-center border-l border-slate-400 px-2 py-0.5 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-500 dark:text-slate-500 dark:hover:text-slate-300;
+        @apply flex flex-none shrink-0 cursor-pointer items-center justify-center border-l border-slate-400 px-2.5 py-0.5 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-500 dark:text-slate-500 dark:hover:text-slate-300;
       }
     }
   }
@@ -670,7 +668,7 @@
       }
 
       & > span {
-        @apply flex-1 space-y-0.5 leading-relaxed max-md:space-y-0;
+        @apply space-y-0.5 leading-relaxed max-md:space-y-0;
 
         & > .nowrap {
           @apply block text-sm leading-snug max-md:text-xs;
