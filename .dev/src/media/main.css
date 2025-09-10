@@ -333,7 +333,7 @@
             }
 
             & > div > label {
-              @apply flex items-center;
+              @apply flex items-center gap-2;
             }
           }
         }
@@ -635,9 +635,19 @@
 
   @layer badge {
     .zonebadge {
-      @apply rounded-sm transition-all duration-200 max-md:rounded-sm;
+      @apply relative inline-flex items-center gap-1.5 overflow-hidden rounded-full border border-black/8 bg-white/98 p-1.5 text-sm font-medium text-slate-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md max-md:gap-1 max-md:p-1 max-md:text-xs dark:border-white/12 dark:bg-slate-800/95 dark:text-slate-200 dark:shadow-black/25;
+
+      & > strong {
+        @apply font-semibold text-slate-900 max-md:text-xs dark:text-white;
+      }
+
+      & > em {
+        @apply font-medium text-slate-500 italic max-md:text-xs dark:text-slate-400;
+      }
 
       .cbi-dropdown & {
+        @apply rounded-lg;
+
         &[style*="--zone-color-rgb:238, 238, 238"] {
           @apply dark:!bg-slate-700/60;
         }
@@ -695,7 +705,7 @@
 
   @layer tooltip {
     .cbi-tooltip {
-      @apply absolute z-110 max-w-xs rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 shadow-lg transition-opacity duration-250 ease-in dark:bg-slate-900 dark:text-slate-100;
+      @apply absolute z-110 max-w-xs scale-95 transform rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 opacity-0 shadow-lg backdrop-blur-xl transition-all duration-300 ease-out dark:bg-slate-900 dark:text-slate-100;
       &.error {
         @apply border border-red-200/40 bg-gradient-to-br from-red-50 via-red-100 to-red-50 text-red-900 shadow-red-500/10 dark:border-red-500/30 dark:from-red-900/40 dark:via-red-800/30 dark:to-red-900/40 dark:text-red-200 dark:shadow-red-400/10;
       }
@@ -714,14 +724,15 @@
       @apply relative cursor-help whitespace-nowrap;
 
       & .cbi-tooltip {
-        @apply hidden;
+        @apply invisible scale-95 transform opacity-0 transition-all duration-300 ease-out;
 
         & strong {
           @apply font-semibold;
         }
       }
+
       &:hover .cbi-tooltip {
-        @apply block;
+        @apply visible scale-100 opacity-100;
       }
     }
   }
@@ -760,13 +771,16 @@
     }
 
     .ifacebox {
-      @apply inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-lg border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
+      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-lg border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
 
       & .ifacebox-head {
         @apply w-full rounded-t-lg border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-base font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
 
         &.cbi-tooltip-container {
-          @apply rounded-lg border border-slate-200/50 max-md:rounded-lg max-md:border-slate-200/30 dark:border-slate-600/40 max-md:dark:border-slate-700/25;
+          @apply static bg-transparent;
+          & .cbi-tooltip {
+            @apply bottom-0 left-0;
+          }
         }
 
         &:first-child {
@@ -791,10 +805,17 @@
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start rounded-b-lg p-4 text-center leading-relaxed max-md:rounded-b-xl max-md:p-3 max-md:py-3;
+        @apply flex w-full flex-col items-center justify-start rounded-b-lg p-4 text-center leading-relaxed max-md:rounded-b-xl max-md:p-3;
 
         & > span {
           @apply mb-3 w-full space-y-1.5 text-base leading-relaxed text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm max-md:leading-relaxed dark:text-slate-400;
+
+          &:has(.cbi-tooltip) {
+            @apply flex items-center justify-center gap-2;
+            .cbi-tooltip {
+              @apply delay-200;
+            }
+          }
 
           & .nowrap {
             @apply block text-base leading-snug max-md:text-sm;
@@ -810,7 +831,11 @@
         }
 
         & .cbi-tooltip-container {
-          @apply relative inline-flex cursor-help items-center justify-center;
+          @apply static flex cursor-help items-center justify-center;
+
+          & .cbi-tooltip {
+            @apply bottom-0 left-0;
+          }
         }
 
         & small {
@@ -890,7 +915,7 @@
                 @apply space-y-1;
 
                 & .cbi-value-title {
-                  @apply text-sm font-medium text-slate-700 max-md:text-xs dark:text-slate-300;
+                  @apply text-right text-sm font-medium text-slate-700 max-md:text-xs dark:text-slate-300;
                 }
 
                 & .cbi-value-field {
@@ -937,13 +962,6 @@
         &[width="33%"] {
           @apply w-1/3;
         }
-        &:first-child {
-          @apply rounded-tl-lg;
-        }
-
-        &:last-child {
-          @apply rounded-tr-lg;
-        }
 
         &[data-sortable-row="true"] {
           @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700/70;
@@ -968,6 +986,14 @@
         }
 
         &:first-child {
+          & th:first-child,
+          & .th:first-child {
+            @apply md:rounded-tl-lg;
+          }
+          & th:last-child,
+          & .th:last-child {
+            @apply md:rounded-tr-lg;
+          }
           & td:first-child {
             @apply md:rounded-tl-lg;
           }
@@ -1037,8 +1063,13 @@
       & + .cbi-value {
         @apply mt-3 max-md:mt-2;
       }
+
+      & > .cbi-value-title {
+        @apply mb-1.5 inline-block;
+      }
+
       & > .cbi-value-field {
-        @apply flex flex-1 flex-col items-stretch gap-3;
+        @apply flex flex-col items-stretch gap-3;
 
         &:not(:has(.cbi-dynlist)) {
           @apply flex-row flex-wrap items-center;
