@@ -740,7 +740,7 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-x-auto rounded-lg p-6 backdrop-blur-sm transition-all duration-300 empty:hidden max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:p-4 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl max-md:dark:shadow-black/30;
+      @apply mb-3 overflow-x-auto rounded-lg p-6 backdrop-blur-sm transition-all duration-300 empty:hidden max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:p-4 max-md:backdrop-blur-xl;
 
       #maincontent & {
         @apply border border-slate-200/40 bg-white/95 shadow-lg hover:border-slate-300/50 hover:shadow-xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 dark:border-slate-600/30 dark:bg-slate-800/95 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98;
@@ -915,7 +915,7 @@
                 & .cbi-value-field {
                   & input[type="text"],
                   & input[type="password"] {
-                    @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 placeholder-slate-500 focus:ring-2 focus:outline-none max-md:text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400;
+                    @apply w-full rounded-lg px-3 py-2 text-sm max-md:text-sm dark:bg-slate-700;
                   }
                 }
               }
@@ -923,7 +923,7 @@
           }
 
           & .btn.cbi-button-positive {
-            @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 mb-6 rounded-lg px-4 py-2 text-sm font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:mb-4 max-md:text-sm dark:focus:ring-offset-slate-800;
+            @apply mb-6 rounded-lg px-4 py-2 text-sm font-medium max-md:mb-4 max-md:text-sm;
           }
         }
       }
@@ -951,10 +951,10 @@
       & .th {
         @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm max-md:block dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
         &[width="100%"] {
-          @apply w-full;
+          @apply w-full max-md:flex-[0_0_100%];
         }
         &[width="33%"] {
-          @apply w-1/3;
+          @apply w-1/3 max-md:flex-[0_0_33.333%];
         }
 
         &[data-sortable-row="true"] {
@@ -1007,6 +1007,11 @@
           }
         }
 
+        &.table-titles,
+        &.cbi-section-table-titles {
+          @apply max-md:hidden;
+        }
+
         &.cbi-rowstyle-1 {
           @apply bg-white max-md:bg-gray-50/30 dark:bg-gray-800/60 max-md:dark:bg-gray-800/40;
         }
@@ -1018,21 +1023,17 @@
 
       & td,
       & .td {
-        @apply w-auto border-b border-gray-200 px-3 py-3 text-base break-words text-gray-700 max-md:w-1/2 max-md:flex-shrink-0 max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
-
-        &:has(.cbi-progressbar) {
-          @apply flex-1;
-        }
+        @apply w-auto border-b border-gray-200 px-3 py-3 text-base break-words text-gray-700 max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
 
         &::before {
           @apply hidden content-[attr(data-title)] max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:tracking-wider max-md:text-slate-500 max-md:uppercase max-md:dark:text-slate-400;
         }
 
         &[width="100%"] {
-          @apply w-full;
+          @apply w-full max-md:flex-[0_0_100%];
         }
         &[width="33%"] {
-          @apply w-1/3;
+          @apply w-1/3 max-md:flex-[0_0_33.333%];
         }
 
         &.col-1 {
