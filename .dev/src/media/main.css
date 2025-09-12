@@ -183,13 +183,13 @@
       }
 
       .nav {
-        @apply absolute left-1/2 m-0 flex -translate-x-1/2 transform list-none items-center gap-1 p-0 max-md:fixed max-md:top-16 max-md:right-0 max-md:left-0 max-md:z-40 max-md:hidden max-md:w-full max-md:translate-x-0 max-md:transform max-md:flex-col max-md:gap-0 max-md:border-t max-md:border-white/10 max-md:bg-white/95 max-md:shadow-xl max-md:backdrop-blur-xl max-md:backdrop-saturate-150 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-900/95;
+        @apply absolute left-1/2 m-0 flex -translate-x-1/2 transform list-none items-center gap-1 p-0 max-md:hidden;
 
         & > li {
-          @apply relative max-md:w-full max-md:border-b max-md:border-white/5 max-md:last:border-b-0 max-md:dark:border-slate-700/10;
+          @apply relative;
 
           .menu {
-            @apply block rounded-md px-3 py-2 text-xs font-normal text-slate-600 no-underline transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 max-md:w-full max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:px-6 max-md:py-4 max-md:text-base max-md:font-medium max-md:transition-all max-md:duration-300 max-md:hover:translate-x-2 max-md:hover:bg-white/10 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100 max-md:dark:hover:bg-slate-800/20;
+            @apply block rounded-md px-3 py-2 text-xs font-normal text-slate-600 no-underline transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100;
           }
         }
       }
@@ -221,38 +221,21 @@
           @apply relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-transparent transition-all duration-200 hover:bg-white/10 active:scale-95 active:bg-white/15 max-md:h-10 max-md:w-10 dark:hover:bg-slate-800/20 dark:active:bg-slate-700/30;
 
           &::before {
-            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-70 brightness-[0.3] contrast-100 transition-opacity duration-200 content-['\00A0'];
-          }
-
-          &:hover::before {
-            @apply opacity-100;
-          }
-
-          .dark &::before {
-            @apply brightness-100 invert;
+            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-70 contrast-100 transition-opacity duration-200 content-['\00A0'];
           }
 
           &[data-indicator="poll-status"] {
             &[data-style="active"]::before {
-              @apply bg-[url('@assets/icons/refresh.svg')];
+              @apply bg-[url('@assets/icons/refresh.svg')] dark:invert;
             }
 
             &[data-style="inactive"]::before {
-              @apply bg-[url('@assets/icons/pause.svg')];
+              @apply bg-[url('@assets/icons/pause.svg')] dark:invert;
             }
           }
 
           &[data-indicator="uci-changes"]::before {
-            @apply bg-[url('@assets/icons/setting.svg')];
-          }
-
-          &[data-style="active"] {
-            &::before {
-              @apply opacity-90;
-            }
-            &:hover::before {
-              @apply opacity-100;
-            }
+            @apply bg-[url('@assets/icons/setting.svg')] dark:invert;
           }
         }
       }
@@ -534,14 +517,13 @@
         }
       }
       .dropdown-menu {
-        @apply invisible absolute top-full left-0 z-50 mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
+        @apply invisible absolute top-full left-0 z-50 mt-2 min-w-48 scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
 
-        & li {
+        & > li {
           @apply m-0 list-none;
-        }
-
-        & a {
-          @apply focus-visible:ring-aurora-sky/30 dark:focus-visible:ring-aurora-teal-400/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+          & > a {
+            @apply focus-visible:ring-aurora-sky/30 dark:focus-visible:ring-aurora-teal-400/30 mx-2 block rounded-lg px-4 py-2.5 text-sm font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+          }
         }
       }
     }
@@ -632,10 +614,10 @@
 
   @layer progress {
     .cbi-progressbar {
-      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-4 max-md:rounded-lg max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
+      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-4 max-md:rounded-lg max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
 
       & > div {
-        @apply from-aurora-sky to-aurora-teal dark:from-aurora-teal-600 dark:text-shadow-aurora-night-slate-800 h-full bg-gradient-to-r transition-all duration-300;
+        @apply from-aurora-sky to-aurora-teal dark:from-aurora-night-emerald dark:to-aurora-teal-600 dark:text-shadow-aurora-night-slate-800 h-full bg-gradient-to-r transition-all duration-300;
       }
     }
   }
@@ -935,7 +917,7 @@
   @layer table {
     .table,
     table {
-      @apply mb-3 w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
+      @apply mb-3 w-full overflow-visible rounded-lg shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:shadow-black/50;
       &[width="100%"] {
         @apply w-full;
       }
@@ -981,12 +963,14 @@
         }
 
         &:last-child {
-          & td:first-child {
-            @apply md:rounded-bl-lg;
-          }
-
-          & td:last-child {
-            @apply md:rounded-br-lg;
+          td {
+            @apply border-b-0;
+            &:first-child {
+              @apply md:rounded-bl-lg;
+            }
+            &:last-child {
+              @apply md:rounded-br-lg;
+            }
           }
         }
 
