@@ -716,7 +716,7 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-x-auto rounded-lg p-6 backdrop-blur-sm transition-all duration-300 empty:hidden max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:p-4 max-md:backdrop-blur-xl;
+      @apply mb-3 overflow-visible rounded-lg p-6 backdrop-blur-sm transition-all duration-300 empty:hidden max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:p-4 max-md:backdrop-blur-xl;
 
       #maincontent & {
         @apply border border-slate-200/40 bg-white/95 shadow-lg hover:border-slate-300/50 hover:shadow-xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 dark:border-slate-600/30 dark:bg-slate-800/95 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98;
