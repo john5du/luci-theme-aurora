@@ -919,18 +919,12 @@
   @layer table {
     .table,
     table {
-      @apply mb-3 w-full overflow-visible rounded-2xl shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:shadow-black/50;
+      @apply mb-3 w-full overflow-visible rounded-2xl shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:border-0 max-md:bg-white/98 max-md:shadow-none dark:shadow-black/50 max-md:dark:bg-slate-800/98;
       &[width="100%"] {
         @apply w-full;
       }
       &[width="33%"] {
         @apply w-1/3;
-      }
-      #view > & {
-        & th,
-        & .th {
-          @apply sticky top-14 z-10;
-        }
       }
 
       & tbody,
@@ -940,19 +934,17 @@
 
       & tr,
       & .tr {
-        @apply transition-colors duration-200 hover:bg-gray-50 max-md:flex max-md:flex-wrap max-md:border-b max-md:border-gray-200 max-md:bg-white max-md:px-2 max-md:py-2 dark:hover:bg-gray-700/50 dark:max-md:border-gray-600/40 dark:max-md:bg-gray-800/60;
+        @apply transition-colors duration-200 hover:bg-gray-50 max-md:flex max-md:flex-wrap max-md:border-b max-md:border-gray-200 max-md:px-2 max-md:py-2 dark:hover:bg-gray-700/50 dark:max-md:border-gray-600/40;
 
         &:has(.cbi-progressbar) {
           @apply max-md:flex max-md:items-center max-md:justify-center;
         }
 
         &:first-child {
-          & th:first-child,
-          & .th:first-child {
+          & th:first-child {
             @apply md:rounded-tl-2xl;
           }
-          & th:last-child,
-          & .th:last-child {
+          & th:last-child {
             @apply md:rounded-tr-2xl;
           }
           & td:first-child {
@@ -965,6 +957,7 @@
         }
 
         &:last-child {
+          @apply max-md:rounded-b-2xl;
           td {
             @apply border-b-0;
             &:first-child {
@@ -981,18 +974,28 @@
           @apply max-md:hidden;
         }
 
+        &:first-child:not(.table-titles):not(.cbi-section-table-titles),
+        &:first-child.cbi-section-table-titles + tr,
+        &:first-child.table-titles + tr {
+          @apply max-md:rounded-t-2xl;
+        }
+
         &.cbi-rowstyle-1 {
-          @apply bg-white max-md:bg-gray-50/30 dark:bg-gray-800/60 max-md:dark:bg-gray-800/40;
+          @apply bg-white dark:bg-gray-800/60;
         }
 
         &.cbi-rowstyle-2 {
-          @apply bg-gray-50/50 max-md:bg-white dark:bg-gray-700/60 max-md:dark:bg-gray-800/50;
+          @apply bg-gray-50/50 dark:bg-gray-700/60;
         }
       }
 
       & th,
       & .th {
         @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
+        #view & {
+          @apply sticky top-14 z-10;
+        }
+
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
         }
@@ -1017,6 +1020,13 @@
           @apply hidden content-[attr(data-title)] max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:tracking-wider max-md:text-slate-500 max-md:uppercase max-md:dark:text-slate-400;
         }
 
+        &[width="100%"] {
+          @apply w-full max-md:flex-[0_0_100%];
+        }
+        &[width="33%"] {
+          @apply w-1/3 max-md:flex-[0_0_33.333%];
+        }
+
         &:has(input[type="text"] + .diag-action) {
           @apply gap-2 max-md:flex max-md:flex-col max-md:items-stretch;
         }
@@ -1027,13 +1037,6 @@
           button {
             @apply max-md:w-full;
           }
-        }
-
-        &[width="100%"] {
-          @apply w-full max-md:flex-[0_0_100%];
-        }
-        &[width="33%"] {
-          @apply w-1/3 max-md:flex-[0_0_33.333%];
         }
 
         &.col-1 {
@@ -1215,7 +1218,7 @@
   }
   .nowrap:not(span) {
     @apply md:whitespace-nowrap;
-    *:not(td) & {
+    &:not(td) {
       @apply whitespace-nowrap;
     }
   }
