@@ -109,7 +109,10 @@
     }
 
     body {
-      @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-['\00A0'] dark:bg-gradient-to-br dark:text-slate-100;
+      @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-auto bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-['\00A0'] dark:bg-gradient-to-br dark:text-slate-100;
+      &.modal-overlay-active {
+        @apply overflow-hidden;
+      }
       h1,
       h2,
       h3,
