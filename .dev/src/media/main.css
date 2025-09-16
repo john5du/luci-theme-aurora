@@ -102,14 +102,14 @@
   }
 
   html {
-    @apply h-full font-sans;
+    @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald h-full bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed font-sans;
 
     * {
       @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/60 hover:scrollbar-thumb-slate-400/80 dark:scrollbar-thumb-slate-600/60 dark:hover:scrollbar-thumb-slate-500/80 m-0 box-border p-0;
     }
 
     body {
-      @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-auto bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-['\00A0'] dark:bg-gradient-to-br dark:text-slate-100;
+      @apply relative min-h-full overflow-auto bg-transparent text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 dark:text-slate-100;
       &.modal-overlay-active {
         @apply overflow-hidden;
       }
