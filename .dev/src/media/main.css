@@ -5,6 +5,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-darkmode="true"], :root[data-darkmode="true"] &));
+
 @plugin "tailwind-scrollbar";
 
 @theme {

@@ -22,6 +22,16 @@
 	<head>
 		<meta charset="utf-8">
 		<title>{{ striptags(`${boardinfo.hostname ?? '?'}${node ? ` - ${node.title}` : ''}`) }} - LuCI</title>
+		<script>
+			const toggleTheme = () => {
+				const stored = localStorage.getItem('aurora.theme');
+				const isDarkMode = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+				document.querySelector(':root').setAttribute('data-darkmode', isDarkMode);
+			};
+			toggleTheme();
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', toggleTheme);
+			window.addEventListener('storage', e => e.key === 'aurora.theme' && toggleTheme());
+		</script>
 		<meta name="viewport" content="initial-scale=1.0">
 		<link rel="stylesheet" href="{{ media }}/main.css">
 		<link rel="icon" href="{{ media }}/images/logo_48.png" sizes="48x48">
