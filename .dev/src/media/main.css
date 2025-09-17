@@ -395,14 +395,6 @@
       }
     }
 
-    button + button,
-    .btn + .btn,
-    .btn + .cbi-button,
-    .cbi-button + .btn,
-    .cbi-section-node .btn {
-      @apply ml-3 max-md:ml-1;
-    }
-
     .cbi-button-positive,
     .cbi-button-apply {
       @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-600 dark:border-aurora-teal-600/50 dark:bg-aurora-teal-600/15 dark:text-aurora-teal-400 dark:hover:border-aurora-teal-600/70 dark:hover:bg-aurora-teal-600/20 dark:hover:text-aurora-teal-300 border shadow-none;
@@ -1229,11 +1221,40 @@
 }
 
 @layer plugins {
+  @layer luci-app-openclash {
+    .diag-style {
+      @apply max-md:grid max-md:grid-cols-1 max-md:gap-4;
+      & > div {
+        @apply flex flex-col items-center gap-2 max-md:!w-full max-md:gap-1;
+      }
+    }
+  }
   @layer luci-app-filemanager {
     #file-manager-container {
       @apply overflow-auto;
       #status-bar {
         @apply border-0 dark:bg-slate-900;
+      }
+    }
+  }
+}
+
+/*
+    PATCH LAYER (temporary)
+    - Purpose: Quick fixes and app-specific overrides that may be removed at any time.
+    - Scope: Keep selectors narrow and limited to known breakages only.
+    - Migration: Promote stable rules to appropriate layers (e.g., components/plugins) or delete once fixed upstream.
+  */
+@layer patches {
+  @layer luci-app-openclash {
+    [data-page="admin-services-openclash-log"] {
+      @apply dark:bg-aurora-night-teal;
+    }
+    [data-page="admin-services-openclash-config"] {
+      .sub_div {
+        img {
+          @apply h-5 w-5;
+        }
       }
     }
   }
