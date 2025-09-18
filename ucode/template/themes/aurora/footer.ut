@@ -1,5 +1,4 @@
 		{% if (!blank_page): %}
-		</div>
 		<footer>
 			<span>
 				Powered by
@@ -14,6 +13,7 @@
 			</span>
 			<ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
 		</footer>
+		</div>
 		<script>L.require('menu-aurora')</script>
 		{% endif %}
 	</body>

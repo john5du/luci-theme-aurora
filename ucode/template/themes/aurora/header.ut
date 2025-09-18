@@ -32,9 +32,10 @@
 			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', toggleTheme);
 			window.addEventListener('storage', e => e.key === 'aurora.theme' && toggleTheme());
 		</script>
-		<meta name="viewport" content="initial-scale=1.0">
-		<meta name="theme-color" content="#f1f5f9" media="(prefers-color-scheme: light)">
-  		<meta name="theme-color" content="#134e4a" media="(prefers-color-scheme: dark)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+		<meta name="color-scheme" content="light dark">
 		<link rel="stylesheet" href="{{ media }}/main.css">
 		<link rel="icon" href="{{ media }}/images/logo_48.png" sizes="48x48">
 		<link rel="icon" href="{{ media }}/images/logo.svg" sizes="any">
