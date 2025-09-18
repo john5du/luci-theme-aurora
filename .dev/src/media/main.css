@@ -5,7 +5,7 @@
 
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-darkmode="true"], :root[data-darkmode="true"] &));
+@custom-variant dark (&:where([data-darkmode=true], [data-darkmode=true] *));
 
 @plugin "tailwind-scrollbar";
 
@@ -225,17 +225,17 @@
           }
 
           &[data-indicator="poll-status"] {
-            &[data-style="active"]::before {
-              @apply bg-[url('@assets/icons/refresh.svg')] dark:invert;
+            &[data-style="active"] {
+              @apply before:bg-[url('@assets/icons/refresh.svg')] dark:before:invert;
             }
 
-            &[data-style="inactive"]::before {
-              @apply bg-[url('@assets/icons/pause.svg')] dark:invert;
+            &[data-style="inactive"] {
+              @apply before:bg-[url('@assets/icons/pause.svg')] dark:before:invert;
             }
           }
 
-          &[data-indicator="uci-changes"]::before {
-            @apply bg-[url('@assets/icons/setting.svg')] dark:invert;
+          &[data-indicator="uci-changes"] {
+            @apply before:bg-[url('@assets/icons/setting.svg')] dark:before:invert;
           }
         }
       }
@@ -1049,6 +1049,13 @@
 
         &.col-10 {
           @apply w-auto whitespace-normal max-md:w-full max-md:flex-shrink-0;
+        }
+      }
+    }
+    .cbi-section-table {
+      .cbi-section-table-titles {
+        .cbi-section-table-cell {
+          @apply !w-auto;
         }
       }
     }
