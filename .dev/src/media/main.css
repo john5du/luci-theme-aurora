@@ -970,7 +970,8 @@
         }
 
         &.table-titles,
-        &.cbi-section-table-titles {
+        &.cbi-section-table-titles,
+        &.cbi-section-table-descr {
           @apply max-md:hidden;
         }
 
@@ -1014,7 +1015,7 @@
 
       & td,
       & .td {
-        @apply w-auto border-b border-gray-200 px-3 py-3 text-base break-words text-gray-700 max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
+        @apply w-auto max-w-94 border-b border-gray-200 px-3 py-3 text-base break-words text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
 
         &::before {
           @apply hidden content-[attr(data-title)] max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:tracking-wider max-md:text-slate-500 max-md:uppercase max-md:dark:text-slate-400;
@@ -1040,15 +1041,15 @@
         }
 
         &.col-1 {
-          @apply w-28 max-w-32 whitespace-normal;
+          @apply max-w-32 whitespace-normal;
         }
 
         &.col-2 {
-          @apply w-36 max-w-40 whitespace-normal;
+          @apply max-w-40 whitespace-normal;
         }
 
         &.col-10 {
-          @apply w-auto whitespace-normal max-md:w-full max-md:flex-shrink-0;
+          @apply w-auto max-w-144 whitespace-normal max-md:w-full max-md:flex-shrink-0;
         }
       }
     }
