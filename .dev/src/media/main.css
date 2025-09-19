@@ -423,12 +423,6 @@
     input[type="text"],
     input[type="password"] {
       @apply rounded-2xl px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 focus:bg-white dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
-
-      &.cbi-input-invalid,
-      &.cbi-value-error {
-        @apply border-red-600/40 focus:ring-red-600/20 dark:border-red-400/40 dark:focus:ring-red-400/20;
-      }
-
       .table.cbi-section-table & {
         @apply w-full;
       }
@@ -1063,6 +1057,11 @@
   }
 
   @layer form {
+    .cbi-input-invalid,
+    .cbi-value-error {
+      @apply !border-red-600/40 focus:!ring-red-600/20 dark:!border-red-400/80 dark:focus:!ring-red-400/40;
+    }
+
     .cbi-value {
       @apply py-1.5 max-md:py-1;
 
@@ -1128,26 +1127,29 @@
 
   @layer segmented {
     .cbi-tabmenu {
-      @apply mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-4xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
+      @apply mb-1 flex items-center gap-1 overflow-x-auto rounded-4xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
 
       & li {
-        @apply m-0 min-w-fit flex-shrink-0 list-none;
-      }
+        @apply relative m-0 min-w-fit flex-shrink-0 list-none;
+        &[data-errors] {
+          @apply after:absolute after:-top-0.5 after:-right-1.5 after:z-20 after:inline-flex after:min-h-4 after:min-w-4 after:items-center after:justify-center after:rounded-full after:bg-red-100 after:px-1.5 after:py-0.5 after:text-xs after:font-semibold after:text-red-900 after:content-[attr(data-errors)] dark:after:bg-red-900 dark:after:text-red-200;
 
-      & .cbi-tab a,
-      & .cbi-tab-disabled a {
-        @apply block rounded-4xl px-4 py-2 text-center text-sm font-medium whitespace-nowrap text-slate-600 no-underline dark:text-slate-400;
-      }
-
-      & .cbi-tab a {
-        @apply bg-slate-900 font-semibold text-white dark:bg-slate-100 dark:text-slate-900;
+          & > a {
+            @apply border border-red-300/80 dark:border-red-400/80;
+          }
+        }
+        & > a {
+          @apply block rounded-4xl px-4 py-2 text-center text-sm font-medium whitespace-nowrap text-slate-600 no-underline dark:text-slate-400;
+        }
+        &.cbi-tab a {
+          @apply bg-slate-900 font-semibold text-white dark:bg-slate-100 dark:text-slate-900;
+        }
       }
     }
 
     [data-tab-title] {
       @apply hidden h-0 overflow-hidden transition-all duration-300 ease-in;
     }
-
     [data-tab-active="true"] {
       @apply block h-auto overflow-visible;
     }
