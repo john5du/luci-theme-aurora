@@ -27,7 +27,7 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
         with:
-          repository: LemonCrab666/luci-theme-aurora
+          repository: john5du/luci-theme-aurora
           ref: master
           fetch-depth: 0
 
