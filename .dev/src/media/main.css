@@ -129,7 +129,7 @@
       }
 
       h2 {
-        @apply mb-4 pl-5 text-2xl max-md:pl-4 max-md:text-xl;
+        @apply mb-4 pl-5 text-2xl max-md:mt-2 max-md:mb-2 max-md:pl-4 max-md:text-xl;
       }
 
       h3 {
@@ -197,13 +197,13 @@
       }
 
       .mobile-controls {
-        @apply max-md:order-last max-md:flex max-md:shrink-0 max-md:items-center max-md:gap-2 md:hidden;
+        @apply max-md:order-last max-md:flex max-md:shrink-0 max-md:items-center md:hidden;
 
         & .mobile-menu-toggle {
-          @apply max-md:inline-flex max-md:h-10 max-md:w-10 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-3xl max-md:p-2 max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:active:scale-95 md:hidden;
+          @apply max-md:ml-5 max-md:cursor-pointer max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:active:scale-95;
 
           & svg {
-            @apply max-md:h-6 max-md:w-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
+            @apply size-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
           }
 
           &.active {
@@ -215,27 +215,22 @@
       }
 
       #indicators {
-        @apply flex flex-row-reverse items-center max-md:order-2 max-md:shrink-0;
+        @apply flex shrink-0 flex-row-reverse gap-5 max-md:order-2 max-md:shrink-0 md:gap-6;
 
         & span[data-indicator] {
-          @apply relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-3xl text-transparent transition-all duration-200 active:scale-95 max-md:h-10 max-md:w-10;
-
-          &::before {
-            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-100 contrast-100 transition-opacity duration-200 content-['\00A0'];
-          }
-
+          @apply size-6 cursor-pointer text-transparent before:absolute before:size-6 before:bg-current before:text-slate-900 before:content-['\00A0'] dark:before:text-slate-100;
           &[data-indicator="poll-status"] {
             &[data-style="active"] {
-              @apply before:bg-[url('@assets/icons/refresh.svg')] dark:before:invert;
+              @apply before:[mask:url('@assets/icons/refresh.svg')_center/cover_no-repeat];
             }
 
             &[data-style="inactive"] {
-              @apply before:bg-[url('@assets/icons/pause.svg')] dark:before:invert;
+              @apply before:[mask:url('@assets/icons/pause.svg')_center/cover_no-repeat];
             }
           }
 
           &[data-indicator="uci-changes"] {
-            @apply before:bg-[url('@assets/icons/setting.svg')] dark:before:invert;
+            @apply before:[mask:url('@assets/icons/setting.svg')_center/cover_no-repeat];
           }
         }
       }
@@ -263,10 +258,10 @@
           }
 
           & .mobile-nav-close {
-            @apply max-md:flex max-md:h-12 max-md:w-12 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-2xl max-md:p-2 max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:active:scale-95;
+            @apply max-md:cursor-pointer max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:active:scale-95;
 
             & svg {
-              @apply max-md:h-6 max-md:w-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
+              @apply size-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
             }
           }
         }
@@ -423,12 +418,6 @@
     input[type="text"],
     input[type="password"] {
       @apply rounded-2xl px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 focus:bg-white dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
-
-      &.cbi-input-invalid,
-      &.cbi-value-error {
-        @apply border-red-600/40 focus:ring-red-600/20 dark:border-red-400/40 dark:focus:ring-red-400/20;
-      }
-
       .table.cbi-section-table & {
         @apply w-full;
       }
@@ -651,7 +640,7 @@
       }
 
       & p {
-        @apply mb-3 text-sm leading-relaxed max-md:mb-2 max-md:text-sm;
+        @apply text-sm leading-relaxed max-md:text-sm;
       }
 
       & .right {
@@ -863,7 +852,7 @@
         }
 
         & > p {
-          @apply mb-4 text-sm leading-relaxed text-slate-700 dark:text-gray-300;
+          @apply text-sm leading-relaxed text-slate-700 dark:text-gray-300;
         }
 
         & .button-row {
@@ -1063,6 +1052,11 @@
   }
 
   @layer form {
+    .cbi-input-invalid,
+    .cbi-value-error {
+      @apply !border-red-600/40 focus:!ring-red-600/20 dark:!border-red-400/80 dark:focus:!ring-red-400/40;
+    }
+
     .cbi-value {
       @apply py-1.5 max-md:py-1;
 
@@ -1128,26 +1122,29 @@
 
   @layer segmented {
     .cbi-tabmenu {
-      @apply mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-4xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
+      @apply mb-1 flex items-center gap-1 overflow-x-auto rounded-4xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
 
       & li {
-        @apply m-0 min-w-fit flex-shrink-0 list-none;
-      }
+        @apply relative m-0 min-w-fit flex-shrink-0 list-none;
+        &[data-errors] {
+          @apply after:absolute after:-top-0.5 after:-right-1.5 after:z-20 after:inline-flex after:min-h-4 after:min-w-4 after:items-center after:justify-center after:rounded-full after:bg-red-100 after:px-1.5 after:py-0.5 after:text-xs after:font-semibold after:text-red-900 after:content-[attr(data-errors)] dark:after:bg-red-900 dark:after:text-red-200;
 
-      & .cbi-tab a,
-      & .cbi-tab-disabled a {
-        @apply block rounded-4xl px-4 py-2 text-center text-sm font-medium whitespace-nowrap text-slate-600 no-underline dark:text-slate-400;
-      }
-
-      & .cbi-tab a {
-        @apply bg-slate-900 font-semibold text-white dark:bg-slate-100 dark:text-slate-900;
+          & > a {
+            @apply border border-red-300/80 dark:border-red-400/80;
+          }
+        }
+        & > a {
+          @apply block rounded-4xl px-4 py-2 text-center text-sm font-medium whitespace-nowrap text-slate-600 no-underline dark:text-slate-400;
+        }
+        &.cbi-tab a {
+          @apply bg-slate-900 font-semibold text-white dark:bg-slate-100 dark:text-slate-900;
+        }
       }
     }
 
     [data-tab-title] {
       @apply hidden h-0 overflow-hidden transition-all duration-300 ease-in;
     }
-
     [data-tab-active="true"] {
       @apply block h-auto overflow-visible;
     }
@@ -1224,6 +1221,13 @@
     @apply md:whitespace-nowrap;
     &:not(td) {
       @apply whitespace-nowrap;
+    }
+  }
+  .spinning {
+    @apply relative pl-8;
+    @apply before:absolute before:top-1/2 before:left-1.5 before:size-5 before:-translate-y-1/2 before:animate-spin before:bg-current before:content-[''] before:[mask:url('@assets/icons/spinning.svg')_center/cover_no-repeat];
+    #view > & {
+      @apply first:mx-auto first:grid first:min-h-[15vh] first:w-fit first:place-items-center first:max-md:min-h-dvh;
     }
   }
 }
