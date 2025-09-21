@@ -111,7 +111,7 @@
     }
 
     body {
-      @apply relative overflow-auto bg-transparent text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 dark:text-slate-100;
+      @apply bg-transparent text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 dark:text-slate-100;
       &.modal-overlay-active {
         @apply overflow-hidden;
       }
@@ -290,7 +290,7 @@
     }
 
     #maincontent {
-      @apply mx-auto mt-14 min-h-[calc(100vh-3.5rem)] w-11/12 max-w-6xl px-4 max-md:mt-14 max-md:w-full max-md:px-3;
+      @apply relative top-14 mx-auto min-h-[calc(100vh-3.5rem)] w-11/12 max-w-6xl overflow-auto px-4 max-md:w-full max-md:px-3;
 
       #view {
         @apply mx-0 mb-2 w-full p-0 shadow-none transition-all duration-300 empty:hidden md:mb-6 md:rounded-4xl md:border md:border-slate-400/20 md:bg-gradient-to-br md:from-white/95 md:via-white/90 md:to-white/85 md:p-6 md:shadow-xl md:backdrop-blur-xl md:backdrop-saturate-150 md:hover:border-slate-400/30 md:hover:shadow-2xl md:hover:shadow-slate-400/30 md:dark:border-gray-600/30 md:dark:from-gray-900/95 md:dark:via-gray-800/90 md:dark:to-gray-900/85 md:dark:shadow-black/50 md:dark:hover:border-gray-500/40 md:dark:hover:shadow-black/60;
@@ -983,9 +983,6 @@
       & th,
       & .th {
         @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
-        #view & {
-          @apply sticky top-14 z-10;
-        }
 
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
