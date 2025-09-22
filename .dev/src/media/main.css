@@ -111,7 +111,7 @@
     }
 
     body {
-      @apply relative min-h-full overflow-auto bg-transparent text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 dark:text-slate-100;
+      @apply bg-transparent text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 dark:text-slate-100;
       &.modal-overlay-active {
         @apply overflow-hidden;
       }
@@ -225,7 +225,7 @@
             }
 
             &[data-style="inactive"] {
-              @apply before:[mask:url('@assets/icons/pause.svg')_center/cover_no-repeat];
+              @apply before:[mask:url('@assets/icons/refresh-off.svg')_center/cover_no-repeat];
             }
           }
 
@@ -290,7 +290,7 @@
     }
 
     #maincontent {
-      @apply mx-auto min-h-screen w-11/12 max-w-6xl px-4 pt-16 max-md:w-full max-md:px-3 max-md:pt-14;
+      @apply relative top-14 mx-auto min-h-[calc(100vh-3.5rem)] w-11/12 max-w-6xl overflow-auto px-4 max-md:w-full max-md:px-3;
 
       #view {
         @apply mx-0 mb-2 w-full p-0 shadow-none transition-all duration-300 empty:hidden md:mb-6 md:rounded-4xl md:border md:border-slate-400/20 md:bg-gradient-to-br md:from-white/95 md:via-white/90 md:to-white/85 md:p-6 md:shadow-xl md:backdrop-blur-xl md:backdrop-saturate-150 md:hover:border-slate-400/30 md:hover:shadow-2xl md:hover:shadow-slate-400/30 md:dark:border-gray-600/30 md:dark:from-gray-900/95 md:dark:via-gray-800/90 md:dark:to-gray-900/85 md:dark:shadow-black/50 md:dark:hover:border-gray-500/40 md:dark:hover:shadow-black/60;
@@ -416,7 +416,8 @@
     }
 
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    .cbi-input-text {
       @apply rounded-2xl px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 focus:bg-white dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
       .table.cbi-section-table & {
         @apply w-full;
@@ -497,7 +498,7 @@
     }
 
     .cbi-dropdown {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 relative inline-flex min-w-fit flex-shrink-0 items-center rounded-2xl border border-slate-300/70 p-0 whitespace-nowrap shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 inline-flex min-w-fit flex-shrink-0 items-center rounded-2xl border border-slate-300/70 p-0 whitespace-nowrap shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60;
       &[disabled] {
         @apply pointer-events-none opacity-40 dark:opacity-30;
       }
@@ -544,7 +545,7 @@
           }
         }
         &.dropdown {
-          @apply invisible absolute left-0 z-50 mt-1 w-fit min-w-full overflow-y-auto rounded-lg border border-slate-200/60 bg-white/95 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
+          @apply invisible absolute left-0 z-50 w-fit min-w-full overflow-y-auto rounded-lg border border-slate-200/60 bg-white/95 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
 
           & > li {
             @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-teal-600/15 min-h-9 w-full cursor-pointer px-3 py-1.5 font-medium text-slate-600 dark:text-slate-300;
@@ -560,7 +561,7 @@
       }
 
       &[open] {
-        @apply border-aurora-sky ring-aurora-sky/20 dark:border-aurora-teal-400 dark:ring-aurora-teal-400/30 ring-2;
+        @apply border-aurora-sky ring-aurora-sky/20 dark:border-aurora-teal-400 dark:ring-aurora-teal-400/30 relative ring-2;
         & > ul.dropdown {
           @apply visible w-auto;
         }
@@ -585,7 +586,7 @@
 
   @layer tooltip {
     .cbi-tooltip {
-      @apply absolute z-110 max-w-xs scale-95 transform rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 opacity-0 shadow-lg backdrop-blur-xl transition-all duration-300 ease-out dark:bg-slate-900 dark:text-slate-100;
+      @apply absolute z-110 max-w-xs scale-95 transform rounded bg-white text-xs whitespace-nowrap text-slate-900 opacity-0 shadow-lg backdrop-blur-xl transition-all duration-300 ease-out dark:bg-slate-900 dark:text-slate-100;
       &.error {
         @apply border border-red-200/40 bg-gradient-to-br from-red-50 via-red-100 to-red-50 text-red-900 shadow-red-500/10 dark:border-red-500/30 dark:from-red-900/40 dark:via-red-800/30 dark:to-red-900/40 dark:text-red-200 dark:shadow-red-400/10;
       }
@@ -608,7 +609,7 @@
       }
 
       &:hover .cbi-tooltip {
-        @apply visible scale-100 opacity-100;
+        @apply visible scale-100 px-2 py-1 opacity-100;
       }
     }
   }
@@ -616,6 +617,10 @@
   @layer message {
     .alert-message {
       @apply sticky top-14 z-40 mb-4 rounded-4xl border border-slate-200/30 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 p-6 shadow-sm max-md:mx-0 max-md:mb-3 max-md:rounded-3xl max-md:p-4 dark:border-slate-600/20 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/80;
+
+      .modal & {
+        @apply relative top-auto;
+      }
 
       &.success {
         @apply border-emerald-200/40 bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-50 text-emerald-900 shadow-emerald-500/10 dark:border-emerald-500/30 dark:from-emerald-900/40 dark:via-emerald-800/30 dark:to-emerald-900/40 dark:text-emerald-200 dark:shadow-emerald-400/10;
@@ -829,11 +834,7 @@
       }
 
       & > .modal {
-        @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 md:mx-auto dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
-
-        &.cbi-modal {
-          @apply w-5xl max-md:w-11/12;
-        }
+        @apply flex max-h-11/12 w-5xl flex-col overflow-auto rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-full md:mx-auto dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
 
         & > h4 {
           @apply mb-4 px-6 text-center text-lg font-semibold text-slate-800 dark:text-gray-100;
@@ -982,9 +983,6 @@
       & th,
       & .th {
         @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
-        #view & {
-          @apply sticky top-14 z-10;
-        }
 
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
