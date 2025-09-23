@@ -115,6 +115,7 @@
       &.modal-overlay-active {
         @apply overflow-hidden;
       }
+
       h1,
       h2,
       h3,
@@ -756,23 +757,24 @@
     }
 
     .ifacebox {
-      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
+      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center text-base leading-5 shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
+
+      td & {
+        @apply max-md:flex-row;
+      }
 
       & .ifacebox-head {
-        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-base font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-3 text-center font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:leading-5 max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+
+        td & {
+          @apply max-md:flex max-md:w-auto max-md:flex-shrink-0 max-md:items-center max-md:justify-center max-md:rounded-l-3xl max-md:rounded-tr-none max-md:border-r max-md:border-b-0;
+        }
+
         &.cbi-tooltip-container {
           @apply static bg-transparent;
           & .cbi-tooltip {
             @apply bottom-0 left-0;
           }
-        }
-
-        &:first-child {
-          @apply rounded-t-2xl max-md:rounded-t-3xl;
-        }
-
-        &:last-child {
-          @apply rounded-b-2xl border-b-0 max-md:rounded-b-3xl;
         }
 
         &.active {
@@ -785,29 +787,45 @@
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center leading-relaxed max-md:rounded-b-3xl max-md:p-3;
+        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center max-md:rounded-b-3xl max-md:p-4;
+
+        td & {
+          @apply max-md:flex max-md:flex-1 max-md:flex-row max-md:items-center max-md:justify-center max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-4 max-md:text-left;
+        }
 
         & > span {
-          @apply mb-3 w-full space-y-1.5 text-base leading-relaxed text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm dark:text-slate-400;
+          @apply mb-3 w-full space-y-1.5 text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-400;
+
+          td & {
+            @apply max-md:mb-0 max-md:w-auto max-md:flex-1;
+          }
 
           &:has(.cbi-tooltip) {
             @apply flex items-center justify-center gap-2;
+
+            td & {
+              @apply max-md:justify-start max-md:gap-2;
+            }
+
             .cbi-tooltip {
               @apply delay-200;
             }
           }
 
           & .nowrap {
-            @apply block text-base leading-snug max-md:text-sm;
+            @apply block max-md:text-sm;
+          }
 
-            & strong {
-              @apply mr-1.5 font-medium text-slate-800 max-md:mr-1 dark:text-slate-200;
-            }
+          & img {
+            @apply h-6 w-6 flex-shrink-0 max-md:h-5 max-md:w-5;
           }
         }
 
         & > div {
-          @apply w-full space-y-2.5 max-md:space-y-2;
+          @apply w-full space-y-2.5 max-md:space-y-1.5;
+          td & {
+            @apply max-md:w-auto max-md:flex-1 max-md:space-y-1;
+          }
         }
 
         & .cbi-tooltip-container {
@@ -819,7 +837,16 @@
         }
 
         & small {
-          @apply mt-2 block text-xs text-slate-500 dark:text-slate-400;
+          @apply mt-2 block text-xs leading-4 text-slate-500 dark:text-slate-400;
+          td & {
+            @apply max-md:mt-0;
+          }
+        }
+
+        & > span:not(:last-child) {
+          td & {
+            @apply max-md:mr-3;
+          }
         }
       }
     }
@@ -1013,6 +1040,13 @@
         }
         &[width="33%"] {
           @apply w-1/3 max-md:flex-[0_0_33.333%];
+        }
+
+        [data-page="admin-network-network"] & {
+          &[data-name="_ifacebox"],
+          &[data-name="_ifacestat"] {
+            @apply max-md:basis-[100%];
+          }
         }
 
         &:has(input[type="text"] + .diag-action) {
