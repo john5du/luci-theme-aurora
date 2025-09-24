@@ -113,7 +113,7 @@
     body {
       @apply bg-transparent text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 dark:text-slate-100;
       &.modal-overlay-active {
-        @apply overflow-hidden;
+        @apply h-screen overflow-hidden;
       }
 
       h1,
@@ -857,15 +857,14 @@
 
   @layer modal {
     #modal_overlay {
-      @apply pointer-events-none hidden bg-transparent;
+      @apply pointer-events-none fixed top-0 bottom-0 hidden overflow-auto bg-transparent;
 
       .modal-overlay-active & {
-        @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-black/50 backdrop-blur-sm;
+        @apply pointer-events-auto inset-0 right-0 left-0 z-100 grid grid-cols-1 place-items-center bg-black/50 backdrop-blur-sm;
       }
 
       & > .modal {
-        @apply flex max-h-11/12 w-5xl flex-col overflow-auto rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-full md:mx-auto dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
-
+        @apply flex w-5xl flex-col rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-full dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
         & > h4 {
           @apply mb-4 px-6 text-center text-lg font-semibold text-slate-800 dark:text-gray-100;
         }
