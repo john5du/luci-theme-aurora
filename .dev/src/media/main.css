@@ -113,8 +113,9 @@
     body {
       @apply bg-transparent text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 dark:text-slate-100;
       &.modal-overlay-active {
-        @apply overflow-hidden;
+        @apply h-screen overflow-hidden;
       }
+
       h1,
       h2,
       h3,
@@ -129,7 +130,7 @@
       }
 
       h2 {
-        @apply mb-4 pl-5 text-2xl max-md:mt-2 max-md:mb-2 max-md:pl-4 max-md:text-xl;
+        @apply mb-4 pl-5 text-2xl max-md:mb-2 max-md:pl-4 max-md:text-xl;
       }
 
       h3 {
@@ -178,7 +179,7 @@
 @layer components {
   @layer layout {
     header {
-      @apply fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
+      @apply sticky top-0 z-50 mb-2 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
 
       .brand {
         @apply hover:text-aurora-sky dark:hover:text-aurora-teal-400 inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 max-md:order-1 max-md:flex-1 max-md:text-lg dark:text-slate-100;
@@ -203,7 +204,7 @@
           @apply max-md:ml-5 max-md:cursor-pointer max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:active:scale-95;
 
           & svg {
-            @apply size-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
+            @apply size-5 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
           }
 
           &.active {
@@ -215,10 +216,10 @@
       }
 
       #indicators {
-        @apply flex shrink-0 flex-row-reverse gap-5 max-md:order-2 max-md:shrink-0 md:gap-6;
+        @apply flex shrink-0 flex-row-reverse gap-5 max-md:order-2 max-md:shrink-0 md:gap-8;
 
         & span[data-indicator] {
-          @apply size-6 cursor-pointer text-transparent before:absolute before:size-6 before:bg-current before:text-slate-900 before:content-['\00A0'] dark:before:text-slate-100;
+          @apply size-5 cursor-pointer text-transparent before:absolute before:size-5 before:bg-current before:text-slate-900 before:content-['\00A0'] dark:before:text-slate-100;
           &[data-indicator="poll-status"] {
             &[data-style="active"] {
               @apply before:[mask:url('@assets/icons/refresh.svg')_center/cover_no-repeat];
@@ -261,7 +262,7 @@
             @apply max-md:cursor-pointer max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:active:scale-95;
 
             & svg {
-              @apply size-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
+              @apply size-5 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
             }
           }
         }
@@ -290,10 +291,10 @@
     }
 
     #maincontent {
-      @apply relative top-14 mx-auto min-h-[calc(100vh-3.5rem)] w-11/12 max-w-6xl overflow-auto px-4 max-md:w-full max-md:px-3;
+      @apply mx-auto min-h-[calc(100vh-4rem)] w-11/12 max-w-6xl px-4 max-md:w-full max-md:px-3;
 
       #view {
-        @apply mx-0 mb-2 w-full p-0 shadow-none transition-all duration-300 empty:hidden md:mb-6 md:rounded-4xl md:border md:border-slate-400/20 md:bg-gradient-to-br md:from-white/95 md:via-white/90 md:to-white/85 md:p-6 md:shadow-xl md:backdrop-blur-xl md:backdrop-saturate-150 md:hover:border-slate-400/30 md:hover:shadow-2xl md:hover:shadow-slate-400/30 md:dark:border-gray-600/30 md:dark:from-gray-900/95 md:dark:via-gray-800/90 md:dark:to-gray-900/85 md:dark:shadow-black/50 md:dark:hover:border-gray-500/40 md:dark:hover:shadow-black/60;
+        @apply mx-0 mb-2 w-full p-0 shadow-none transition-all duration-300 empty:hidden md:mb-6 md:rounded-4xl md:border md:border-slate-400/20 md:bg-gradient-to-br md:from-white/95 md:via-white/90 md:to-white/85 md:p-6 md:shadow-xl md:hover:border-slate-400/30 md:hover:shadow-2xl md:hover:shadow-slate-400/30 md:dark:border-gray-600/30 md:dark:from-gray-900/95 md:dark:via-gray-800/90 md:dark:to-gray-900/85 md:dark:shadow-black/50 md:dark:hover:border-gray-500/40 md:dark:hover:shadow-black/60;
 
         .cbi-title-section {
           @apply mb-6 leading-relaxed max-md:mx-2 max-md:mb-3;
@@ -656,7 +657,7 @@
 
   @layer progress {
     .cbi-progressbar {
-      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-2xl before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-4 max-md:rounded-2xl max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
+      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-2xl before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-4 max-md:rounded-2xl max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
 
       & > div {
         @apply from-aurora-sky to-aurora-teal dark:from-aurora-night-emerald dark:to-aurora-teal-600 dark:text-shadow-aurora-night-slate-800 h-full bg-gradient-to-r transition-all duration-300;
@@ -724,7 +725,7 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-visible rounded-2xl p-6 backdrop-blur-sm transition-all duration-300 empty:hidden max-md:rounded-3xl max-md:p-3 max-md:backdrop-blur-xl;
+      @apply mb-3 overflow-visible rounded-2xl p-6 transition-all duration-300 empty:hidden max-md:rounded-3xl max-md:p-3;
 
       #maincontent & {
         @apply border border-slate-200/40 bg-white/95 shadow-lg hover:border-slate-300/50 hover:shadow-xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 dark:border-slate-600/30 dark:bg-slate-800/95 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98;
@@ -756,23 +757,24 @@
     }
 
     .ifacebox {
-      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
+      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center text-base leading-5 shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
+
+      td & {
+        @apply max-md:flex-row;
+      }
 
       & .ifacebox-head {
-        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-base font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-3 text-center font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:leading-5 max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+
+        td & {
+          @apply max-md:flex max-md:w-auto max-md:flex-shrink-0 max-md:items-center max-md:justify-center max-md:rounded-l-3xl max-md:rounded-tr-none max-md:border-r max-md:border-b-0;
+        }
+
         &.cbi-tooltip-container {
           @apply static bg-transparent;
           & .cbi-tooltip {
             @apply bottom-0 left-0;
           }
-        }
-
-        &:first-child {
-          @apply rounded-t-2xl max-md:rounded-t-3xl;
-        }
-
-        &:last-child {
-          @apply rounded-b-2xl border-b-0 max-md:rounded-b-3xl;
         }
 
         &.active {
@@ -785,29 +787,48 @@
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center leading-relaxed max-md:rounded-b-3xl max-md:p-3;
+        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center max-md:rounded-b-3xl max-md:p-4;
+
+        td & {
+          @apply max-md:flex max-md:flex-1 max-md:flex-row max-md:items-center max-md:justify-center max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-4 max-md:text-left;
+        }
 
         & > span {
-          @apply mb-3 w-full space-y-1.5 text-base leading-relaxed text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm dark:text-slate-400;
+          @apply mb-3 w-full space-y-1.5 text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-400;
+
+          td & {
+            @apply max-md:mb-0 max-md:w-auto max-md:flex-1;
+          }
 
           &:has(.cbi-tooltip) {
             @apply flex items-center justify-center gap-2;
+
+            td & {
+              @apply max-md:justify-start max-md:gap-2;
+            }
+
             .cbi-tooltip {
               @apply delay-200;
             }
           }
 
           & .nowrap {
-            @apply block text-base leading-snug max-md:text-sm;
+            @apply block max-md:text-sm;
+          }
 
-            & strong {
-              @apply mr-1.5 font-medium text-slate-800 max-md:mr-1 dark:text-slate-200;
-            }
+          & img {
+            @apply h-6 w-6 flex-shrink-0 max-md:h-5 max-md:w-5;
           }
         }
 
         & > div {
-          @apply w-full space-y-2.5 max-md:space-y-2;
+          @apply flex w-full space-y-2.5 max-md:space-y-1.5;
+          td & {
+            @apply max-md:w-auto max-md:flex-1 max-md:space-y-1;
+          }
+          & .ifacebadge {
+            @apply flex-1;
+          }
         }
 
         & .cbi-tooltip-container {
@@ -819,7 +840,16 @@
         }
 
         & small {
-          @apply mt-2 block text-xs text-slate-500 dark:text-slate-400;
+          @apply mt-2 block text-xs leading-4 text-slate-500 dark:text-slate-400;
+          td & {
+            @apply max-md:mt-0;
+          }
+        }
+
+        & > span:not(:last-child) {
+          td & {
+            @apply max-md:mr-3;
+          }
         }
       }
     }
@@ -827,15 +857,14 @@
 
   @layer modal {
     #modal_overlay {
-      @apply pointer-events-none hidden bg-transparent;
+      @apply pointer-events-none fixed top-0 bottom-0 hidden overflow-auto bg-transparent;
 
       .modal-overlay-active & {
-        @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-black/50 backdrop-blur-sm;
+        @apply pointer-events-auto inset-0 right-0 left-0 z-100 grid grid-cols-1 place-items-center bg-black/50 backdrop-blur-sm;
       }
 
       & > .modal {
-        @apply flex max-h-11/12 w-5xl flex-col overflow-auto rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-full md:mx-auto dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
-
+        @apply flex w-5xl flex-col rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-full dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
         & > h4 {
           @apply mb-4 px-6 text-center text-lg font-semibold text-slate-800 dark:text-gray-100;
         }
@@ -1015,6 +1044,13 @@
           @apply w-1/3 max-md:flex-[0_0_33.333%];
         }
 
+        [data-page="admin-network-network"] & {
+          &[data-name="_ifacebox"],
+          &[data-name="_ifacestat"] {
+            @apply max-md:basis-[100%];
+          }
+        }
+
         &:has(input[type="text"] + .diag-action) {
           @apply gap-2 max-md:flex max-md:flex-col max-md:items-stretch;
         }
@@ -1036,7 +1072,7 @@
         }
 
         &.col-10 {
-          @apply w-auto max-w-144 whitespace-normal max-md:w-full max-md:flex-shrink-0;
+          @apply w-auto max-w-144 whitespace-normal max-md:flex-[0_0_100%];
         }
       }
     }
