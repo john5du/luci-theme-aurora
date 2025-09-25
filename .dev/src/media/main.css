@@ -354,7 +354,7 @@
     }
 
     footer {
-      @apply mt-auto flex flex-wrap items-center justify-center gap-2 border-t border-slate-200/50 py-2 text-xs text-slate-500 dark:border-slate-700/30 dark:text-slate-400;
+      @apply mt-auto flex flex-wrap items-center justify-center gap-2 border-t border-slate-200/50 py-2 text-xs text-slate-500 max-md:min-h-18 dark:border-slate-700/30 dark:text-slate-400;
 
       & a {
         @apply text-aurora-sky hover:text-aurora-sky-600 dark:text-aurora-teal-400 dark:hover:text-aurora-teal-300 no-underline transition-all duration-150;
@@ -647,6 +647,10 @@
 
       & p {
         @apply text-sm leading-relaxed max-md:text-sm;
+      }
+
+      & pre {
+        @apply break-words whitespace-pre-wrap;
       }
 
       & .right {
