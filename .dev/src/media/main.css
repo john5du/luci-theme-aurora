@@ -525,11 +525,11 @@
           }
         }
         &:not(.dropdown) {
-          @apply flex flex-1 flex-nowrap items-center gap-2;
+          @apply flex flex-1 flex-nowrap items-center gap-2 max-md:flex-wrap max-md:gap-1;
           & > li {
             @apply hidden;
             &[selected] {
-              @apply px-3 py-1.5;
+              @apply px-2 py-1.5;
               &[display] {
                 @apply flex;
               }
@@ -885,6 +885,10 @@
           }
         }
 
+        pre + pre {
+          @apply mt-3;
+        }
+
         & > p {
           @apply text-sm leading-relaxed text-slate-700 dark:text-gray-300;
         }
@@ -1112,6 +1116,11 @@
         &:not(:has(.cbi-dynlist)) {
           @apply flex-row flex-wrap items-center;
         }
+
+        & > .cbi-dropdown {
+          @apply max-md:max-w-full max-md:whitespace-normal;
+        }
+
         &:has(> .cbi-dropdown[disabled]) {
           @apply cursor-not-allowed;
         }
