@@ -1,6 +1,6 @@
 # LuCI Theme Aurora
 
-**English** | [简体中文](README.zh-CN.md)
+**English** | [简体中文](README_zh.md)
 
 ## Introduction
 
