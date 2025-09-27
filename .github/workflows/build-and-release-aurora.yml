@@ -87,7 +87,7 @@ jobs:
         if: github.ref_type == 'tag'
         with:
           name: ${{ env.THEME }}-${{ github.ref_name }}
-          body_path: ${{ github.workspace }}/.github/changelog/${{ github.ref_name }}.md
+          body_path: ${{ github.workspace }}/.dev/docs/changelog/${{ github.ref_name }}.md
           draft: false
           prerelease: false
           files: |
