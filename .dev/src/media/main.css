@@ -1039,7 +1039,7 @@
 
       & td,
       & .td {
-        @apply w-auto max-w-94 border-b border-gray-200 px-3 py-3 text-base break-words text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
+        @apply table-cell w-auto max-w-94 border-b border-gray-200 px-3 py-3 align-middle text-base break-words text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
 
         &::before {
           @apply hidden content-[attr(data-title)] max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:tracking-wider max-md:text-slate-500 max-md:uppercase max-md:dark:text-slate-400;
@@ -1320,6 +1320,54 @@
       .cbi-value-field {
         & .cbi-input-select {
           @apply max-md:!w-full;
+        }
+      }
+    }
+  }
+  @layer luci-mod-dashboard {
+    [data-page="admin-dashboard"] {
+      .Dashboard {
+        .section-content {
+          .title {
+            img {
+              &[src*=".svg"] {
+                @apply dark:invert;
+              }
+            }
+          }
+
+          .router-status-lan {
+            .devices-info {
+              tr {
+                th {
+                  @apply max-md:flex-[1_1_50%];
+                }
+              }
+            }
+          }
+
+          .router-status-wifi {
+            .wifi-info {
+              .devices-info {
+                .tr {
+                  .td,
+                  .th {
+                    @apply max-md:flex-[1_1_50%];
+                  }
+                  .td {
+                    @apply nth-3:relative nth-3:top-0 nth-3:w-full nth-3:px-0;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        h3 {
+          @apply border-b border-slate-200/50 pb-4 text-slate-900 max-md:mx-0 max-md:border-slate-200/30 max-md:pb-2 dark:border-slate-600/40 dark:text-slate-100 max-md:dark:border-slate-700/20;
+        }
+        .dashboard-bg {
+          @apply border border-slate-200/40 bg-white/95 shadow-lg hover:border-slate-300/50 hover:shadow-xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 dark:border-slate-600/30 dark:bg-slate-800/95 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98;
         }
       }
     }
