@@ -354,7 +354,7 @@
     }
 
     footer {
-      @apply mt-auto flex flex-wrap items-center justify-center gap-2 border-t border-slate-200/50 py-2 text-xs text-slate-500 dark:border-slate-700/30 dark:text-slate-400;
+      @apply mt-auto flex flex-wrap items-center justify-center gap-2 border-t border-slate-200/50 py-2 text-xs text-slate-500 max-md:min-h-18 dark:border-slate-700/30 dark:text-slate-400;
 
       & a {
         @apply text-aurora-sky hover:text-aurora-sky-600 dark:text-aurora-teal-400 dark:hover:text-aurora-teal-300 no-underline transition-all duration-150;
@@ -525,11 +525,11 @@
           }
         }
         &:not(.dropdown) {
-          @apply flex flex-1 flex-nowrap items-center gap-2;
+          @apply flex flex-1 flex-nowrap items-center gap-2 max-md:flex-wrap max-md:gap-1;
           & > li {
             @apply hidden;
             &[selected] {
-              @apply px-3 py-1.5;
+              @apply px-2 py-1.5;
               &[display] {
                 @apply flex;
               }
@@ -649,6 +649,10 @@
         @apply text-sm leading-relaxed max-md:text-sm;
       }
 
+      & pre {
+        @apply break-words whitespace-pre-wrap;
+      }
+
       & .right {
         @apply mt-4 max-md:mt-3;
       }
@@ -681,7 +685,7 @@
         @apply rounded border-none bg-slate-100/80 px-0 py-0 dark:bg-slate-700/50;
 
         & img {
-          @apply mr-2 h-4 w-4 max-md:mr-1.5;
+          @apply mr-2 w-4 max-md:mr-1.5;
         }
       }
     }
@@ -690,7 +694,7 @@
       @apply inline-flex cursor-default items-center gap-2 rounded-2xl border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
 
       & > img {
-        @apply h-5 w-5 shrink-0 self-start max-md:h-4 max-md:w-4;
+        @apply w-5 shrink-0 self-start max-md:w-4;
       }
 
       & > span {
@@ -817,7 +821,7 @@
           }
 
           & img {
-            @apply h-6 w-6 flex-shrink-0 max-md:h-5 max-md:w-5;
+            @apply w-6 flex-shrink-0 max-md:w-5;
           }
         }
 
@@ -879,6 +883,10 @@
           &.errors {
             @apply border-red-300/60 bg-red-100 text-red-800 dark:border-red-800/30 dark:bg-red-900/20 dark:text-red-300;
           }
+        }
+
+        pre + pre {
+          @apply mt-3;
         }
 
         & > p {
@@ -1108,6 +1116,11 @@
         &:not(:has(.cbi-dynlist)) {
           @apply flex-row flex-wrap items-center;
         }
+
+        & > .cbi-dropdown {
+          @apply max-md:max-w-full max-md:whitespace-normal;
+        }
+
         &:has(> .cbi-dropdown[disabled]) {
           @apply cursor-not-allowed;
         }
@@ -1286,11 +1299,11 @@
 }
 
 /*
-    PATCH LAYER (temporary)
-    - Purpose: Quick fixes and app-specific overrides that may be removed at any time.
-    - Scope: Keep selectors narrow and limited to known breakages only.
-    - Migration: Promote stable rules to appropriate layers (e.g., components/plugins) or delete once fixed upstream.
-  */
+     PATCH LAYER (temporary)
+     - Purpose: Quick fixes and app-specific overrides that may be removed at any time.
+     - Scope: Keep selectors narrow and limited to known breakages only.
+     - Migration: Promote stable rules to appropriate layers (e.g., components/plugins) or delete once fixed upstream.
+   */
 @layer patches {
   @layer luci-app-openclash {
     [data-page="admin-services-openclash-log"] {
@@ -1300,6 +1313,13 @@
       .sub_div {
         img {
           @apply h-5 w-5;
+        }
+      }
+    }
+    [data-page="admin-services-openclash-settings"] {
+      .cbi-value-field {
+        & .cbi-input-select {
+          @apply max-md:!w-full;
         }
       }
     }
