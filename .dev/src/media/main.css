@@ -1019,7 +1019,7 @@
 
       & th,
       & .th {
-        @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
+        @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm max-md:flex-[1_1_50%] max-md:border-0 dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
 
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
@@ -1336,26 +1336,12 @@
             }
           }
 
-          .router-status-lan {
-            .devices-info {
-              tr {
-                th {
-                  @apply max-md:flex-[1_1_50%];
-                }
-              }
-            }
-          }
-
           .router-status-wifi {
             .wifi-info {
               .devices-info {
                 .tr {
-                  .td,
-                  .th {
-                    @apply max-md:flex-[1_1_50%];
-                  }
                   .td {
-                    @apply nth-3:relative nth-3:top-0 nth-3:w-full nth-3:px-0;
+                    @apply nth-3:relative nth-3:top-0 nth-3:w-full nth-3:px-0 max-md:flex-[1_1_50%];
                   }
                 }
               }
@@ -1367,7 +1353,7 @@
           @apply border-b border-slate-200/50 pb-4 text-slate-900 max-md:mx-0 max-md:border-slate-200/30 max-md:pb-2 dark:border-slate-600/40 dark:text-slate-100 max-md:dark:border-slate-700/20;
         }
         .dashboard-bg {
-          @apply border border-slate-200/40 bg-white/95 shadow-lg hover:border-slate-300/50 hover:shadow-xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 dark:border-slate-600/30 dark:bg-slate-800/95 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98;
+          @apply bg-white/95 not-[.tr]:border not-[.tr]:border-slate-200/40 not-[.tr]:shadow-lg not-[.tr]:hover:border-slate-300/50 not-[.tr]:hover:shadow-xl max-md:bg-white/98 not-[.tr]:max-md:border not-[.tr]:max-md:border-slate-200/20 dark:bg-slate-800/95 not-[.tr]:dark:border-slate-600/30 not-[.tr]:dark:hover:border-slate-500/40 not-[.tr]:dark:hover:shadow-black/25 max-md:dark:bg-slate-800/98 not-[.tr]:max-md:dark:border-slate-700/15;
         }
       }
     }
