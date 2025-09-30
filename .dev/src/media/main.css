@@ -104,7 +104,10 @@
   }
 
   html {
-    @apply md:dark:from-aurora-night-slate md:dark:via-aurora-night-teal md:dark:to-aurora-night-emerald max-md:dark:bg-aurora-night-teal h-full font-sans max-md:bg-slate-100 md:bg-gradient-to-br md:from-slate-50 md:via-slate-100 md:to-slate-200 md:bg-fixed;
+    @apply max-md:dark:bg-aurora-night-teal relative h-full font-sans max-md:bg-slate-100;
+    @apply md:before:pointer-events-none md:before:fixed md:before:inset-0 md:before:-z-10 md:before:content-[''];
+    @apply md:before:bg-gradient-to-br md:before:from-slate-50 md:before:via-slate-100 md:before:to-slate-200;
+    @apply md:dark:before:from-aurora-night-slate md:dark:before:via-aurora-night-teal md:dark:before:to-aurora-night-emerald;
 
     * {
       @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/60 hover:scrollbar-thumb-slate-400/80 dark:scrollbar-thumb-slate-600/60 dark:hover:scrollbar-thumb-slate-500/80 m-0 box-border p-0;
