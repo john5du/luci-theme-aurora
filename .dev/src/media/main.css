@@ -390,7 +390,7 @@
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
       }
       .td & {
-        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:min-h-10 max-md:px-3 max-md:py-2 max-md:text-sm;
+        @apply inline-flex w-auto flex-none whitespace-normal max-md:min-h-10 max-md:px-3 max-md:py-2 max-md:text-sm;
       }
     }
 
@@ -694,7 +694,7 @@
     }
 
     .ifacebadge {
-      @apply inline-flex cursor-default items-center gap-2 rounded-2xl border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
+      @apply inline-flex cursor-default flex-wrap items-center gap-2 rounded-2xl border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
 
       & > img {
         @apply w-5 shrink-0 self-start max-md:w-4;
@@ -1042,7 +1042,7 @@
 
       & td,
       & .td {
-        @apply table-cell w-auto max-w-94 border-b border-gray-200 px-3 py-3 align-middle text-base break-words text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
+        @apply table-cell w-auto max-w-94 border-b border-gray-200 px-3 py-3 align-middle text-base break-words whitespace-normal text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
 
         &::before {
           @apply hidden content-[attr(data-title)] max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:tracking-wider max-md:text-slate-500 max-md:uppercase max-md:dark:text-slate-400;
