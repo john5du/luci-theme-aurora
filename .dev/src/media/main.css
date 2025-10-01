@@ -794,24 +794,15 @@
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center text-slate-500 max-md:rounded-b-3xl max-md:p-4 dark:text-slate-300;
+        @apply flex w-full flex-col items-center justify-start gap-2 rounded-b-2xl p-4 text-center text-slate-500 max-md:rounded-b-3xl max-md:p-4 dark:text-slate-300;
 
         td & {
-          @apply max-md:flex max-md:flex-1 max-md:flex-row max-md:items-center max-md:justify-center max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-2 max-md:text-left;
+          @apply max-md:flex-row max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-2;
         }
 
         & > span {
-          @apply w-full space-y-1.5 text-slate-800 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-200;
-          @apply has-[.cbi-tooltip]:flex has-[.cbi-tooltip]:items-center has-[.cbi-tooltip]:justify-center has-[.cbi-tooltip]:gap-2;
-
-          td & {
-            @apply max-md:w-auto max-md:flex-1 not-last:max-md:mr-2;
-            @apply has-[.cbi-tooltip]:max-md:justify-start;
-          }
-
-          & + span {
-            @apply md:mt-3;
-          }
+          @apply space-y-1.5 text-slate-800 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-200;
+          @apply has-[.cbi-tooltip-container]:flex has-[.cbi-tooltip-container]:flex-wrap has-[.cbi-tooltip-container]:items-center has-[.cbi-tooltip-container]:justify-center has-[.cbi-tooltip-container]:gap-2;
 
           .cbi-tooltip {
             @apply delay-200;
