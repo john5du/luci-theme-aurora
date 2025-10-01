@@ -160,20 +160,20 @@
         @apply text-sm leading-relaxed text-slate-600 dark:text-slate-300;
       }
 
-      small {
-        @apply text-xs font-normal text-slate-500 dark:text-slate-400;
-      }
-
       strong {
         @apply font-semibold tracking-tight;
       }
 
-      code {
-        @apply rounded bg-slate-200/80 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-gray-700 dark:text-gray-200;
+      small {
+        @apply text-xs font-normal text-slate-600 dark:text-slate-300;
       }
 
       em {
-        @apply font-medium text-slate-500 italic max-md:text-xs dark:text-slate-400;
+        @apply font-medium text-slate-400 italic max-md:text-xs dark:text-slate-500;
+      }
+
+      code {
+        @apply rounded bg-slate-200/80 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-gray-700 dark:text-gray-200;
       }
     }
   }
@@ -771,7 +771,7 @@
       }
 
       & .ifacebox-head {
-        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-3 text-center font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:leading-5 max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-3 text-center font-semibold tracking-tight text-slate-800 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:leading-5 max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-200 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
 
         td & {
           @apply max-md:flex max-md:w-auto max-md:flex-shrink-0 max-md:items-center max-md:justify-center max-md:rounded-l-3xl max-md:rounded-tr-none max-md:border-r max-md:border-b-0;
@@ -794,29 +794,27 @@
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center max-md:rounded-b-3xl max-md:p-4;
+        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center text-slate-500 max-md:rounded-b-3xl max-md:p-4 dark:text-slate-300;
 
         td & {
-          @apply max-md:flex max-md:flex-1 max-md:flex-row max-md:items-center max-md:justify-center max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-4 max-md:text-left;
+          @apply max-md:flex max-md:flex-1 max-md:flex-row max-md:items-center max-md:justify-center max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-2 max-md:text-left;
         }
 
         & > span {
-          @apply mb-3 w-full space-y-1.5 text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-400;
+          @apply w-full space-y-1.5 text-slate-800 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-200;
+          @apply has-[.cbi-tooltip]:flex has-[.cbi-tooltip]:items-center has-[.cbi-tooltip]:justify-center has-[.cbi-tooltip]:gap-2;
 
           td & {
-            @apply max-md:mb-0 max-md:w-auto max-md:flex-1;
+            @apply max-md:w-auto max-md:flex-1 not-last:max-md:mr-2;
+            @apply has-[.cbi-tooltip]:max-md:justify-start;
           }
 
-          &:has(.cbi-tooltip) {
-            @apply flex items-center justify-center gap-2;
+          & + span {
+            @apply md:mt-3;
+          }
 
-            td & {
-              @apply max-md:justify-start max-md:gap-2;
-            }
-
-            .cbi-tooltip {
-              @apply delay-200;
-            }
+          .cbi-tooltip {
+            @apply delay-200;
           }
 
           & .nowrap {
@@ -839,7 +837,7 @@
         }
 
         & .cbi-tooltip-container {
-          @apply static flex cursor-help items-center justify-center;
+          @apply static flex cursor-help items-center justify-center text-slate-800 dark:text-slate-200;
 
           & .cbi-tooltip {
             @apply bottom-0 left-0;
@@ -847,15 +845,9 @@
         }
 
         & small {
-          @apply mt-2 block text-xs leading-4 text-slate-500 dark:text-slate-400;
+          @apply block text-xs leading-4;
           td & {
             @apply max-md:mt-0;
-          }
-        }
-
-        & > span:not(:last-child) {
-          td & {
-            @apply max-md:mr-3;
           }
         }
       }
