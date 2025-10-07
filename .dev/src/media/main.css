@@ -773,7 +773,7 @@
     }
 
     .ifacebox {
-      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center text-base leading-5 shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-30 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
+      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center text-base leading-5 shadow-md hover:border-slate-300/50 hover:shadow-lg max-md:min-w-30 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
 
       td & {
         @apply max-md:flex-row;
@@ -803,10 +803,10 @@
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start gap-2 rounded-b-2xl p-4 text-center text-slate-500 max-md:rounded-b-3xl max-md:p-4 dark:text-slate-300;
+        @apply flex w-full flex-1 flex-col items-center justify-around gap-2 rounded-b-2xl p-4 text-center text-slate-500 max-md:rounded-b-3xl dark:text-slate-300;
 
         td & {
-          @apply max-md:flex-row max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-2;
+          @apply max-md:flex-row max-md:rounded-r-3xl max-md:rounded-bl-none max-md:py-2 max-md:pr-2 max-md:pl-4;
         }
 
         & > span {
@@ -822,7 +822,7 @@
           }
 
           & .nowrap {
-            @apply block max-md:text-sm;
+            @apply block;
           }
 
           & img {
@@ -844,7 +844,11 @@
           @apply static flex cursor-help items-center justify-center text-slate-800 dark:text-slate-200;
 
           & .cbi-tooltip {
-            @apply bottom-0 left-0;
+            @apply bottom-0 md:left-0;
+
+            & .nowrap {
+              @apply whitespace-nowrap;
+            }
           }
         }
 
