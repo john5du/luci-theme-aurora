@@ -1011,43 +1011,43 @@
         }
 
         & > .col-1 {
-          @apply w-32;
+          @apply max-md:flex-[1_1_2rem] md:w-32;
         }
 
         & > .col-2 {
-          @apply w-40;
+          @apply max-md:flex-[2_2_4rem] md:w-40;
         }
 
         & > .col-3 {
-          @apply w-48;
+          @apply max-md:flex-[3_3_6rem] md:w-48;
         }
 
         & > .col-4 {
-          @apply w-56;
+          @apply max-md:flex-[4_4_8rem] md:w-56;
         }
 
         & > .col-5 {
-          @apply w-64;
+          @apply max-md:flex-[5_5_10rem] md:w-64;
         }
 
         & > .col-6 {
-          @apply w-80;
+          @apply max-md:flex-[6_6_12rem] md:w-80;
         }
 
         & > .col-7 {
-          @apply w-96;
+          @apply max-md:flex-[7_7_14rem] md:w-96;
         }
 
         & > .col-8 {
-          @apply w-112;
+          @apply max-md:flex-[8_8_16rem] md:w-112;
         }
 
         & > .col-9 {
-          @apply w-128;
+          @apply max-md:flex-[9_9_18rem] md:w-128;
         }
 
         & > .col-10 {
-          @apply w-144 max-md:flex-[0_0_100%];
+          @apply max-md:flex-[10_10_100%] md:w-144;
         }
       }
 
