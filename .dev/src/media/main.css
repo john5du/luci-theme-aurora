@@ -1015,7 +1015,7 @@
         }
 
         & > .col-2 {
-          @apply max-md:flex-[2_2_4rem] md:w-40;
+          @apply whitespace-normal max-md:flex-[2_2_4rem] md:w-40;
         }
 
         & > .col-3 {
