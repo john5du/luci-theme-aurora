@@ -223,6 +223,11 @@
 
         & span[data-indicator] {
           @apply size-5 cursor-pointer text-[0px] before:absolute before:size-5 before:bg-current before:text-slate-900 before:content-['\00A0'] dark:before:text-slate-100;
+
+          &[data-indicator="media_error"] {
+            @apply before:[mask:url('@assets/icons/error.svg')_center/cover_no-repeat];
+          }
+
           &[data-indicator="poll-status"] {
             &[data-style="active"] {
               @apply before:[mask:url('@assets/icons/refresh.svg')_center/cover_no-repeat];
@@ -394,7 +399,7 @@
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
       }
       .td & {
-        @apply inline-flex w-auto flex-none whitespace-normal max-md:min-h-10 max-md:px-3 max-md:py-2 max-md:text-sm;
+        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:min-h-10 max-md:px-3 max-md:py-2 max-md:text-sm;
       }
     }
 
@@ -872,15 +877,15 @@
 
       & > .modal {
         @apply flex w-5xl flex-col rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-full dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
-        & > h4 {
+        & h4 {
           @apply mb-4 px-6 text-center text-lg font-semibold text-slate-800 dark:text-gray-100;
         }
 
-        & > h5 {
+        & h5 {
           @apply mb-3 text-lg font-medium text-red-600 dark:text-red-400;
         }
 
-        & > pre {
+        & pre {
           @apply overflow-auto rounded-2xl border border-slate-300/60 bg-slate-100 p-4 font-mono text-sm text-slate-800 md:p-4 md:text-sm dark:border-gray-600/40 dark:bg-gray-800 dark:text-gray-200;
 
           &.errors {
@@ -892,7 +897,7 @@
           @apply mt-3;
         }
 
-        & > p {
+        & p {
           @apply text-sm leading-relaxed text-slate-700 dark:text-gray-300;
         }
 
@@ -1006,15 +1011,43 @@
         }
 
         & > .col-1 {
-          @apply max-w-32 whitespace-normal;
+          @apply w-32;
         }
 
         & > .col-2 {
-          @apply max-w-40 whitespace-normal;
+          @apply w-40;
+        }
+
+        & > .col-3 {
+          @apply w-48;
+        }
+
+        & > .col-4 {
+          @apply w-56;
+        }
+
+        & > .col-5 {
+          @apply w-64;
+        }
+
+        & > .col-6 {
+          @apply w-80;
+        }
+
+        & > .col-7 {
+          @apply w-96;
+        }
+
+        & > .col-8 {
+          @apply w-112;
+        }
+
+        & > .col-9 {
+          @apply w-128;
         }
 
         & > .col-10 {
-          @apply max-w-144 whitespace-normal max-md:flex-[0_0_100%];
+          @apply w-144 max-md:flex-[0_0_100%];
         }
       }
 
@@ -1032,7 +1065,7 @@
 
         &[data-sortable-row="true"] {
           @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700/70;
-          @apply after:ml-2 after:text-xs after:font-normal after:text-transparent after:transition-colors after:duration-200 after:content-['\2195'];
+          @apply after:ml-0.5 after:text-xs after:font-normal after:text-transparent after:transition-colors after:duration-200 after:content-['\2195'];
           @apply hover:after:text-gray-400 dark:hover:after:text-gray-400;
         }
       }
