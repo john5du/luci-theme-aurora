@@ -222,7 +222,7 @@
         @apply flex shrink-0 flex-row-reverse gap-5 max-md:order-2 max-md:shrink-0 md:gap-8;
 
         & span[data-indicator] {
-          @apply size-5 cursor-pointer text-[0px] before:absolute before:size-5 before:bg-current before:text-slate-900 before:content-['\00A0'] dark:before:text-slate-100;
+          @apply size-5 cursor-pointer text-[0px] before:absolute before:size-5 before:bg-current before:text-slate-900 dark:before:text-slate-100;
 
           &[data-indicator="media_error"] {
             @apply before:[mask:url('@assets/icons/error.svg')_center/cover_no-repeat];
@@ -361,6 +361,30 @@
 
         .zone-dest {
           @apply flex flex-col items-start gap-2;
+        }
+      }
+
+      .cbi-title {
+        @apply flex items-center justify-between;
+
+        & h3 {
+          @apply flex-1;
+        }
+
+        & div {
+          @apply ml-auto flex flex-shrink-0 items-center;
+
+          & span[data-indicator="poll-status"] {
+            @apply relative size-5 cursor-pointer text-[0px] before:absolute before:size-5 before:bg-current before:text-slate-900 before:transition-transform before:duration-300 before:ease-out hover:before:scale-110 active:before:scale-95 dark:before:text-slate-100;
+
+            &[data-style="active"] {
+              @apply before:rotate-0 before:[mask:url('@assets/icons/collapse.svg')_center/cover_no-repeat];
+            }
+
+            &[data-style="inactive"] {
+              @apply before:rotate-90 before:[mask:url('@assets/icons/collapse.svg')_center/cover_no-repeat];
+            }
+          }
         }
       }
     }
@@ -746,7 +770,7 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-visible rounded-2xl p-6 transition-all duration-300 empty:hidden max-md:rounded-3xl max-md:p-3;
+      @apply mb-3 overflow-visible rounded-2xl p-6 transition-all duration-300 empty:hidden max-md:p-3;
 
       #maincontent & {
         @apply border border-slate-200/40 bg-white/95 shadow-lg hover:border-slate-300/50 hover:shadow-xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 dark:border-slate-600/30 dark:bg-slate-800/95 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98;
