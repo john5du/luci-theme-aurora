@@ -105,7 +105,7 @@
 
   html {
     @apply max-md:dark:bg-aurora-night-teal relative h-full font-sans max-md:bg-slate-100;
-    @apply md:before:pointer-events-none md:before:fixed md:before:inset-0 md:before:-z-10 md:before:content-[''];
+    @apply md:before:pointer-events-none md:before:fixed md:before:inset-0 md:before:-z-10;
     @apply md:before:bg-gradient-to-br md:before:from-slate-50 md:before:via-slate-100 md:before:to-slate-200;
     @apply md:dark:before:from-aurora-night-slate md:dark:before:via-aurora-night-teal md:dark:before:to-aurora-night-emerald;
 
@@ -160,20 +160,20 @@
         @apply text-sm leading-relaxed text-slate-600 dark:text-slate-300;
       }
 
-      small {
-        @apply text-xs font-normal text-slate-500 dark:text-slate-400;
-      }
-
       strong {
         @apply font-semibold tracking-tight;
       }
 
-      code {
-        @apply rounded bg-slate-200/80 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-gray-700 dark:text-gray-200;
+      small {
+        @apply text-xs font-normal text-slate-600 dark:text-slate-300;
       }
 
       em {
-        @apply font-medium text-slate-500 italic max-md:text-xs dark:text-slate-400;
+        @apply font-medium text-slate-400 italic max-md:text-xs dark:text-slate-500;
+      }
+
+      code {
+        @apply rounded bg-slate-200/80 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-gray-700 dark:text-gray-200;
       }
     }
   }
@@ -223,6 +223,11 @@
 
         & span[data-indicator] {
           @apply size-5 cursor-pointer text-[0px] before:absolute before:size-5 before:bg-current before:text-slate-900 before:content-['\00A0'] dark:before:text-slate-100;
+
+          &[data-indicator="media_error"] {
+            @apply before:[mask:url('@assets/icons/error.svg')_center/cover_no-repeat];
+          }
+
           &[data-indicator="poll-status"] {
             &[data-style="active"] {
               @apply before:[mask:url('@assets/icons/refresh.svg')_center/cover_no-repeat];
@@ -297,7 +302,7 @@
       @apply mx-auto min-h-[calc(100vh-4rem)] w-11/12 max-w-6xl px-4 max-md:w-full max-md:px-3;
 
       #view {
-        @apply mx-0 mb-2 w-full p-0 shadow-none transition-all duration-300 empty:hidden md:mb-6 md:rounded-4xl md:border md:border-slate-400/20 md:bg-gradient-to-br md:from-white/95 md:via-white/90 md:to-white/85 md:p-6 md:shadow-xl md:hover:border-slate-400/30 md:hover:shadow-2xl md:hover:shadow-slate-400/30 md:dark:border-gray-600/30 md:dark:from-gray-900/95 md:dark:via-gray-800/90 md:dark:to-gray-900/85 md:dark:shadow-black/50 md:dark:hover:border-gray-500/40 md:dark:hover:shadow-black/60;
+        @apply mx-0 mb-2 w-full p-0 shadow-none transition-all duration-300 empty:hidden md:mb-6 md:rounded-4xl md:border md:border-slate-400/20 md:bg-white/90 md:p-6 md:shadow-xl md:hover:border-slate-400/30 md:hover:shadow-2xl md:hover:shadow-slate-400/30 md:dark:border-gray-600/30 md:dark:bg-gray-900/90 md:dark:shadow-black/50 md:dark:hover:border-gray-500/40 md:dark:hover:shadow-black/60;
 
         .cbi-title-section {
           @apply mb-6 leading-relaxed max-md:mx-2 max-md:mb-3;
@@ -311,6 +316,10 @@
 
             & > div {
               @apply flex items-center gap-2;
+
+              &.text {
+                @apply justify-center;
+              }
             }
 
             & > div > label {
@@ -331,7 +340,7 @@
       .control-group,
       .cbi-page-actions > div,
       .cbi-section-actions > div {
-        @apply flex flex-row flex-nowrap items-center gap-2 max-md:gap-1;
+        @apply flex flex-row flex-nowrap items-center gap-2 max-md:flex-wrap max-md:gap-1;
       }
 
       .cbi-map-descr,
@@ -590,7 +599,7 @@
 
   @layer tooltip {
     .cbi-tooltip {
-      @apply absolute z-110 max-w-xs scale-95 transform rounded bg-white text-xs whitespace-nowrap text-slate-900 opacity-0 shadow-lg backdrop-blur-xl transition-all duration-300 ease-out dark:bg-slate-900 dark:text-slate-100;
+      @apply absolute z-110 max-w-xs scale-95 transform rounded bg-white text-xs whitespace-nowrap text-slate-900 opacity-0 shadow-lg backdrop-blur-xl transition-all duration-300 ease-out max-md:whitespace-normal dark:bg-slate-900 dark:text-slate-100;
       &.error {
         @apply border border-red-200/40 bg-gradient-to-br from-red-50 via-red-100 to-red-50 text-red-900 shadow-red-500/10 dark:border-red-500/30 dark:from-red-900/40 dark:via-red-800/30 dark:to-red-900/40 dark:text-red-200 dark:shadow-red-400/10;
       }
@@ -694,10 +703,15 @@
     }
 
     .ifacebadge {
-      @apply inline-flex cursor-default items-center gap-2 rounded-2xl border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
+      @apply inline-flex cursor-default flex-wrap items-center gap-2 rounded-2xl border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
+
+      .cbi-dropdown &,
+      .cbi-tooltip & {
+        @apply flex-nowrap;
+      }
 
       & > img {
-        @apply w-5 shrink-0 self-start max-md:w-4;
+        @apply w-5 shrink-0 self-center max-md:w-4;
       }
 
       & > span {
@@ -764,14 +778,14 @@
     }
 
     .ifacebox {
-      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center text-base leading-5 shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
+      @apply relative inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-2xl border border-slate-200/40 bg-white/95 text-center text-base leading-5 shadow-md hover:border-slate-300/50 hover:shadow-lg max-md:min-w-30 max-md:flex-1 max-md:rounded-3xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
 
       td & {
         @apply max-md:flex-row;
       }
 
       & .ifacebox-head {
-        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-3 text-center font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:leading-5 max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+        @apply w-full rounded-t-2xl border-b border-slate-200/50 bg-slate-50/80 px-4 py-3 text-center font-semibold tracking-tight text-slate-800 transition-all duration-200 max-md:rounded-t-3xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:leading-5 max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-200 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
 
         td & {
           @apply max-md:flex max-md:w-auto max-md:flex-shrink-0 max-md:items-center max-md:justify-center max-md:rounded-l-3xl max-md:rounded-tr-none max-md:border-r max-md:border-b-0;
@@ -794,33 +808,26 @@
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-start rounded-b-2xl p-4 text-center max-md:rounded-b-3xl max-md:p-4;
+        @apply flex w-full flex-1 flex-col items-center justify-around gap-2 rounded-b-2xl p-4 text-center text-slate-500 max-md:rounded-b-3xl dark:text-slate-300;
 
         td & {
-          @apply max-md:flex max-md:flex-1 max-md:flex-row max-md:items-center max-md:justify-center max-md:rounded-r-3xl max-md:rounded-bl-none max-md:p-4 max-md:text-left;
+          @apply max-md:flex-row max-md:rounded-r-3xl max-md:rounded-bl-none max-md:py-2 max-md:pr-2 max-md:pl-4;
         }
 
         & > span {
-          @apply mb-3 w-full space-y-1.5 text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-400;
+          @apply space-y-1.5 text-slate-800 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-200;
+          @apply has-[.cbi-tooltip-container]:flex has-[.cbi-tooltip-container]:flex-wrap has-[.cbi-tooltip-container]:items-center has-[.cbi-tooltip-container]:justify-center;
 
-          td & {
-            @apply max-md:mb-0 max-md:w-auto max-md:flex-1;
+          .cbi-tooltip-container + .cbi-tooltip-container {
+            @apply ml-2 max-md:ml-1.5;
           }
 
-          &:has(.cbi-tooltip) {
-            @apply flex items-center justify-center gap-2;
-
-            td & {
-              @apply max-md:justify-start max-md:gap-2;
-            }
-
-            .cbi-tooltip {
-              @apply delay-200;
-            }
+          .cbi-tooltip {
+            @apply delay-200;
           }
 
           & .nowrap {
-            @apply block max-md:text-sm;
+            @apply block;
           }
 
           & img {
@@ -839,23 +846,21 @@
         }
 
         & .cbi-tooltip-container {
-          @apply static flex cursor-help items-center justify-center;
+          @apply static flex cursor-help items-center justify-center text-slate-800 dark:text-slate-200;
 
           & .cbi-tooltip {
-            @apply bottom-0 left-0;
+            @apply bottom-0 md:left-0;
+
+            & .nowrap {
+              @apply whitespace-nowrap;
+            }
           }
         }
 
         & small {
-          @apply mt-2 block text-xs leading-4 text-slate-500 dark:text-slate-400;
+          @apply block text-xs leading-4;
           td & {
             @apply max-md:mt-0;
-          }
-        }
-
-        & > span:not(:last-child) {
-          td & {
-            @apply max-md:mr-3;
           }
         }
       }
@@ -872,15 +877,15 @@
 
       & > .modal {
         @apply flex w-5xl flex-col rounded-3xl border border-slate-300/60 bg-white px-6 py-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-full dark:border-gray-600/40 dark:bg-gray-900 dark:shadow-black/60;
-        & > h4 {
+        & h4 {
           @apply mb-4 px-6 text-center text-lg font-semibold text-slate-800 dark:text-gray-100;
         }
 
-        & > h5 {
+        & h5 {
           @apply mb-3 text-lg font-medium text-red-600 dark:text-red-400;
         }
 
-        & > pre {
+        & pre {
           @apply overflow-auto rounded-2xl border border-slate-300/60 bg-slate-100 p-4 font-mono text-sm text-slate-800 md:p-4 md:text-sm dark:border-gray-600/40 dark:bg-gray-800 dark:text-gray-200;
 
           &.errors {
@@ -892,7 +897,7 @@
           @apply mt-3;
         }
 
-        & > p {
+        & p {
           @apply text-sm leading-relaxed text-slate-700 dark:text-gray-300;
         }
 
@@ -950,9 +955,11 @@
     .table,
     table {
       @apply mb-3 w-full border-separate border-spacing-0 overflow-visible rounded-2xl border border-gray-100 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:border-0 max-md:bg-white/98 max-md:shadow-none dark:border-gray-600/40 dark:shadow-black/50 max-md:dark:bg-slate-800/98;
+
       &[width="100%"] {
         @apply w-full;
       }
+
       &[width="33%"] {
         @apply w-1/3;
       }
@@ -965,37 +972,21 @@
       & tr,
       & .tr {
         @apply transition-colors duration-200 hover:bg-gray-50 max-md:flex max-md:flex-wrap max-md:border-b max-md:border-gray-200 max-md:px-2 max-md:py-2 dark:hover:bg-gray-700/50 dark:max-md:border-gray-600/40;
-
-        &:has(.cbi-progressbar) {
-          @apply max-md:flex max-md:items-center max-md:justify-center;
-        }
+        @apply has-[.cbi-progressbar]:max-md:flex has-[.cbi-progressbar]:max-md:items-center has-[.cbi-progressbar]:max-md:justify-center;
 
         &:first-child {
-          & th:first-child {
-            @apply md:rounded-tl-2xl;
-          }
-          & th:last-child {
-            @apply md:rounded-tr-2xl;
-          }
-          & td:first-child {
-            @apply md:rounded-tl-2xl;
-          }
+          & .th,
+          & .td {
+            @apply first:md:rounded-tl-2xl;
 
-          & td:last-child {
-            @apply md:rounded-tr-2xl;
+            @apply last:md:rounded-tr-2xl;
           }
         }
 
         &:last-child {
           @apply max-md:rounded-b-2xl;
           td {
-            @apply border-b-0;
-            &:first-child {
-              @apply md:rounded-bl-2xl;
-            }
-            &:last-child {
-              @apply md:rounded-br-2xl;
-            }
+            @apply border-b-0 first:md:rounded-bl-2xl last:md:rounded-br-2xl;
           }
         }
 
@@ -1018,6 +1009,46 @@
         &.cbi-rowstyle-2 {
           @apply bg-gray-50/50 dark:bg-gray-700/60;
         }
+
+        & > .col-1 {
+          @apply max-md:flex-[1_1_2rem] md:w-32;
+        }
+
+        & > .col-2 {
+          @apply whitespace-normal max-md:flex-[2_2_4rem] md:w-40;
+        }
+
+        & > .col-3 {
+          @apply max-md:flex-[3_3_6rem] md:w-48;
+        }
+
+        & > .col-4 {
+          @apply max-md:flex-[4_4_8rem] md:w-56;
+        }
+
+        & > .col-5 {
+          @apply max-md:flex-[5_5_10rem] md:w-64;
+        }
+
+        & > .col-6 {
+          @apply max-md:flex-[6_6_12rem] md:w-80;
+        }
+
+        & > .col-7 {
+          @apply max-md:flex-[7_7_14rem] md:w-96;
+        }
+
+        & > .col-8 {
+          @apply max-md:flex-[8_8_16rem] md:w-112;
+        }
+
+        & > .col-9 {
+          @apply max-md:flex-[9_9_18rem] md:w-128;
+        }
+
+        & > .col-10 {
+          @apply max-md:flex-[10_10_100%] md:w-144;
+        }
       }
 
       & th,
@@ -1027,30 +1058,27 @@
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
         }
+
         &[width="33%"] {
           @apply w-1/3 max-md:flex-[0_0_33.333%];
         }
 
         &[data-sortable-row="true"] {
           @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700/70;
-
-          &:hover::after {
-            @apply ml-2 text-xs font-normal text-gray-400 content-['\2195'] dark:text-gray-400;
-          }
+          @apply after:ml-0.5 after:text-xs after:font-normal after:text-transparent after:transition-colors after:duration-200 after:content-['\2195'];
+          @apply hover:after:text-gray-400 dark:hover:after:text-gray-400;
         }
       }
 
       & td,
       & .td {
-        @apply table-cell w-auto max-w-94 border-b border-gray-200 px-3 py-3 align-middle text-base break-words text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
-
-        &::before {
-          @apply hidden content-[attr(data-title)] max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:tracking-wider max-md:text-slate-500 max-md:uppercase max-md:dark:text-slate-400;
-        }
+        @apply table-cell max-w-94 border-b border-gray-200 px-3 py-3 align-middle text-base break-words whitespace-normal text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
+        @apply before:hidden before:content-[attr(data-title)] before:max-md:mb-1 before:max-md:block before:max-md:text-xs before:max-md:font-medium before:max-md:tracking-wider before:max-md:text-slate-500 before:max-md:uppercase before:max-md:dark:text-slate-400;
 
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
         }
+
         &[width="33%"] {
           @apply w-1/3 max-md:flex-[0_0_33.333%];
         }
@@ -1061,32 +1089,9 @@
             @apply max-md:basis-[100%];
           }
         }
-
-        &:has(input[type="text"] + .diag-action) {
-          @apply gap-2 max-md:flex max-md:flex-col max-md:items-stretch;
-        }
-
-        & .diag-action {
-          @apply ml-2 max-md:mt-0 max-md:ml-0 max-md:w-full;
-          & .btn,
-          button {
-            @apply max-md:w-full;
-          }
-        }
-
-        &.col-1 {
-          @apply max-w-32 whitespace-normal;
-        }
-
-        &.col-2 {
-          @apply max-w-40 whitespace-normal;
-        }
-
-        &.col-10 {
-          @apply w-auto max-w-144 whitespace-normal max-md:flex-[0_0_100%];
-        }
       }
     }
+
     .cbi-section-table {
       .cbi-section-table-titles {
         .cbi-section-table-cell {
@@ -1133,7 +1138,11 @@
         }
 
         & .cbi-value-description {
-          @apply ml-3 inline-block leading-normal text-slate-500 dark:text-slate-400;
+          @apply ml-3 inline-block leading-normal break-words text-slate-500 dark:text-slate-400;
+
+          & p {
+            @apply break-all;
+          }
         }
 
         & output {
@@ -1237,42 +1246,49 @@
       @apply !text-left;
     }
   }
+
   .right {
     @apply md:!text-right;
     &:not(td) {
       @apply !text-right;
     }
   }
+
   .top {
     @apply md:!align-top;
     &:not(td) {
       @apply !align-top;
     }
   }
+
   .bottom {
     @apply md:!align-bottom;
     &:not(td) {
       @apply !align-bottom;
     }
   }
+
   .center {
     @apply md:!text-center;
     &:not(td) {
       @apply !text-center;
     }
   }
+
   .middle {
     @apply md:!align-middle;
     &:not(td) {
       @apply !align-middle;
     }
   }
+
   .nowrap:not(span) {
     @apply md:whitespace-nowrap;
     &:not(td) {
       @apply whitespace-nowrap;
     }
   }
+
   .spinning {
     @apply relative pl-8;
     @apply before:absolute before:top-1/2 before:left-1.5 before:size-5 before:-translate-y-1/2 before:animate-spin before:bg-current before:content-[''] before:[mask:url('@assets/icons/spinning.svg')_center/cover_no-repeat];
