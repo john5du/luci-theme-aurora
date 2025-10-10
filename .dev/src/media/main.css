@@ -365,7 +365,7 @@
       }
 
       .cbi-title {
-        @apply flex items-center justify-between;
+        @apply flex items-start justify-between;
 
         & h3 {
           @apply flex-1;
@@ -378,11 +378,11 @@
             @apply relative size-5 cursor-pointer text-[0px] before:absolute before:size-5 before:bg-current before:text-slate-900 before:transition-transform before:duration-300 before:ease-out hover:before:scale-110 active:before:scale-95 dark:before:text-slate-100;
 
             &[data-style="active"] {
-              @apply before:rotate-0 before:[mask:url('@assets/icons/collapse.svg')_center/cover_no-repeat];
+              @apply before:rotate-0 before:[mask:url('@assets/icons/arrow-right.svg')_center/cover_no-repeat];
             }
 
             &[data-style="inactive"] {
-              @apply before:rotate-90 before:[mask:url('@assets/icons/collapse.svg')_center/cover_no-repeat];
+              @apply before:rotate-90 before:[mask:url('@assets/icons/arrow-right.svg')_center/cover_no-repeat];
             }
           }
         }
@@ -507,7 +507,7 @@
   @layer select {
     select {
       @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 appearance-none rounded-2xl border border-slate-300/70 bg-white px-3 py-1.5 pr-10 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-900;
-      @apply bg-[url('@assets/icons/chevron-down.svg')] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat;
+      @apply bg-[url('@assets/icons/arrow-down.svg')] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat;
       &[disabled] {
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
       }
@@ -697,7 +697,7 @@
 
   @layer progress {
     .cbi-progressbar {
-      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-2xl before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-4 max-md:rounded-2xl max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
+      @apply relative h-3.5 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-2xl before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-4 max-md:rounded-2xl max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
 
       & > div {
         @apply from-aurora-sky to-aurora-teal dark:from-aurora-night-emerald dark:to-aurora-teal-600 dark:text-shadow-aurora-night-slate-800 h-full bg-gradient-to-r transition-all duration-300;
@@ -707,7 +707,7 @@
 
   @layer badge {
     .zonebadge {
-      @apply inline-flex items-center gap-1.5 overflow-visible rounded-full border border-black/8 bg-white/98 p-1.5 text-sm font-medium text-slate-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md max-md:gap-1 max-md:p-1 max-md:text-xs dark:border-white/12 dark:bg-slate-800/95 dark:text-slate-200 dark:shadow-black/25;
+      @apply inline-flex items-center gap-1.5 overflow-visible rounded-full border border-black/8 bg-white/98 px-1 py-1.5 text-sm font-medium text-slate-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md max-md:gap-1 max-md:text-xs dark:border-white/12 dark:bg-slate-800/95 dark:text-slate-200 dark:shadow-black/25;
 
       .cbi-dropdown & {
         @apply rounded-2xl;
