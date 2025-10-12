@@ -1,0 +1,66 @@
+name: "Bug report"
+description: Report an issue
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ###  Thank you for reporting a bug. Please include screenshots and minimal reproduction steps when possible.
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: 请清晰简洁地描述出现的问题，尽量能附上截图/录屏，这会大大提高修复效率。
+      placeholder: Briefly describe the issue and attach screenshots if possible
+    validations:
+      required: true
+
+  - type: input
+    id: theme-version
+    attributes:
+      label: Theme version
+      description: luci-theme-aurora 的版本号或提交哈希
+      placeholder: ex. 0.5.9_beta or commit SHA(e.g. 56db83c)
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser (vendor + version)
+      description: 请填写浏览器名称与版本，例如 Chrome 141.0.7390.77
+      placeholder: ex. Chrome 141.0.7390.77
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: OS (name + version)
+      description: 请填写操作系统名称与版本，例如 Windows 11 25H2、Android 15
+      placeholder: ex. macOS Tahoe、iOS 26
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How to reproduce
+      description: 如果方便，请提供逐步操作步骤(可选)。
+      placeholder: |
+        1. Go to '...' page
+        2. Click '...'
+        3. Observe the issue
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: 如果方便，请描述您期望的正确行为是什么(可选)。
+      placeholder: Describe the expected behavior
+    validations:
+      required: false
