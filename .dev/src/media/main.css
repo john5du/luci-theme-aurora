@@ -1090,9 +1090,13 @@
         }
 
         &[data-sortable-row="true"] {
-          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700/70;
-          @apply after:ml-0.5 after:text-xs after:font-normal after:text-transparent after:transition-colors after:duration-200 after:content-['\2195'];
-          @apply hover:after:text-gray-400 dark:hover:after:text-gray-400;
+          @apply cursor-pointer select-none after:ml-0.5 after:text-xs after:text-gray-600 dark:after:text-gray-300;
+          &[data-sort-direction="asc"] {
+            @apply after:content-['\25B2'];
+          }
+          &[data-sort-direction="desc"] {
+            @apply after:content-['\25BC'];
+          }
         }
       }
 

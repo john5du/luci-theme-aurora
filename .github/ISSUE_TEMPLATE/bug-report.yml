@@ -1,4 +1,4 @@
-name: "Bug Report"
+name: "Bug report"
 description: Report an issue for luci-theme-aurora
 title: "[bug]: "
 labels: ["bug"]
@@ -18,11 +18,11 @@ body:
       required: true
 
   - type: input
-    id: theme-version
+    id: browser
     attributes:
-      label: Theme version
-      description: 请填写luci-theme-aurora 的版本号或提交哈希
-      placeholder: ex. 0.5.9_beta or commit SHA(e.g. 56db83c)
+      label: Browser (vendor + version)
+      description: 请填写浏览器名称与版本，例如 Chrome 141.0.7390.77
+      placeholder: ex. Safari 26
     validations:
       required: true
 
@@ -36,19 +36,19 @@ body:
       required: true
 
   - type: input
-    id: browser
+    id: theme-version
     attributes:
-      label: Browser (vendor + version)
-      description: 请填写浏览器名称与版本，例如 Chrome 141.0.7390.77
-      placeholder: ex. Chrome 141.0.7390.77
+      label: Theme version
+      description: luci-theme-aurora 的版本号或commit 哈希
+      placeholder: ex. 0.5.9_beta or commit SHA(e.g. 56db83c)
     validations:
-      required: true
+      required: false
 
   - type: input
     id: os
     attributes:
       label: OS (name + version)
-      description: 请填写操作系统名称与版本，例如 Windows 11 25H2、Android 15
+      description: 操作系统名称与版本，例如 Windows 11 25H2、Android 15
       placeholder: ex. macOS Tahoe、iOS 26
     validations:
       required: false
