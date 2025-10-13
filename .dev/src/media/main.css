@@ -1089,7 +1089,7 @@
         }
 
         & > .col-10 {
-          @apply max-md:flex-[10_10_100%] md:w-128 md:max-w-136;
+          @apply max-md:max-w-[calc(100vw-40px)] max-md:flex-[0_0_100%] md:w-128 md:max-w-136;
         }
       }
 
