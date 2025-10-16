@@ -469,6 +469,10 @@
       }
     }
 
+    .cbi-input-text {
+      @apply min-w-20 max-md:min-w-14;
+    }
+
     input[type="radio"],
     input[type="checkbox"] {
       @apply checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-teal-600 dark:checked:bg-aurora-teal-600 mr-3 h-4 w-4 cursor-pointer appearance-none hover:border-slate-400/60 dark:hover:border-slate-500/60;
@@ -1216,6 +1220,10 @@
       & .th {
         @apply border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-base font-medium text-gray-900 backdrop-blur-sm max-md:flex-[1_1_50%] max-md:border-0 max-md:text-sm dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
 
+        #cbi-samba4 & {
+          @apply px-0.5 py-1.5;
+        }
+
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
         }
@@ -1237,8 +1245,16 @@
 
       & td,
       & .td {
-        @apply table-cell border-b border-gray-200 px-3 py-3 align-middle text-base break-words whitespace-normal text-gray-700 max-md:max-w-full max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
+        @apply table-cell border-b border-gray-200 px-3 py-3 align-middle text-base break-words whitespace-normal text-gray-700 max-md:flex-[1_1_50%] max-md:border-0 max-md:px-1 max-md:py-1 max-md:text-sm dark:border-gray-600/40 dark:text-gray-200;
         @apply before:hidden before:content-[attr(data-title)] before:max-md:mb-1 before:max-md:block before:max-md:text-xs before:max-md:font-semibold before:max-md:tracking-wider before:max-md:text-gray-800 dark:before:max-md:text-gray-200;
+
+        #cbi-samba4 & {
+          @apply px-0.5 py-1.5;
+        }
+
+        #wifi_assoclist_table & {
+          @apply max-md:flex-[0_0_100%] max-md:px-3 max-md:py-2 before:max-md:mb-1.5;
+        }
 
         &.cbi-value-field {
           @apply break-all;
