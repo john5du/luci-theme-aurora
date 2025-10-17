@@ -325,23 +325,7 @@
         }
 
         .controls {
-          @apply space-y-4;
-
-          & > div {
-            @apply flex items-start gap-3;
-
-            & > div {
-              @apply flex items-center gap-2;
-
-              &.text {
-                @apply justify-center;
-              }
-            }
-
-            & > div > label {
-              @apply flex items-center;
-            }
-          }
+          @apply m-2 flex flex-wrap items-center gap-3 max-md:m-1 max-md:gap-2;
         }
 
         #syslog {
@@ -1522,6 +1506,11 @@
       #status-bar {
         @apply border-0 dark:bg-slate-900;
       }
+    }
+  }
+  @layer luci-app-statistics {
+    [data-page="admin-statistics-graphs"] [data-plugin] img {
+      @apply dark:hue-rotate-150 dark:invert;
     }
   }
 }
