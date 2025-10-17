@@ -1264,6 +1264,22 @@
           @apply break-all;
         }
 
+        &.cbi-section-actions {
+          @apply max-md:flex-[0_0_100%];
+
+          & > div {
+            @apply max-md:w-full;
+
+            & > .cbi-button {
+              @apply max-md:flex-1;
+            }
+          }
+        }
+
+        & > .cbi-button {
+          @apply max-md:w-full;
+        }
+
         &[width="100%"] {
           @apply w-full max-md:flex-[0_0_100%];
         }
