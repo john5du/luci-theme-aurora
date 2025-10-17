@@ -118,72 +118,76 @@
       &.modal-overlay-active {
         @apply h-screen overflow-hidden;
       }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        @apply font-sans leading-tight font-semibold tracking-tight text-slate-900 dark:text-slate-100;
-      }
-
-      h1 {
-        @apply mb-4 pl-6 text-3xl max-md:pl-4 max-md:text-2xl;
-      }
-
-      h2 {
-        @apply mb-4 pl-5 text-2xl max-md:mb-2 max-md:pl-4 max-md:text-xl;
-      }
-
-      h3 {
-        @apply mb-4 text-xl font-semibold tracking-tight max-md:mb-2 max-md:text-lg;
-      }
-
-      h4 {
-        @apply mb-2 text-lg max-md:text-base;
-      }
-
-      h5 {
-        @apply mb-2 text-base max-md:text-sm;
-      }
-
-      h6 {
-        @apply mb-2 text-sm max-md:text-xs;
-      }
-
-      hr {
-        @apply border-0;
-      }
-
-      p {
-        @apply text-sm leading-relaxed text-slate-600 dark:text-slate-300;
-      }
-
-      strong {
-        @apply font-semibold tracking-tight;
-      }
-
-      small {
-        @apply text-xs font-normal text-slate-600 dark:text-slate-300;
-      }
-
-      em {
-        @apply font-medium text-slate-400 italic max-md:text-xs dark:text-slate-500;
-      }
-
-      code {
-        @apply rounded bg-slate-200/80 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-gray-700 dark:text-gray-200;
-      }
-
-      a {
-        @apply text-aurora-sky dark:text-aurora-teal-400 no-underline;
-      }
-
-      abbr {
-        @apply cursor-help;
-      }
     }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans leading-tight font-semibold tracking-tight text-slate-900 dark:text-slate-100;
+  }
+
+  h1 {
+    @apply mb-4 pl-6 text-3xl max-md:pl-4 max-md:text-2xl;
+  }
+
+  h2 {
+    @apply mb-4 pl-5 text-2xl max-md:mb-2 max-md:pl-4 max-md:text-xl;
+  }
+
+  h3 {
+    @apply mb-4 text-xl font-semibold tracking-tight max-md:mb-2 max-md:text-lg;
+  }
+
+  h4 {
+    @apply mb-2 text-lg max-md:text-base;
+  }
+
+  h5 {
+    @apply mb-2 text-base max-md:text-sm;
+  }
+
+  h6 {
+    @apply mb-2 text-sm max-md:text-xs;
+  }
+
+  hr {
+    @apply border-0;
+  }
+
+  p {
+    @apply text-sm leading-relaxed text-slate-600 dark:text-slate-300;
+  }
+
+  strong {
+    @apply font-semibold tracking-tight;
+  }
+
+  small {
+    @apply text-xs font-normal text-slate-600 dark:text-slate-300;
+  }
+
+  em {
+    @apply font-medium text-slate-400 italic max-md:text-xs dark:text-slate-500;
+  }
+
+  code {
+    @apply rounded bg-slate-200/80 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-gray-700 dark:text-gray-200;
+  }
+
+  a {
+    @apply text-fuchsia-600 no-underline hover:underline dark:text-fuchsia-400;
+  }
+
+  abbr {
+    @apply cursor-help;
+  }
+
+  var {
+    @apply font-mono text-fuchsia-600 dark:text-fuchsia-400;
   }
 }
 
@@ -401,7 +405,7 @@
       @apply mt-auto flex flex-wrap items-center justify-center gap-2 border-t border-slate-200/50 py-2 text-xs text-slate-500 max-md:min-h-18 dark:border-slate-700/30 dark:text-slate-400;
 
       & a {
-        @apply hover:text-aurora-sky-600 dark:hover:text-aurora-teal-300;
+        @apply text-aurora-sky dark:text-aurora-teal-400;
       }
 
       & span {
@@ -652,7 +656,7 @@
 
     .cbi-tooltip-container,
     [data-tooltip] {
-      @apply relative inline-block cursor-help whitespace-nowrap underline decoration-slate-600/80 decoration-dotted underline-offset-2 transition-all duration-200 hover:z-120 dark:decoration-slate-300/80;
+      @apply relative inline-block cursor-help whitespace-nowrap underline decoration-current decoration-dotted underline-offset-2 transition-all duration-200;
 
       & .cbi-tooltip {
         @apply invisible scale-95 transform opacity-0 transition-all duration-300 ease-out;
@@ -720,7 +724,7 @@
 
   @layer badge {
     .zonebadge {
-      @apply inline-flex items-center gap-1.5 overflow-visible rounded-full border border-black/8 bg-white/98 px-1 py-1.5 text-sm font-medium text-slate-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md max-md:gap-1 max-md:text-xs dark:border-white/12 dark:bg-slate-800/95 dark:text-slate-200 dark:shadow-black/25;
+      @apply inline-flex items-center gap-1.5 overflow-visible rounded-full border border-black/8 bg-white px-1 py-1.5 text-sm font-medium text-slate-800 shadow-sm transition-all duration-200 hover:shadow-md max-md:gap-1 max-md:text-xs dark:border-white/12 dark:bg-slate-800 dark:text-slate-200 dark:shadow-black/25;
 
       .cbi-dropdown & {
         @apply rounded-2xl;
@@ -1403,7 +1407,7 @@
       @apply relative flex items-center gap-0 overflow-x-auto border-b border-slate-200/40 dark:border-slate-700/30;
 
       & a {
-        @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 no-underline transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
+        @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 transition-colors duration-200 hover:text-slate-700 hover:no-underline dark:text-slate-400 dark:hover:text-slate-300;
       }
 
       & > li.active {
