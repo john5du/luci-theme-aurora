@@ -1522,6 +1522,12 @@
      - Migration: Promote stable rules to appropriate layers (e.g., components/plugins) or delete once fixed upstream.
    */
 @layer patches {
+  @layer admin-network-network {
+    [data-name="bridge-vlan"] > div {
+      @apply max-md:!overflow-visible;
+    }
+  }
+
   @layer luci-app-openclash {
     [data-page="admin-services-openclash-log"] {
       @apply dark:bg-aurora-night-teal;
