@@ -326,6 +326,25 @@
 
         .controls {
           @apply m-2 flex flex-wrap items-center gap-3 max-md:m-1 max-md:gap-2;
+
+          & label {
+            & input[type="radio"],
+            & input[type="checkbox"] {
+              @apply mr-1 align-middle;
+            }
+          }
+        }
+
+        #content_syslog {
+          @apply m-2 max-md:m-1;
+
+          & > div {
+            @apply flex flex-wrap items-baseline gap-x-2 max-md:gap-x-1.5;
+            & > .cbi-input-select,
+            & > .cbi-input-text {
+              @apply max-md:min-w-45;
+            }
+          }
         }
 
         #syslog {
