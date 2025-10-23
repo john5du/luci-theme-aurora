@@ -343,10 +343,6 @@
           }
         }
 
-        #syslog {
-          @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 max-h-screen min-h-96 w-full resize-y rounded-3xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
-        }
-
         & div[style*="background:#fff"] {
           @apply dark:border-slate-600 dark:!bg-slate-900;
         }
@@ -398,6 +394,23 @@
               @apply before:rotate-90 before:[mask:url('@assets/icons/arrow-right.svg')_center/cover_no-repeat];
             }
           }
+        }
+      }
+
+      #syslog,
+      #log_textarea {
+        @apply bg-aurora-night-slate max-h-[calc(100vh-6rem)] min-h-96 w-full rounded-3xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 shadow-lg transition-all duration-200 dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
+      }
+
+      #syslog {
+        @apply focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 resize-y whitespace-normal focus:shadow-lg focus:ring-2 focus:outline-none;
+      }
+
+      #log_textarea {
+        @apply overflow-auto;
+
+        & pre {
+          @apply m-0 w-full overflow-visible break-words whitespace-pre-wrap;
         }
       }
     }
