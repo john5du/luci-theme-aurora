@@ -633,7 +633,7 @@
         & > ul.dropdown {
           @apply visible w-auto;
           & > li[unselectable] {
-            @apply pointer-events-none opacity-40 dark:opacity-30;
+            @apply opacity-40 dark:opacity-30;
           }
         }
       }
