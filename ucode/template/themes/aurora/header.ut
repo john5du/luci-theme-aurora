@@ -23,32 +23,34 @@
 		<meta charset="utf-8">
 		<title>{{ striptags(`${boardinfo.hostname ?? '?'}${node ? ` - ${node.title}` : ''}`) }} - LuCI</title>
 		<script>
-			const stored = localStorage.getItem('aurora.theme');
-			
-			const applyTheme = (theme) => {
-				const themes = ['light', 'dark', 'device'];
-				const currentTheme = themes.includes(theme) ? theme : 'device';
-				const isDarkMode = currentTheme === 'dark' || (currentTheme === 'device' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+			const setTheme = (theme) => {
+				const current = ['light', 'dark', 'device'].includes(theme) ? theme : 'device';
+				const isDark = current === 'dark' || (current === 'device' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-				document.documentElement.setAttribute('data-darkmode', isDarkMode);
-				localStorage.setItem('aurora.theme', currentTheme);
+				document.documentElement.setAttribute('data-darkmode', isDark);
+				localStorage.setItem('aurora.theme', current);
+			};
 
-				document.querySelectorAll('.theme-switcher .theme-option').forEach(option => {
-					const isActive = option.dataset.theme === currentTheme;
-					option.classList.toggle('active', isActive);
-					const radio = option.querySelector('input[type="radio"]');
-					if (radio) radio.checked = isActive;
+			const syncSwitchers = () => {
+				const current = localStorage.getItem('aurora.theme') || 'device';
+				document.querySelectorAll('.theme-switcher .theme-option').forEach(opt => {
+					const active = opt.dataset.theme === current;
+					opt.classList.toggle('active', active);
+					opt.querySelector('input[type="radio"]')?.setAttribute('checked', active);
 				});
 			};
 
+			setTheme(localStorage.getItem('aurora.theme'));
+
 			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if ((stored || 'device') === 'device') applyTheme('device');
+				const theme = localStorage.getItem('aurora.theme') || 'device';
+				if (theme === 'device') setTheme('device'), syncSwitchers();
 			});
 
 			document.addEventListener('DOMContentLoaded', () => {
-				applyTheme(stored);
-				document.querySelectorAll('.theme-switcher .theme-option').forEach(option => {
-					option.addEventListener('click', () => applyTheme(option.dataset.theme));
+				syncSwitchers();
+				document.querySelectorAll('.theme-switcher .theme-option').forEach(opt => {
+					opt.addEventListener('click', () => (setTheme(opt.dataset.theme), syncSwitchers()));
 				});
 			});
 		</script>
