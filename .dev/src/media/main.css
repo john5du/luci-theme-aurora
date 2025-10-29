@@ -511,7 +511,7 @@
   @layer select {
     select {
       @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 appearance-none rounded-2xl border border-slate-300/70 bg-white px-3 py-1.5 pr-10 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-900 dark:text-slate-100;
-      @apply bg-[url('@assets/icons/arrow-down.svg')] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat;
+      @apply bg-[url('@assets/icons/arrow-down.svg')] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat dark:bg-[url('@assets/icons/arrow-down-dark.svg')];
       &[disabled] {
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
       }
@@ -539,9 +539,12 @@
     }
 
     .cbi-dropdown {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 inline-flex min-w-fit flex-shrink-0 items-center rounded-2xl border border-slate-300/70 bg-white p-0 whitespace-nowrap shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-900;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 inline-flex min-w-fit flex-shrink-0 items-center p-0 whitespace-nowrap shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none;
       &[disabled] {
         @apply pointer-events-none opacity-40 dark:opacity-30;
+      }
+      &:not(.btn):not(.cbi-button) {
+        @apply rounded-2xl border border-slate-300/70 bg-white dark:border-slate-600/60 dark:bg-slate-900;
       }
 
       & > ul {
@@ -626,7 +629,7 @@
       }
 
       & > .open {
-        @apply flex flex-none shrink-0 cursor-pointer items-center justify-center border-l border-slate-300/70 px-2.5 py-0.5 text-sm text-slate-600 transition-colors duration-200 hover:border-slate-400/80 hover:text-slate-800 dark:border-slate-600/70 dark:text-slate-400 dark:hover:border-slate-500/80 dark:hover:text-slate-200;
+        @apply flex flex-none shrink-0 cursor-pointer items-center justify-center border-l px-2.5 py-0.5 text-sm text-current;
       }
     }
   }
