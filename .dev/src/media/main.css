@@ -693,6 +693,15 @@
         @apply border-red-200/40 bg-gradient-to-br from-red-50 via-red-100 to-red-50 text-red-900 shadow-red-500/10 dark:border-red-500/30 dark:from-red-900/40 dark:via-red-800/30 dark:to-red-900/40 dark:text-red-200 dark:shadow-red-400/10;
       }
 
+      h4,
+      h5,
+      pre,
+      ul,
+      li,
+      p {
+        @apply border-0 bg-transparent text-inherit;
+      }
+
       & h4 {
         @apply mb-2 text-lg font-semibold max-md:mb-1.5 max-md:text-base;
       }
