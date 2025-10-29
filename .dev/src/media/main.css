@@ -466,8 +466,7 @@
     input[type="password"],
     .cbi-input-text,
     .cbi-input {
-      @apply rounded-2xl px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 focus:bg-white dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400 dark:focus:bg-slate-900;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 relative border border-slate-300/70 bg-white shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 relative rounded-2xl border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400;
 
       .table.cbi-section-table & {
         @apply w-full;
@@ -484,7 +483,7 @@
 
     input[type="radio"],
     input[type="checkbox"] {
-      @apply focus:before:border-aurora-sky focus:before:ring-aurora-sky/20 checked:before:border-aurora-sky checked:before:bg-aurora-sky dark:focus:before:border-aurora-teal-400 dark:focus:before:ring-aurora-teal-400/30 dark:checked:before:border-aurora-teal-600 dark:checked:before:bg-aurora-teal-600 relative mr-3 inline-block h-4 w-4 cursor-pointer appearance-none before:absolute before:top-0 before:left-0 before:h-4 before:w-4 before:border before:border-slate-300/70 before:bg-white before:transition-all before:duration-200 after:absolute after:top-0.5 after:left-0.5 after:h-3 after:w-3 after:bg-white after:opacity-0 after:transition-opacity after:duration-200 checked:after:opacity-100 hover:before:border-slate-400/60 focus:before:ring-2 focus:before:outline-none disabled:cursor-not-allowed dark:before:border-slate-600/60 dark:before:bg-slate-800 dark:hover:before:border-slate-500/60;
+      @apply focus:before:border-aurora-sky focus:before:ring-aurora-sky/20 checked:before:border-aurora-sky checked:before:bg-aurora-sky dark:focus:before:border-aurora-teal-400 dark:focus:before:ring-aurora-teal-400/30 dark:checked:before:border-aurora-teal-600 dark:checked:before:bg-aurora-teal-600 relative mr-3 inline-block h-4 w-4 cursor-pointer appearance-none before:absolute before:top-0 before:left-0 before:h-4 before:w-4 before:border before:border-slate-300/70 before:bg-white before:transition-all before:duration-200 after:absolute after:top-0.5 after:left-0.5 after:h-3 after:w-3 after:bg-white after:opacity-0 after:transition-opacity after:duration-200 checked:after:opacity-100 hover:before:border-slate-400/60 focus:before:ring-2 focus:before:outline-none disabled:cursor-not-allowed dark:before:border-slate-600/60 dark:before:bg-slate-900 dark:hover:before:border-slate-500/60;
     }
 
     input[type="radio"] {
@@ -502,20 +501,16 @@
 
   @layer textarea {
     textarea {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 min-h-24 w-full resize-y rounded-2xl border border-slate-300/70 bg-white px-3 py-2 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 min-h-24 w-full resize-y rounded-2xl border border-slate-300/70 bg-white px-3 py-2 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400;
       &[disabled] {
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
       }
-    }
-
-    #syslog {
-      @apply bg-slate-900 text-slate-100 dark:bg-gray-900 dark:text-gray-100;
     }
   }
 
   @layer select {
     select {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 appearance-none rounded-2xl border border-slate-300/70 bg-white px-3 py-1.5 pr-10 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-900;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 appearance-none rounded-2xl border border-slate-300/70 bg-white px-3 py-1.5 pr-10 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-900 dark:text-slate-100;
       @apply bg-[url('@assets/icons/arrow-down.svg')] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat;
       &[disabled] {
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
@@ -544,7 +539,7 @@
     }
 
     .cbi-dropdown {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 inline-flex min-w-fit flex-shrink-0 items-center rounded-2xl border border-slate-300/70 p-0 whitespace-nowrap shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 inline-flex min-w-fit flex-shrink-0 items-center rounded-2xl border border-slate-300/70 bg-white p-0 whitespace-nowrap shadow-sm transition-all duration-200 focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-900;
       &[disabled] {
         @apply pointer-events-none opacity-40 dark:opacity-30;
       }
