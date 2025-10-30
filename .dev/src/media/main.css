@@ -436,7 +436,7 @@
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
       }
       .td & {
-        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:min-h-10 max-md:px-3 max-md:py-2 max-md:text-sm;
+        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:min-h-9 max-md:text-sm;
       }
     }
 
@@ -1360,6 +1360,13 @@
           @apply max-md:flex-[0_0_100%] max-md:px-3 max-md:py-2 before:max-md:mb-1.5;
         }
 
+        & > input[type="text"],
+        & > input[type="password"],
+        & > select,
+        & > .cbi-dropdown:not(.btn):not(.cbi-button) {
+          @apply w-full;
+        }
+
         &.cbi-value-field {
           @apply break-all;
         }
@@ -1466,7 +1473,7 @@
         @apply relative inline-flex cursor-move flex-col items-start gap-2 self-stretch overflow-hidden rounded-2xl border border-slate-200/40 bg-white py-3 pr-10 pl-4 shadow-sm max-md:w-full max-md:py-2.5 max-md:pr-8 max-md:pl-3 dark:border-slate-600/25 dark:bg-slate-800;
 
         &::after {
-          @apply absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-xl bg-slate-100 text-sm font-medium text-slate-600 content-['\00D7'] hover:bg-red-50 hover:text-red-600 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-red-900/20 dark:hover:text-red-400;
+          @apply absolute top-2.5 right-2 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-xl bg-slate-100 text-sm font-medium text-slate-600 content-['\00D7'] hover:bg-red-50 hover:text-red-600 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-red-900/20 dark:hover:text-red-400;
         }
 
         & > span {
