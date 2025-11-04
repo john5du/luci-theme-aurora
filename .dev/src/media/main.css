@@ -1511,13 +1511,25 @@
       @apply inline-flex w-max flex-col items-start gap-3 max-md:!max-w-full;
 
       & .item {
-        @apply relative inline-flex cursor-move flex-col items-start gap-2 self-stretch rounded-2xl border border-slate-200/40 bg-white py-3 pr-10 pl-4 shadow-sm max-md:w-full max-md:py-2.5 max-md:pr-8 max-md:pl-3 dark:border-slate-600/25 dark:bg-slate-800;
+        @apply pointer-events-auto relative inline-flex cursor-move flex-col items-start gap-2 self-stretch overflow-hidden rounded-2xl border border-slate-200/40 bg-white py-3 pr-10 pl-4 break-all shadow-sm transition-all duration-200 select-text max-md:w-full max-md:py-2.5 max-md:pr-8 max-md:pl-3 dark:border-slate-600/25 dark:bg-slate-800;
         @apply after:absolute after:top-2.5 after:right-2 after:inline-flex after:h-6 after:w-6 after:flex-shrink-0 after:cursor-pointer after:items-center after:justify-center after:rounded-xl after:bg-slate-100 after:text-sm after:font-medium after:text-slate-600 after:content-['\00D7'] dark:after:bg-slate-700 dark:after:text-slate-400;
+
+        &.dragging {
+          @apply scale-95 cursor-grabbing opacity-50 shadow-2xl;
+        }
+
+        &.drag-over {
+          @apply border-aurora-sky/60 bg-aurora-sky/5 ring-aurora-sky/30 dark:border-aurora-teal-400/60 dark:bg-aurora-teal-600/10 dark:ring-aurora-teal-400/30 scale-105 shadow-lg ring-2;
+        }
 
         & > span,
         & > code {
-          @apply block w-full overflow-x-auto rounded-lg font-mono leading-relaxed whitespace-nowrap;
+          @apply pointer-events-none w-full rounded-lg font-mono leading-relaxed;
         }
+      }
+
+      & .placeholder {
+        @apply break-all;
       }
 
       & .add-item {
