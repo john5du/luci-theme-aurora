@@ -795,7 +795,7 @@
       @apply inline-flex items-center gap-1.5 overflow-visible rounded-full border border-black/8 bg-white px-1 py-1.5 text-sm font-medium text-slate-800 shadow-sm transition-all duration-200 hover:shadow-md max-md:gap-1 max-md:text-xs dark:border-white/12 dark:bg-slate-800 dark:text-slate-200 dark:shadow-black/25;
 
       .cbi-dropdown & {
-        @apply rounded-2xl px-1 py-0.5;
+        @apply rounded-xl px-1 py-0.5;
 
         &[style*="--zone-color-rgb:238, 238, 238"] {
           @apply dark:!bg-slate-700/60;
@@ -813,9 +813,9 @@
 
       .zonebadge > &,
       .cbi-dropdown & {
-        @apply rounded-full px-0.5 py-0;
+        @apply rounded-2xl px-1.5 py-0;
         & img {
-          @apply mr-1.5 w-4;
+          @apply mr-1 w-4;
         }
       }
 
@@ -830,7 +830,7 @@
       }
 
       &.ifacebadge-active {
-        @apply border-aurora-sky font-semibold;
+        @apply border-aurora-sky dark:border-aurora-teal-400 font-semibold;
       }
 
       &.large {
