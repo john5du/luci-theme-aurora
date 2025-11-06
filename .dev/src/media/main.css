@@ -1274,7 +1274,7 @@
       }
 
       & .cbi-section-table-titles.named {
-        @apply before:bg-white before:max-md:bg-white dark:before:bg-gray-800 dark:max-md:before:bg-slate-800;
+        @apply before:bg-white before:max-md:bg-white before:md:rounded-tl-2xl dark:before:bg-gray-800 dark:max-md:before:bg-slate-800;
       }
 
       & tbody,
@@ -1303,8 +1303,11 @@
           &[data-title] {
             @apply before:rounded-bl-2xl before:border-b-0;
           }
-          td {
-            @apply border-b-0 first:md:rounded-bl-2xl last:md:rounded-br-2xl;
+          .td {
+            @apply border-b-0 last:md:rounded-br-2xl;
+          }
+          &:not([data-title]) .td {
+            @apply first:md:rounded-bl-2xl;
           }
         }
 
