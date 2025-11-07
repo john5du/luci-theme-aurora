@@ -16,7 +16,7 @@ const SELECTORS = {
   TOPMENU: "#topmenu",
   MODEMENU: "#modemenu",
   DESKTOP_MENU_CONTAINER: ".desktop-menu-container",
-  DESKTOP_MENU_BACKDROP: ".desktop-menu-backdrop",
+  DESKTOP_MENU_OVERLAY: ".desktop-menu-overlay",
   DESKTOP_NAV: ".desktop-nav",
   HEADER: "header",
 };
@@ -334,7 +334,7 @@ return baseclass.extend({
   // Render top-level menu items
   renderTopLevelMenu(children, ul, url, level) {
     const desktopMenuContainer = this.getElement(SELECTORS.DESKTOP_MENU_CONTAINER);
-    const desktopMenuBackdrop = this.getElement(SELECTORS.DESKTOP_MENU_BACKDROP);
+    const desktopMenuOverlay = this.getElement(SELECTORS.DESKTOP_MENU_OVERLAY);
     const header = this.getElement(SELECTORS.HEADER);
 
     if (desktopMenuContainer) desktopMenuContainer.innerHTML = "";
@@ -359,9 +359,9 @@ return baseclass.extend({
       }, this));
     }
 
-    // Setup backdrop click handler
-    if (desktopMenuBackdrop) {
-      desktopMenuBackdrop.addEventListener("click", L.bind(function() {
+    // Setup overlay click handler
+    if (desktopMenuOverlay) {
+      desktopMenuOverlay.addEventListener("click", L.bind(function() {
         this.hideDesktopNav();
       }, this));
     }
@@ -399,9 +399,9 @@ return baseclass.extend({
   // Toggle all desktop navigations active state
   toggleAllDesktopNavs(active) {
     const desktopMenuContainer = this.getElement(SELECTORS.DESKTOP_MENU_CONTAINER);
-    const desktopMenuBackdrop = this.getElement(SELECTORS.DESKTOP_MENU_BACKDROP);
+    const desktopMenuOverlay = this.getElement(SELECTORS.DESKTOP_MENU_OVERLAY);
     const header = this.getElement(SELECTORS.HEADER);
-    if (!desktopMenuContainer || !header || !desktopMenuBackdrop) return;
+    if (!desktopMenuContainer || !header || !desktopMenuOverlay) return;
 
     const allNavs = this.getElements(SELECTORS.DESKTOP_NAV, desktopMenuContainer);
     allNavs.forEach((nav) => {
@@ -409,24 +409,24 @@ return baseclass.extend({
     });
 
     header.classList.toggle(CLASSES.HAS_DESKTOP_NAV, active);
-    desktopMenuBackdrop.classList.toggle(CLASSES.ACTIVE, active);
+    desktopMenuOverlay.classList.toggle(CLASSES.ACTIVE, active);
   },
 
   showDesktopNav(menuId) {
     const desktopMenuContainer = this.getElement(SELECTORS.DESKTOP_MENU_CONTAINER);
-    const desktopMenuBackdrop = this.getElement(SELECTORS.DESKTOP_MENU_BACKDROP);
+    const desktopMenuOverlay = this.getElement(SELECTORS.DESKTOP_MENU_OVERLAY);
     const targetNav = this.getElement(`${SELECTORS.DESKTOP_NAV}[data-menu-for="${menuId}"]`);
 
-    if (!desktopMenuContainer || !targetNav || !desktopMenuBackdrop) return;
+    if (!desktopMenuContainer || !targetNav || !desktopMenuOverlay) return;
 
     // Hide all navigations first
     const allNavs = this.getElements(SELECTORS.DESKTOP_NAV, desktopMenuContainer);
     allNavs.forEach((nav) => nav.classList.remove(CLASSES.ACTIVE));
 
-    // Show target navigation and backdrop
+    // Show target navigation and overlay
     targetNav.classList.add(CLASSES.ACTIVE);
     this.getElement(SELECTORS.HEADER).classList.add(CLASSES.HAS_DESKTOP_NAV);
-    desktopMenuBackdrop.classList.add(CLASSES.ACTIVE);
+    desktopMenuOverlay.classList.add(CLASSES.ACTIVE);
   },
 
   hideDesktopNav() {

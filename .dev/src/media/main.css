@@ -298,14 +298,6 @@
       }
     }
 
-    .desktop-menu-backdrop {
-      @apply pointer-events-none fixed inset-0 top-14 z-30 bg-black/20 opacity-0 backdrop-blur-sm transition-opacity duration-300 max-md:hidden;
-
-      &.active {
-        @apply pointer-events-auto opacity-100;
-      }
-    }
-
     #maincontent {
       @apply mx-auto min-h-[calc(100vh-4rem)] w-11/12 max-w-6xl px-4 max-md:w-full max-md:px-3;
 
@@ -1224,10 +1216,10 @@
 
   @layer overlay {
     .mobile-menu-overlay {
-      @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:backdrop-blur-md max-md:transition-all max-md:duration-300 md:hidden;
+      @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:transition-all max-md:duration-300 md:hidden;
 
       &.mobile-menu-open {
-        @apply max-md:visible max-md:opacity-100;
+        @apply max-md:visible max-md:opacity-100 max-md:backdrop-blur-md;
 
         & .mobile-nav {
           @apply max-md:translate-x-0;
@@ -1273,6 +1265,14 @@
             }
           }
         }
+      }
+    }
+
+    .desktop-menu-overlay {
+      @apply pointer-events-none fixed inset-0 top-14 z-30 bg-black/20 opacity-0 transition-all duration-300 max-md:hidden;
+
+      &.active {
+        @apply pointer-events-auto opacity-100 backdrop-blur-sm;
       }
     }
   }
