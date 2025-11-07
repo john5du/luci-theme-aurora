@@ -231,7 +231,7 @@
             @apply m-0 list-none;
 
             & > a {
-              @apply block rounded-lg px-3 py-1.5 text-xs font-medium text-slate-700 transition-all duration-150 hover:bg-slate-200/90 hover:font-semibold hover:text-slate-900 focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/60 dark:hover:text-white;
+              @apply block px-3.5 py-1.5 text-xs font-medium text-slate-700 transition-all duration-300 hover:font-semibold hover:text-slate-900 hover:decoration-2 hover:underline-offset-4 focus-visible:outline-none dark:text-slate-200 hover:dark:text-slate-100;
             }
           }
         }
@@ -248,7 +248,11 @@
           @apply relative;
 
           .menu {
-            @apply block rounded-xl px-3 py-2 text-xs font-normal text-slate-600 no-underline transition-all duration-200 hover:bg-slate-200/90 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100;
+            @apply block px-3.5 py-1.5 text-xs font-medium text-slate-700 no-underline transition-all duration-150 hover:text-slate-900 dark:text-slate-200 hover:dark:text-slate-100;
+
+            &.menu-active {
+              @apply font-semibold text-slate-900 underline decoration-2 underline-offset-4 dark:text-slate-100;
+            }
           }
         }
       }
