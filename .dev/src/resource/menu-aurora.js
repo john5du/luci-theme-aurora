@@ -6,279 +6,337 @@ return baseclass.extend({
   __init__() {
     ui.menu.load().then(L.bind(this.render, this));
     this.initMobileMenu();
+    this.initUciIndicator();
+  },
+
+  initUciIndicator() {
+    const original = ui.changes?.setIndicator;
+    if (!original) return;
+
+    ui.changes.setIndicator = function (n) {
+      original.call(this, n);
+      document
+        .querySelector('[data-indicator="uci-changes"]')
+        ?.setAttribute("data-count", n || 0);
+    };
   },
 
   initMobileMenu() {
-    const menuToggle = document.getElementById("mobile-menu-btn");
-    const overlay = document.getElementById("mobile-menu-overlay");
-    const closeBtn = document.getElementById("mobile-nav-close");
+    const overlay = document.querySelector("#mobile-menu-overlay");
+    const menuToggle = document.querySelector("#mobile-menu-btn");
+    const closeBtn = document.querySelector("#mobile-nav-close");
 
-    if (menuToggle && overlay) {
-      menuToggle.addEventListener("click", (e) => {
+    if (!menuToggle || !overlay) return;
+
+    // Toggle menu
+    menuToggle.addEventListener(
+      "click",
+      L.bind(function (e) {
         e.stopPropagation();
         const isOpen = overlay.classList.contains("mobile-menu-open");
 
+        overlay.classList.toggle("mobile-menu-open", !isOpen);
+        menuToggle.classList.toggle("active", !isOpen);
+        menuToggle.setAttribute("aria-expanded", !isOpen);
+        document.body.style.overflow = isOpen ? "" : "hidden";
+
         if (isOpen) {
-          this.closeMobileMenu();
-        } else {
-          this.openMobileMenu();
+          document
+            .querySelectorAll(".mobile-nav-item.submenu-expanded")
+            .forEach((item) => {
+              item.classList.remove("submenu-expanded");
+              const submenu = item.querySelector(".mobile-nav-submenu");
+              if (submenu) {
+                submenu.style.maxHeight = "0";
+                submenu.style.opacity = "0";
+              }
+            });
         }
-      });
+      }, this),
+    );
 
-      if (closeBtn) {
-        closeBtn.addEventListener("click", (e) => {
+    // Close button
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => menuToggle.click());
+    }
+
+    // Overlay click
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) menuToggle.click();
+    });
+
+    // Escape key
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        overlay.classList.contains("mobile-menu-open")
+      ) {
+        menuToggle.click();
+      }
+    });
+
+    // Submenu toggle
+    document.addEventListener(
+      "click",
+      L.bind(function (e) {
+        const link = e.target.closest(".mobile-nav-link");
+        if (!link) return;
+
+        const item = link.closest(".mobile-nav-item");
+        const submenu = item?.querySelector(".mobile-nav-submenu");
+
+        if (submenu) {
+          e.preventDefault();
           e.stopPropagation();
-          this.closeMobileMenu();
-        });
-      }
 
-      overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) {
-          this.closeMobileMenu();
+          const isExpanded = item.classList.contains("submenu-expanded");
+
+          // Close all
+          document
+            .querySelectorAll(".mobile-nav-item.submenu-expanded")
+            .forEach((i) => {
+              if (i !== item) {
+                i.classList.remove("submenu-expanded");
+                const s = i.querySelector(".mobile-nav-submenu");
+                if (s) {
+                  s.style.maxHeight = "0";
+                  s.style.opacity = "0";
+                }
+              }
+            });
+
+          // Toggle current
+          item.classList.toggle("submenu-expanded", !isExpanded);
+          submenu.style.maxHeight = isExpanded
+            ? "0"
+            : `${submenu.scrollHeight}px`;
+          submenu.style.opacity = isExpanded ? "0" : "1";
         }
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (
-          e.key === "Escape" &&
-          overlay.classList.contains("mobile-menu-open")
-        ) {
-          this.closeMobileMenu();
-        }
-      });
-
-      document.addEventListener("click", (e) => {
-        const mobileNavLink = e.target.closest(".mobile-nav-link");
-        if (mobileNavLink) {
-          const parentItem = mobileNavLink.closest(".mobile-nav-item");
-          const submenu = parentItem
-            ? parentItem.querySelector(".mobile-nav-submenu")
-            : null;
-
-          if (submenu) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.toggleMobileSubmenu(parentItem);
-          }
-        }
-      });
-    }
-  },
-
-  openMobileMenu() {
-    const overlay = document.getElementById("mobile-menu-overlay");
-    const menuToggle = document.getElementById("mobile-menu-btn");
-
-    overlay.classList.add("mobile-menu-open");
-    menuToggle.classList.add("active");
-    menuToggle.setAttribute("aria-expanded", "true");
-
-    document.body.style.overflow = "hidden";
-  },
-
-  closeMobileMenu() {
-    const overlay = document.getElementById("mobile-menu-overlay");
-    const menuToggle = document.getElementById("mobile-menu-btn");
-
-    overlay.classList.remove("mobile-menu-open");
-    menuToggle.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
-
-    const allItems = document.querySelectorAll(
-      ".mobile-nav-item.submenu-expanded",
+      }, this),
     );
-    allItems.forEach((item) => {
-      item.classList.remove("submenu-expanded");
-      const submenu = item.querySelector(".mobile-nav-submenu");
-      if (submenu) {
-        submenu.style.maxHeight = "0";
-        submenu.style.opacity = "0";
-      }
-    });
-
-    document.body.style.overflow = "";
   },
 
-  toggleMobileSubmenu(parentItem) {
-    const submenu = parentItem.querySelector(".mobile-nav-submenu");
-    const isExpanded = parentItem.classList.contains("submenu-expanded");
-
-    const allItems = document.querySelectorAll(
-      ".mobile-nav-item.submenu-expanded",
-    );
-    allItems.forEach((item) => {
-      if (item !== parentItem) {
-        item.classList.remove("submenu-expanded");
-        const otherSubmenu = item.querySelector(".mobile-nav-submenu");
-        if (otherSubmenu) {
-          otherSubmenu.style.maxHeight = "0";
-          otherSubmenu.style.opacity = "0";
-        }
-      }
-    });
-
-    if (isExpanded) {
-      parentItem.classList.remove("submenu-expanded");
-      submenu.style.maxHeight = "0";
-      submenu.style.opacity = "0";
-    } else {
-      parentItem.classList.add("submenu-expanded");
-      submenu.style.maxHeight = submenu.scrollHeight + "px";
-      submenu.style.opacity = "1";
-    }
-  },
-
-  renderMobileMenu(tree, url, level) {
-    const mobileNavList = document.querySelector("#mobile-nav-list");
+  renderMobileMenu(tree, url) {
+    const list = document.querySelector("#mobile-nav-list");
     const children = ui.menu.getChildren(tree);
 
-    if (!mobileNavList || children.length === 0) return;
+    if (!list || !children.length) return;
 
-    if (!level) {
-      mobileNavList.innerHTML = "";
-    }
+    list.innerHTML = "";
 
     children.forEach((child) => {
       const submenu = ui.menu.getChildren(child);
       const hasSubmenu = submenu.length > 0;
-      const linkUrl = hasSubmenu ? "#" : L.url(url, child.name);
 
-      const li = E("li", { class: "mobile-nav-item" });
-
-      if (hasSubmenu) {
-        const mainLink = E(
+      const li = E("li", { class: "mobile-nav-item" }, [
+        E(
           "a",
           {
             class: "mobile-nav-link",
-            href: linkUrl,
+            href: hasSubmenu ? "#" : L.url(url, child.name),
           },
           [_(child.title)],
-        );
+        ),
+      ]);
 
-        li.appendChild(mainLink);
-
-        const submenuUl = E("ul", {
+      if (hasSubmenu) {
+        const ul = E("ul", {
           class: "mobile-nav-submenu",
           style: "max-height: 0; opacity: 0;",
         });
 
-        submenu.forEach((subchild) => {
-          const subLi = E("li", { class: "mobile-nav-subitem" }, [
-            E(
-              "a",
-              {
-                class: "mobile-nav-sublink",
-                href: L.url(url, child.name, subchild.name),
-              },
-              [_(subchild.title)],
-            ),
-          ]);
-          submenuUl.appendChild(subLi);
+        submenu.forEach((item) => {
+          ul.appendChild(
+            E("li", { class: "mobile-nav-subitem" }, [
+              E(
+                "a",
+                {
+                  class: "mobile-nav-sublink",
+                  href: L.url(url, child.name, item.name),
+                },
+                [_(item.title)],
+              ),
+            ]),
+          );
         });
 
-        li.appendChild(submenuUl);
-      } else {
-        li.appendChild(
-          E(
-            "a",
-            {
-              class: "mobile-nav-link",
-              href: linkUrl,
-            },
-            [_(child.title)],
-          ),
-        );
+        li.appendChild(ul);
       }
 
-      mobileNavList.appendChild(li);
+      list.appendChild(li);
     });
   },
 
   render(tree) {
-    let node = tree;
-    let url = "";
-
     this.renderModeMenu(tree);
 
     if (L.env.dispatchpath.length >= 3) {
-      for (var i = 0; i < 3 && node; i++) {
-        node = node.children[L.env.dispatchpath[i]];
-        url = url + (url ? "/" : "") + L.env.dispatchpath[i];
+      let node = tree;
+      let url = "";
+
+      for (let i = 0; i < 3 && node; i++) {
+        const segment = L.env.dispatchpath[i];
+        node = node.children?.[segment];
+        url += (url ? "/" : "") + segment;
       }
 
       if (node) this.renderTabMenu(node, url);
     }
   },
 
-  renderTabMenu(tree, url, level) {
+  renderTabMenu(tree, url, level = 0) {
     const container = document.querySelector("#tabmenu");
     const ul = E("ul", { class: "tabs" });
     const children = ui.menu.getChildren(tree);
     let activeNode = null;
 
     children.forEach((child) => {
-      const isActive = L.env.dispatchpath[3 + (level || 0)] == child.name;
-      const activeClass = isActive ? " active" : "";
-      const className = "tabmenu-item-%s %s".format(child.name, activeClass);
+      const isActive = L.env.dispatchpath[3 + level] === child.name;
 
       ul.appendChild(
-        E("li", { class: className }, [
-          E("a", { href: L.url(url, child.name) }, [_(child.title)]),
-        ]),
+        E(
+          "li",
+          {
+            class: `tabmenu-item-${child.name}${isActive ? " active" : ""}`,
+          },
+          [E("a", { href: L.url(url, child.name) }, [_(child.title)])],
+        ),
       );
 
       if (isActive) activeNode = child;
     });
 
-    if (ul.children.length == 0) return E([]);
+    if (!ul.children.length) return E([]);
 
     container.appendChild(ul);
     container.style.display = "";
 
-    if (activeNode)
-      this.renderTabMenu(
-        activeNode,
-        url + "/" + activeNode.name,
-        (level || 0) + 1,
-      );
+    if (activeNode) {
+      this.renderTabMenu(activeNode, `${url}/${activeNode.name}`, level + 1);
+    }
 
     return ul;
   },
 
-  renderMainMenu(tree, url, level) {
+  renderMainMenu(tree, url, level = 0) {
     const ul = level
-      ? E("ul", { class: "dropdown-menu" })
+      ? E("ul", { class: "desktop-nav-list" })
       : document.querySelector("#topmenu");
     const children = ui.menu.getChildren(tree);
 
-    if (children.length == 0 || level > 1) return E([]);
+    if (!children.length || level > 1) return E([]);
 
-    children.forEach((child) => {
-      const submenu = this.renderMainMenu(
-        child,
-        url + "/" + child.name,
-        (level || 0) + 1,
-      );
-      const subclass = !level && submenu.firstElementChild ? "dropdown" : "";
-      const linkclass = !level && submenu.firstElementChild ? "menu" : "menu";
-      const linkurl = submenu.firstElementChild ? "#" : L.url(url, child.name);
+    if (level === 0) {
+      const container = document.querySelector(".desktop-menu-container");
+      const overlay = document.querySelector(".desktop-menu-overlay");
 
-      const li = E("li", { class: subclass }, [
-        E("a", { class: linkclass, href: linkurl }, [_(child.title)]),
-        submenu,
-      ]);
+      if (container) container.innerHTML = "";
 
-      ul.appendChild(li);
-    });
+      children.forEach((child) => {
+        const submenu = ui.menu.getChildren(child);
+        const hasSubmenu = submenu.length > 0;
+        const menuId = `menu-${child.name}`;
+
+        const li = E(
+          "li",
+          {
+            class: hasSubmenu ? "has-desktop-nav" : "",
+            "data-menu-id": menuId,
+          },
+          [
+            E(
+              "a",
+              {
+                class: "menu",
+                href: hasSubmenu ? "#" : L.url(url, child.name),
+              },
+              [_(child.title)],
+            ),
+          ],
+        );
+
+        ul.appendChild(li);
+
+        if (hasSubmenu && container) {
+          const nav = E(
+            "div",
+            {
+              class: "desktop-nav",
+              "data-menu-for": menuId,
+            },
+            [this.renderMainMenu(child, `${url}/${child.name}`, level + 1)],
+          );
+
+          container.appendChild(nav);
+
+          // Click handler
+          li.querySelector("a").addEventListener(
+            "click",
+            L.bind(function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              const isActive = nav.classList.contains("active");
+
+              if (isActive) {
+                this.hideDesktopNav();
+              } else {
+                // Hide all
+                document
+                  .querySelectorAll(".desktop-nav")
+                  .forEach((n) => n.classList.remove("active"));
+
+                // Update active menu item
+                document
+                  .querySelectorAll("#topmenu a")
+                  .forEach((a) => a.classList.remove("menu-active"));
+                li.querySelector("a").classList.add("menu-active");
+
+                // Show target
+                nav.classList.add("active");
+                document
+                  .querySelector("header")
+                  .classList.add("has-desktop-nav");
+                overlay.classList.add("active");
+              }
+            }, this),
+          );
+        }
+      });
+
+      // Overlay click
+      if (overlay) {
+        overlay.addEventListener("click", L.bind(this.hideDesktopNav, this));
+      }
+    } else {
+      children.forEach((child) => {
+        ul.appendChild(
+          E("li", {}, [
+            E("a", { href: L.url(url, child.name) }, [_(child.title)]),
+          ]),
+        );
+      });
+    }
 
     ul.style.display = "";
-
     return ul;
+  },
+
+  hideDesktopNav() {
+    document
+      .querySelectorAll(".desktop-nav")
+      .forEach((nav) => nav.classList.remove("active"));
+    document.querySelector("header")?.classList.remove("has-desktop-nav");
+    document.querySelector(".desktop-menu-overlay")?.classList.remove("active");
+    document
+      .querySelectorAll("#topmenu a")
+      .forEach((a) => a.classList.remove("menu-active"));
   },
 
   renderModeMenu(tree) {
     const ul = document.querySelector("#modemenu");
     const children = ui.menu.getChildren(tree);
+    let activeChild = null;
 
     children.forEach((child, index) => {
       const isActive = L.env.requestpath.length
@@ -286,17 +344,25 @@ return baseclass.extend({
         : index === 0;
 
       ul.appendChild(
-        E("li", { class: isActive ? "active" : "" }, [
-          E("a", { href: L.url(child.name) }, [_(child.title)]),
-        ]),
+        E(
+          "li",
+          {
+            class: isActive ? "active" : "",
+          },
+          [E("a", { href: L.url(child.name) }, [_(child.title)])],
+        ),
       );
 
-      if (isActive) {
-        this.renderMainMenu(child, child.name);
-        this.renderMobileMenu(child, child.name);
-      }
+      if (isActive) activeChild = child;
     });
 
-    if (ul.children.length > 1) ul.style.display = "";
+    if (activeChild) {
+      this.renderMainMenu(activeChild, activeChild.name);
+      this.renderMobileMenu(activeChild, activeChild.name);
+    }
+
+    if (ul.children.length > 1) {
+      ul.style.display = "";
+    }
   },
 });
