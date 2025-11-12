@@ -208,7 +208,7 @@
       }
 
       & .desktop-menu-container {
-        @apply pointer-events-none absolute inset-x-0 top-0 z-30 h-0 w-full overflow-hidden opacity-0 transition-all duration-300 ease-out before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-full before:min-h-full before:bg-white/10 before:backdrop-blur-xl before:backdrop-saturate-150 before:transition-all before:duration-300 max-md:hidden dark:before:bg-gray-900/90;
+        @apply pointer-events-none absolute inset-x-0 top-0 z-30 h-0 w-full overflow-hidden opacity-0 transition-all duration-150 ease-in-out before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-full before:min-h-full before:bg-white/10 before:backdrop-blur-xl before:backdrop-saturate-150 max-md:hidden dark:before:bg-gray-900/90;
 
         &.active {
           @apply pointer-events-auto opacity-100;
@@ -240,10 +240,10 @@
           }
 
           & .desktop-nav {
-            @apply pointer-events-none fixed top-14 left-0 z-40 hidden w-full px-6 pt-4 pb-6 opacity-0 transition-all duration-300 max-md:hidden;
+            @apply pointer-events-none fixed top-14 left-0 z-40 w-full px-6 pt-4 pb-6 opacity-0 transition-all duration-150 max-md:hidden;
 
             &.active {
-              @apply pointer-events-auto block opacity-100;
+              @apply pointer-events-auto opacity-100;
             }
 
             & .desktop-nav-list {
@@ -253,7 +253,7 @@
                 @apply m-0 list-none;
 
                 & > a {
-                  @apply inline-block px-3 py-1.5 text-sm font-normal whitespace-nowrap text-slate-700 no-underline transition-all duration-150 hover:font-medium hover:text-slate-900 hover:underline hover:decoration-2 hover:underline-offset-4 focus-visible:outline-none dark:text-slate-300 hover:dark:text-slate-100;
+                  @apply inline-block px-3 py-1.5 text-sm font-normal whitespace-nowrap text-slate-700 no-underline transition-all duration-50 hover:font-medium hover:text-slate-900 hover:underline hover:decoration-2 hover:underline-offset-4 focus-visible:outline-none dark:text-slate-300 hover:dark:text-slate-100;
                 }
               }
             }

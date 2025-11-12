@@ -273,21 +273,21 @@ return baseclass.extend({
                 .forEach((a) => a.classList.remove("menu-active"));
 
               menuLink.classList.add("menu-active");
-              nav.classList.add("active");
               header.classList.add("has-desktop-nav");
 
-              if (container) {
-                requestAnimationFrame(() => {
-                  const navHeight = nav.scrollHeight;
-                  const headerHeight =
-                    header.querySelector(".header-content")?.offsetHeight || 56;
-                  const totalHeight = headerHeight + navHeight;
-                  container.style.height = `${totalHeight}px`;
-                  container.classList.add("active");
-                });
-              }
+              const navHeight = nav.scrollHeight;
+              const headerHeight =
+                header.querySelector(".header-content")?.offsetHeight || 56;
+              const totalHeight = headerHeight + navHeight;
 
-              overlay.classList.add("active");
+              container && (container.style.height = `${totalHeight}px`);
+
+              requestAnimationFrame(() => {
+                nav.classList.add("active");
+                overlay.classList.add("active");
+
+                container && container.classList.add("active");
+              });
             }, 150);
           });
 
