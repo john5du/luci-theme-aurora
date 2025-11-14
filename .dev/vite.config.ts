@@ -163,27 +163,15 @@ function createLocalServePlugin(): Plugin {
       const normalizedFile = file.replace(/\\/g, "/");
 
       const resources = [
-        { map: cssHmrMap, type: "CSS", config: resourceConfig.css },
-        { map: jsHmrMap, type: "JS", config: resourceConfig.js },
+        { map: cssHmrMap, config: resourceConfig.css },
+        { map: jsHmrMap, config: resourceConfig.js },
       ];
 
-      for (const { map, type, config } of resources) {
+      for (const { map, config } of resources) {
         const publicPath = map[normalizedFile];
         if (publicPath) {
-          console.log(`[HMR] ${config.hmrMessage}: ${publicPath}`);
-          if (type === "CSS") {
-            console.log(
-              `[HMR] Triggering full page reload due to path mismatch`,
-            );
-            console.log(
-              `[HMR] Reason: Browser references ${publicPath}, but Vite tracks ${normalizedFile}`,
-            );
-          } else {
-            console.log(`[HMR] Triggering full page reload`);
-          }
-
+          console.log(`[HMR] ${config.hmrMessage}: ${publicPath} (tracked: ${normalizedFile})`);
           server.ws.send({ type: "full-reload", path: "*" });
-
           return [];
         }
       }
