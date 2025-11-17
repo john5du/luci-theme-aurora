@@ -4,7 +4,7 @@
 
 return baseclass.extend({
   __init__() {
-    ui.menu.load().then(L.bind(this.render, this));
+    ui.menu.load().then((tree) => this.render(tree));
     this.initMobileMenu();
     this.initUciIndicator();
   },
@@ -28,44 +28,37 @@ return baseclass.extend({
 
     if (!menuToggle || !overlay) return;
 
-    // Toggle menu
-    menuToggle.addEventListener(
-      "click",
-      L.bind(function (e) {
-        e.stopPropagation();
-        const isOpen = overlay.classList.contains("mobile-menu-open");
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = overlay.classList.contains("mobile-menu-open");
 
-        overlay.classList.toggle("mobile-menu-open", !isOpen);
-        menuToggle.classList.toggle("active", !isOpen);
-        menuToggle.setAttribute("aria-expanded", !isOpen);
-        document.body.style.overflow = isOpen ? "" : "hidden";
+      overlay.classList.toggle("mobile-menu-open", !isOpen);
+      menuToggle.classList.toggle("active", !isOpen);
+      menuToggle.setAttribute("aria-expanded", !isOpen);
+      document.body.style.overflow = isOpen ? "" : "hidden";
 
-        if (isOpen) {
-          document
-            .querySelectorAll(".mobile-nav-item.submenu-expanded")
-            .forEach((item) => {
-              item.classList.remove("submenu-expanded");
-              const submenu = item.querySelector(".mobile-nav-submenu");
-              if (submenu) {
-                submenu.style.maxHeight = "0";
-                submenu.style.opacity = "0";
-              }
-            });
-        }
-      }, this),
-    );
+      if (isOpen) {
+        document
+          .querySelectorAll(".mobile-nav-item.submenu-expanded")
+          .forEach((item) => {
+            item.classList.remove("submenu-expanded");
+            const submenu = item.querySelector(".mobile-nav-submenu");
+            if (submenu) {
+              submenu.style.maxHeight = "0";
+              submenu.style.opacity = "0";
+            }
+          });
+      }
+    });
 
-    // Close button
     if (closeBtn) {
       closeBtn.addEventListener("click", () => menuToggle.click());
     }
 
-    // Overlay click
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) menuToggle.click();
     });
 
-    // Escape key
     document.addEventListener("keydown", (e) => {
       if (
         e.key === "Escape" &&
@@ -75,45 +68,39 @@ return baseclass.extend({
       }
     });
 
-    // Submenu toggle
-    document.addEventListener(
-      "click",
-      L.bind(function (e) {
-        const link = e.target.closest(".mobile-nav-link");
-        if (!link) return;
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest(".mobile-nav-link");
+      if (!link) return;
 
-        const item = link.closest(".mobile-nav-item");
-        const submenu = item?.querySelector(".mobile-nav-submenu");
+      const item = link.closest(".mobile-nav-item");
+      const submenu = item?.querySelector(".mobile-nav-submenu");
 
-        if (submenu) {
-          e.preventDefault();
-          e.stopPropagation();
+      if (submenu) {
+        e.preventDefault();
+        e.stopPropagation();
 
-          const isExpanded = item.classList.contains("submenu-expanded");
+        const isExpanded = item.classList.contains("submenu-expanded");
 
-          // Close all
-          document
-            .querySelectorAll(".mobile-nav-item.submenu-expanded")
-            .forEach((i) => {
-              if (i !== item) {
-                i.classList.remove("submenu-expanded");
-                const s = i.querySelector(".mobile-nav-submenu");
-                if (s) {
-                  s.style.maxHeight = "0";
-                  s.style.opacity = "0";
-                }
+        document
+          .querySelectorAll(".mobile-nav-item.submenu-expanded")
+          .forEach((i) => {
+            if (i !== item) {
+              i.classList.remove("submenu-expanded");
+              const s = i.querySelector(".mobile-nav-submenu");
+              if (s) {
+                s.style.maxHeight = "0";
+                s.style.opacity = "0";
               }
-            });
+            }
+          });
 
-          // Toggle current
-          item.classList.toggle("submenu-expanded", !isExpanded);
-          submenu.style.maxHeight = isExpanded
-            ? "0"
-            : `${submenu.scrollHeight}px`;
-          submenu.style.opacity = isExpanded ? "0" : "1";
-        }
-      }, this),
-    );
+        item.classList.toggle("submenu-expanded", !isExpanded);
+        submenu.style.maxHeight = isExpanded
+          ? "0"
+          : `${submenu.scrollHeight}px`;
+        submenu.style.opacity = isExpanded ? "0" : "1";
+      }
+    });
   },
 
   renderMobileMenu(tree, url) {
@@ -229,19 +216,19 @@ return baseclass.extend({
     if (level === 0) {
       const container = document.querySelector(".desktop-menu-container");
       const overlay = document.querySelector(".desktop-menu-overlay");
+      const header = document.querySelector("header");
 
-      if (container) container.innerHTML = "";
+      let showTimer = null;
+      let hideTimer = null;
 
       children.forEach((child) => {
         const submenu = ui.menu.getChildren(child);
         const hasSubmenu = submenu.length > 0;
-        const menuId = `menu-${child.name}`;
 
         const li = E(
           "li",
           {
             class: hasSubmenu ? "has-desktop-nav" : "",
-            "data-menu-id": menuId,
           },
           [
             E(
@@ -257,56 +244,99 @@ return baseclass.extend({
 
         ul.appendChild(li);
 
-        if (hasSubmenu && container) {
+        if (hasSubmenu) {
           const nav = E(
             "div",
             {
               class: "desktop-nav",
-              "data-menu-for": menuId,
             },
             [this.renderMainMenu(child, `${url}/${child.name}`, level + 1)],
           );
 
-          container.appendChild(nav);
+          li.appendChild(nav);
 
-          // Click handler
-          li.querySelector("a").addEventListener(
-            "click",
-            L.bind(function (e) {
-              e.preventDefault();
-              e.stopPropagation();
+          const menuLink = li.querySelector("a");
 
-              const isActive = nav.classList.contains("active");
+          li.addEventListener("mouseenter", () => {
+            if (hideTimer) {
+              clearTimeout(hideTimer);
+              hideTimer = null;
+            }
 
-              if (isActive) {
-                this.hideDesktopNav();
-              } else {
-                // Hide all
-                document
-                  .querySelectorAll(".desktop-nav")
-                  .forEach((n) => n.classList.remove("active"));
+            showTimer = setTimeout(() => {
+              const wasActive = nav.classList.contains("active");
 
-                // Update active menu item
-                document
-                  .querySelectorAll("#topmenu a")
-                  .forEach((a) => a.classList.remove("menu-active"));
-                li.querySelector("a").classList.add("menu-active");
+              document.querySelectorAll(".desktop-nav").forEach((n) => {
+                if (n !== nav) n.classList.remove("active");
+              });
 
-                // Show target
-                nav.classList.add("active");
-                document
-                  .querySelector("header")
-                  .classList.add("has-desktop-nav");
-                overlay.classList.add("active");
-              }
-            }, this),
-          );
+              document.querySelectorAll("#topmenu a").forEach((a) => {
+                if (a !== menuLink) a.classList.remove("menu-active");
+              });
+
+              if (wasActive) return;
+
+              menuLink.classList.add("menu-active");
+              header.classList.add("has-desktop-nav");
+
+              requestAnimationFrame(() => {
+                const navHeight = nav.scrollHeight;
+                const headerHeight =
+                  header.querySelector(".header-content")?.offsetHeight || 56;
+                const totalHeight = headerHeight + navHeight;
+
+                if (container) {
+                  container.style.height = `${totalHeight}px`;
+                }
+
+                requestAnimationFrame(() => {
+                  nav.classList.add("active");
+                  overlay.classList.add("active");
+
+                  if (container) {
+                    container.classList.add("active");
+                  }
+                });
+              });
+            }, 100);
+          });
+
+          li.addEventListener("mouseleave", () => {
+            if (showTimer) {
+              clearTimeout(showTimer);
+              showTimer = null;
+            }
+          });
+
+          menuLink.addEventListener("click", (e) => {
+            e.preventDefault();
+          });
         }
       });
 
-      // Overlay click
-      if (overlay) {
-        overlay.addEventListener("click", L.bind(this.hideDesktopNav, this));
+      if (header && overlay) {
+        const hideMenu = () => {
+          if (showTimer) {
+            clearTimeout(showTimer);
+            showTimer = null;
+          }
+
+          hideTimer = setTimeout(() => {
+            this.hideDesktopNav();
+          }, 150);
+        };
+
+        header.addEventListener("mouseleave", hideMenu);
+        overlay.addEventListener("mouseenter", hideMenu);
+
+        header.addEventListener("mouseenter", () => {
+          if (hideTimer) {
+            clearTimeout(hideTimer);
+            hideTimer = null;
+          }
+        });
+
+        overlay.addEventListener("click", () => this.hideDesktopNav());
       }
     } else {
       children.forEach((child) => {
@@ -327,6 +357,13 @@ return baseclass.extend({
       .querySelectorAll(".desktop-nav")
       .forEach((nav) => nav.classList.remove("active"));
     document.querySelector("header")?.classList.remove("has-desktop-nav");
+
+    const container = document.querySelector(".desktop-menu-container");
+    if (container) {
+      container.classList.remove("active");
+      container.style.height = "";
+    }
+
     document.querySelector(".desktop-menu-overlay")?.classList.remove("active");
     document
       .querySelectorAll("#topmenu a")
