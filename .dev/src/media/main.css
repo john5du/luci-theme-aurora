@@ -1539,6 +1539,10 @@
           @apply px-0.5 py-1.5;
         }
 
+        [data-page="admin-system-mounts"] & {
+          @apply max-w-104 max-md:max-w-full;
+        }
+
         #wifi_assoclist_table & {
           @apply max-md:flex-[0_0_100%] max-md:px-3 max-md:py-2 before:max-md:mb-1.5;
         }
