@@ -22,8 +22,8 @@
   --primary-text: #499ecb;
   --secondary: #0f2e5d;
   --secondary-text: #0f2e5d;
-  --accent: #0f2e5d;
-  --accent-text: #0f2e5d;
+  --accent: oklch(0.62 0.22 25);
+  --accent-text: oklch(0.97 0.02 25);
   --muted: #0f2e5d;
   --muted-text: #0f2e5d;
   --destructive: #0f2e5d;
@@ -53,11 +53,20 @@
   --warning-end: oklch(0.98 0.02 90);
   --error: oklch(0.94 0.05 25);
   --error-text: oklch(0.35 0.12 25);
-  --error-border: oklch(0.62 0.22 25/0.4);
+  --error-border: oklch(0.62 0.22 25/0.3);
+  --error-ring: oklch(0.62 0.22 25/0.4);
   --error-shadow: oklch(0.62 0.22 25/0.1);
   --error-start: oklch(0.97 0.02 25);
   --error-mid: oklch(0.94 0.05 25);
   --error-end: oklch(0.97 0.02 25);
+
+  --default: oklch(0.97 0 0);
+  --default-text: oklch(0.205 0 0);
+  --default-border: oklch(0.922 0 0/0.3);
+  --default-shadow: oklch(0 0 0/0.1);
+  --default-start: oklch(0.98 0 0);
+  --default-mid: oklch(0.96 0 0);
+  --default-end: oklch(0.98 0 0);
 
   --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
@@ -97,8 +106,8 @@
   --secondary-text: #0f2e5d;
   --muted: #0f2e5d;
   --muted-text: #0f2e5d;
-  --accent: #0f2e5d;
-  --accent-text: #0f2e5d;
+  --accent: oklch(0.35 0.12 25);
+  --accent-text: oklch(0.88 0.14 25);
   --destructive: #0f2e5d;
   --destructive-text: #0f2e5d;
   --ring: #0f2e5d;
@@ -119,7 +128,7 @@
   --info-mid: oklch(0.28 0.08 240/0.3);
   --info-end: oklch(0.35 0.08 240/0.4);
   --warning: oklch(0.28 0.08 60/0.3);
-  --warning-text: oklch(0.90 0.12 90);
+  --warning-text: oklch(0.9 0.12 90);
   --warning-border: oklch(0.68 0.18 75/0.3);
   --warning-shadow: oklch(0.68 0.18 75/0.1);
   --warning-start: oklch(0.35 0.08 60/0.4);
@@ -128,10 +137,19 @@
   --error: oklch(0.28 0.12 25/0.3);
   --error-text: oklch(0.88 0.14 25);
   --error-border: oklch(0.62 0.22 25/0.3);
+  --error-ring: oklch(0.62 0.22 25/0.4);
   --error-shadow: oklch(0.62 0.22 25/0.1);
   --error-start: oklch(0.35 0.12 25/0.4);
   --error-mid: oklch(0.28 0.12 25/0.3);
   --error-end: oklch(0.35 0.12 25/0.4);
+
+  --default: oklch(0.269 0 0);
+  --default-text: oklch(0.985 0 0);
+  --default-border: oklch(0.275 0 0/0.3);
+  --default-shadow: oklch(0 0 0/0.3);
+  --default-start: oklch(0.28 0 0/0.8);
+  --default-mid: oklch(0.26 0 0/0.6);
+  --default-end: oklch(0.28 0 0/0.8);
 
   --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
@@ -283,10 +301,18 @@
   --color-error: var(--error);
   --color-error-text: var(--error-text);
   --color-error-border: var(--error-border);
+  --color-error-ring: var(--error-ring);
   --color-error-shadow: var(--error-shadow);
   --color-error-start: var(--error-start);
   --color-error-mid: var(--error-mid);
   --color-error-end: var(--error-end);
+  --color-default: var(--default);
+  --color-default-text: var(--default-text);
+  --color-default-border: var(--default-border);
+  --color-default-shadow: var(--default-shadow);
+  --color-default-start: var(--default-start);
+  --color-default-mid: var(--default-mid);
+  --color-default-end: var(--default-end);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -513,7 +539,7 @@
             @apply relative before:[mask:url('@assets/icons/setting.svg')_center/cover_no-repeat];
 
             &[data-count]:not([data-count="0"]) {
-              @apply after:absolute after:-top-0.5 after:-right-0.5 after:z-10 after:flex after:min-h-3 after:min-w-3 after:items-center after:justify-center after:rounded-full after:bg-red-500 after:px-0.5 after:text-[8px] after:leading-none after:font-bold after:text-white after:shadow-sm after:content-[attr(data-count)] dark:after:bg-red-600;
+              @apply after:bg-accent after:text-accent-text after:absolute after:-top-0.5 after:-right-0.5 after:z-10 after:flex after:min-h-3 after:min-w-3 after:items-center after:justify-center after:rounded-full after:px-0.5 after:text-[8px] after:leading-none after:font-bold after:shadow-sm after:content-[attr(data-count)];
             }
           }
         }
@@ -925,18 +951,18 @@
 
   @layer tooltip {
     .cbi-tooltip {
-      @apply absolute z-110 max-w-xs scale-95 transform rounded-xl border border-slate-200/60 bg-white px-3 py-2 text-xs break-normal whitespace-normal text-slate-900 opacity-0 shadow-xl backdrop-blur-xl transition-all duration-300 ease-out dark:border-slate-700/60 dark:bg-slate-900 dark:text-slate-100 dark:shadow-black/40;
+      @apply absolute z-110 max-w-xs scale-95 transform rounded-xl border-default-border bg-default text-default-text shadow-default-shadow px-3 py-2 text-xs break-normal whitespace-normal opacity-0 backdrop-blur-xl transition-all duration-300 ease-out;
       &.error {
-        @apply border-error-border bg-gradient-to-br from-error-start via-error-mid to-error-end text-error-text shadow-error-shadow;
+        @apply border-error-border from-error-start via-error-mid to-error-end text-error-text shadow-error-shadow bg-gradient-to-br;
       }
       &.success {
-        @apply border-success-border bg-gradient-to-br from-success-start via-success-mid to-success-end text-success-text shadow-success-shadow;
+        @apply border-success-border from-success-start via-success-mid to-success-end text-success-text shadow-success-shadow bg-gradient-to-br;
       }
       &.info {
-        @apply border-info-border bg-gradient-to-br from-info-start via-info-mid to-info-end text-info-text shadow-info-shadow;
+        @apply border-info-border from-info-start via-info-mid to-info-end text-info-text shadow-info-shadow bg-gradient-to-br;
       }
       &.notice {
-        @apply border-warning-border bg-gradient-to-br from-warning-start via-warning-mid to-warning-end text-warning-text shadow-warning-shadow;
+        @apply border-warning-border from-warning-start via-warning-mid to-warning-end text-warning-text shadow-warning-shadow bg-gradient-to-br;
       }
     }
 
@@ -956,7 +982,7 @@
 
   @layer message {
     .alert-message {
-      @apply sticky top-14 z-40 mb-4 rounded-4xl border border-slate-200/30 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 p-6 shadow-sm max-md:mx-0 max-md:mb-3 max-md:rounded-3xl max-md:p-4 dark:border-slate-600/20 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/80;
+      @apply sticky top-14 z-40 mb-4 rounded-4xl border-default-border from-default-start via-default-mid to-default-end text-default-text shadow-default-shadow bg-gradient-to-br p-6 max-md:mx-0 max-md:mb-3 max-md:rounded-3xl max-md:p-4;
 
       &.modal {
         @apply static top-auto;
@@ -971,21 +997,21 @@
       }
 
       &.success {
-        @apply border-success-border bg-gradient-to-br from-success-start via-success-mid to-success-end text-success-text shadow-success-shadow;
+        @apply border-success-border from-success-start via-success-mid to-success-end text-success-text shadow-success-shadow bg-gradient-to-br;
       }
 
       &.info {
-        @apply border-info-border bg-gradient-to-br from-info-start via-info-mid to-info-end text-info-text shadow-info-shadow;
+        @apply border-info-border from-info-start via-info-mid to-info-end text-info-text shadow-info-shadow bg-gradient-to-br;
       }
 
       &.warning,
       &.notice {
-        @apply border-warning-border bg-gradient-to-br from-warning-start via-warning-mid to-warning-end text-warning-text shadow-warning-shadow;
+        @apply border-warning-border from-warning-start via-warning-mid to-warning-end text-warning-text shadow-warning-shadow bg-gradient-to-br;
       }
 
       &.error,
       &.danger {
-        @apply border-error-border bg-gradient-to-br from-error-start via-error-mid to-error-end text-error-text shadow-error-shadow;
+        @apply border-error-border from-error-start via-error-mid to-error-end text-error-text shadow-error-shadow bg-gradient-to-br;
       }
 
       h4,
@@ -1023,7 +1049,7 @@
 
   @layer badge {
     .label {
-      @apply rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700 uppercase dark:bg-slate-700/80 dark:text-slate-200;
+      @apply rounded-full bg-default text-default-text px-3 py-1 text-xs font-bold uppercase;
 
       &.important {
         @apply bg-info text-info-text;
@@ -1728,7 +1754,7 @@
   @layer form {
     .cbi-input-invalid,
     .cbi-value-error {
-      @apply !border-red-600/40 focus:!ring-red-600/20 dark:!border-red-400/80 dark:focus:!ring-red-400/40;
+      @apply !border-error-border focus:!ring-error-ring;
     }
 
     .cbi-value {
@@ -1811,10 +1837,10 @@
       & li {
         @apply relative m-0 min-w-fit flex-shrink-0 list-none;
         &[data-errors] {
-          @apply after:absolute after:-top-0.5 after:-right-1.5 after:z-20 after:inline-flex after:min-h-4 after:min-w-4 after:items-center after:justify-center after:rounded-full after:bg-red-100 after:px-1.5 after:py-0.5 after:text-xs after:font-semibold after:text-red-900 after:content-[attr(data-errors)] dark:after:bg-red-900 dark:after:text-red-200;
+          @apply after:bg-accent after:text-accent-text after:absolute after:-top-0.5 after:-right-1.5 after:z-20 after:inline-flex after:min-h-4 after:min-w-4 after:items-center after:justify-center after:rounded-full after:px-1.5 after:py-0.5 after:text-xs after:font-semibold after:content-[attr(data-errors)];
 
           & > a {
-            @apply border border-red-300/80 dark:border-red-400/80;
+            @apply border-error-border border;
           }
         }
         & > a {
