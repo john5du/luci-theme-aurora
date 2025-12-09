@@ -12,25 +12,27 @@
 }
 
 :root {
-  --background: oklch(0.9824 0.0013 286.3757);
-  --text: oklch(0.3211 0 0);
   --background-start: oklch(0.984 0.003 247.858);
   --background-mid: oklch(0.968 0.007 247.896);
   --background-end: oklch(0.929 0.013 255.508);
+
   --progress-start: oklch(0.68 0.11 233);
   --progress-end: oklch(0.7535 0.1034 198.37);
+
   --primary: oklch(0.68 0.11 233);
   --primary-text: oklch(0.6656 0.1055 234.61);
   --primary-hover: oklch(0.64 0.1055 234.61);
-  --accent: oklch(0.62 0.22 25);
-  --accent-text: oklch(0.97 0.02 25);
+
   --muted: oklch(0.97 0 0);
   --muted-text: oklch(0.35 0 0);
   --muted-hover: oklch(0.94 0 0);
+
   --destructive: oklch(0.94 0.05 25);
   --destructive-text: oklch(0.35 0.12 25);
   --destructive-hover: oklch(0.92 0.06 25);
-  --ring: #0f2e5d;
+
+  --accent: oklch(0.62 0.22 25);
+  --accent-text: oklch(0.97 0.02 25);
 
   --success: oklch(0.94 0.05 160);
   --success-text: oklch(0.32 0.09 165);
@@ -39,6 +41,7 @@
   --success-start: oklch(0.97 0.02 160);
   --success-mid: oklch(0.94 0.05 160);
   --success-end: oklch(0.97 0.02 160);
+
   --info: oklch(0.94 0.05 230);
   --info-text: oklch(0.35 0.08 240);
   --info-border: oklch(0.62 0.19 240/0.4);
@@ -46,6 +49,7 @@
   --info-start: oklch(0.97 0.02 230);
   --info-mid: oklch(0.94 0.05 230);
   --info-end: oklch(0.97 0.02 230);
+
   --warning: oklch(0.95 0.05 90);
   --warning-text: oklch(0.35 0.08 60);
   --warning-border: oklch(0.68 0.18 75/0.4);
@@ -53,6 +57,7 @@
   --warning-start: oklch(0.98 0.02 90);
   --warning-mid: oklch(0.95 0.05 90);
   --warning-end: oklch(0.98 0.02 90);
+
   --error: oklch(0.94 0.05 25);
   --error-text: oklch(0.35 0.12 25);
   --error-border: oklch(0.62 0.22 25/0.3);
@@ -72,50 +77,32 @@
 
   --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
-  --radius: 0.625rem;
-  --shadow-x: 0;
-  --shadow-y: 1px;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.1;
-  --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0em;
+
   --spacing: 0.25rem;
 }
 
 [data-darkmode="true"] {
-  --background: oklch(0.9824 0.0013 286.3757);
-  --text: oklch(0.3211 0 0);
   --background-start: oklch(0.2077 0.0398 265.75);
   --background-mid: oklch(0.3861 0.059 188.42);
   --background-end: oklch(0.4318 0.0865 166.91);
+
   --progress-start: oklch(0.4318 0.0865 166.91);
   --progress-end: oklch(62.1% 0.145 189.632);
+
   --primary: oklch(0.534 0.118 190.485);
   --primary-text: oklch(0.779 0.168 188.745);
   --primary-hover: oklch(0.58 0.13 189.632);
+
   --muted: oklch(0.27 0 0);
   --muted-text: oklch(0.92 0 0);
   --muted-hover: oklch(0.32 0 0);
-  --accent: oklch(0.35 0.12 25);
-  --accent-text: oklch(0.88 0.14 25);
+
   --destructive: oklch(0.28 0.12 25/0.3);
   --destructive-text: oklch(0.88 0.14 25);
   --destructive-hover: oklch(0.32 0.14 25/0.4);
-  --ring: #0f2e5d;
-  --border: oklch(0.8699 0 0);
+
+  --accent: oklch(0.35 0.12 25);
+  --accent-text: oklch(0.88 0.14 25);
 
   --success: oklch(0.28 0.09 165/0.3);
   --success-text: oklch(0.92 0.09 160);
@@ -124,6 +111,7 @@
   --success-start: oklch(0.32 0.09 165/0.4);
   --success-mid: oklch(0.28 0.09 165/0.3);
   --success-end: oklch(0.32 0.09 165/0.4);
+
   --info: oklch(0.28 0.08 240/0.3);
   --info-text: oklch(0.88 0.06 230);
   --info-border: oklch(0.62 0.19 240/0.3);
@@ -131,6 +119,7 @@
   --info-start: oklch(0.35 0.08 240/0.4);
   --info-mid: oklch(0.28 0.08 240/0.3);
   --info-end: oklch(0.35 0.08 240/0.4);
+
   --warning: oklch(0.28 0.08 60/0.3);
   --warning-text: oklch(0.9 0.12 90);
   --warning-border: oklch(0.68 0.18 75/0.3);
@@ -138,6 +127,7 @@
   --warning-start: oklch(0.35 0.08 60/0.4);
   --warning-mid: oklch(0.28 0.08 60/0.3);
   --warning-end: oklch(0.35 0.08 60/0.4);
+
   --error: oklch(0.28 0.12 25/0.3);
   --error-text: oklch(0.88 0.14 25);
   --error-border: oklch(0.62 0.22 25/0.3);
@@ -154,35 +144,9 @@
   --default-start: oklch(0.28 0 0/0.8);
   --default-mid: oklch(0.26 0 0/0.6);
   --default-end: oklch(0.28 0 0/0.8);
-
-  --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
-  --radius: 0.625rem;
-  --shadow-x: 0;
-  --shadow-y: 1px;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.1;
-  --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-text: var(--text);
   --color-aurora-start: var(--background-start);
   --color-aurora-mid: var(--background-mid);
   --color-aurora-end: var(--background-end);
@@ -194,10 +158,6 @@
   --color-primary-text: var(--primary-text);
   --color-primary-hover: var(--primary-hover);
 
-  --color-secondary: var(--secondary);
-  --color-secondary-text: var(--secondary-text);
-  --color-secondary-hover: var(--secondary-hover);
-
   --color-muted: var(--muted);
   --color-muted-text: var(--muted-text);
   --color-muted-hover: var(--muted-hover);
@@ -208,8 +168,6 @@
 
   --color-accent: var(--accent);
   --color-accent-text: var(--accent-text);
-  --color-ring: var(--ring);
-  --color-border: var(--border);
 
   --color-success: var(--success);
   --color-success-text: var(--success-text);
@@ -218,6 +176,7 @@
   --color-success-start: var(--success-start);
   --color-success-mid: var(--success-mid);
   --color-success-end: var(--success-end);
+
   --color-info: var(--info);
   --color-info-text: var(--info-text);
   --color-info-border: var(--info-border);
@@ -225,6 +184,7 @@
   --color-info-start: var(--info-start);
   --color-info-mid: var(--info-mid);
   --color-info-end: var(--info-end);
+
   --color-warning: var(--warning);
   --color-warning-text: var(--warning-text);
   --color-warning-border: var(--warning-border);
@@ -232,6 +192,7 @@
   --color-warning-start: var(--warning-start);
   --color-warning-mid: var(--warning-mid);
   --color-warning-end: var(--warning-end);
+
   --color-error: var(--error);
   --color-error-text: var(--error-text);
   --color-error-border: var(--error-border);
@@ -240,6 +201,7 @@
   --color-error-start: var(--error-start);
   --color-error-mid: var(--error-mid);
   --color-error-end: var(--error-end);
+
   --color-default: var(--default);
   --color-default-text: var(--default-text);
   --color-default-border: var(--default-border);
@@ -250,21 +212,8 @@
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-  --font-serif: var(--font-serif);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
-  --shadow-2xs: var(--shadow-2xs);
-  --shadow-xs: var(--shadow-xs);
-  --shadow-sm: var(--shadow-sm);
-  --shadow: var(--shadow);
-  --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-2xl: var(--shadow-2xl);
+  --spacing: var(--spacing);
 }
 
 @layer base {
@@ -370,23 +319,19 @@
 @layer components {
   @layer layout {
     header {
-      @apply sticky top-0 z-60 mb-2 transition-all duration-300 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-white/10 before:backdrop-blur-xl before:backdrop-saturate-150 before:transition-all before:duration-300 dark:before:bg-gray-900/90;
+      @apply sticky top-0 z-60 mb-2 transition-all duration-300 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-white/20 before:backdrop-blur-xl before:backdrop-saturate-150 before:transition-all before:duration-300 dark:before:bg-gray-900/90;
 
       & .header-content {
         @apply relative flex h-14 items-center justify-between px-6 py-3 max-md:px-4 max-md:py-2;
       }
 
-      & .desktop-menu-container {
-        @apply pointer-events-none absolute inset-x-0 top-0 z-30 h-0 w-full overflow-hidden opacity-0 transition-all duration-150 ease-in-out before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-full before:min-h-full before:bg-white/40 before:backdrop-blur-xl before:backdrop-saturate-150 max-md:hidden dark:before:bg-gray-900/90;
-
-        &.active {
-          @apply pointer-events-auto opacity-100;
-        }
-      }
-
-      &.has-desktop-nav {
+      [data-nav-type="mega-menu"] & {
         & .desktop-menu-container {
-          @apply pointer-events-auto opacity-100;
+          @apply pointer-events-none absolute inset-x-0 top-0 z-30 h-0 w-full overflow-hidden opacity-0 transition-all duration-150 ease-in-out before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-full before:min-h-full before:bg-white/40 before:backdrop-blur-xl before:backdrop-saturate-150 max-md:hidden dark:before:bg-gray-900/90;
+
+          &.active {
+            @apply pointer-events-auto opacity-100;
+          }
         }
       }
 
@@ -401,28 +346,51 @@
           @apply relative;
 
           .menu {
-            @apply block px-3.5 py-1.5 font-medium text-slate-700 no-underline transition-all duration-150 hover:text-slate-900 dark:text-slate-200 hover:dark:text-slate-100;
+            @apply block rounded-xl px-3.5 py-1.5 font-medium text-slate-700 no-underline transition-all duration-150 dark:text-slate-200;
 
             &.menu-active {
-              @apply text-slate-900 underline decoration-2 underline-offset-4 dark:text-slate-100;
+              @apply text-slate-900 dark:text-slate-100;
+              [data-nav-type="mega-menu"] & {
+                @apply underline decoration-2 underline-offset-4;
+              }
+              [data-nav-type="boxed-dropdown"] & {
+                @apply bg-slate-200/90 dark:bg-slate-700;
+              }
             }
           }
 
           & .desktop-nav {
-            @apply pointer-events-none fixed top-14 left-0 z-40 px-0 pt-0 pb-6 opacity-0 transition-all duration-150 max-md:hidden;
-
+            @apply pointer-events-none left-0 z-40 px-0 pt-0 opacity-0 transition-all duration-150;
+            [data-nav-type="mega-menu"] & {
+              @apply fixed top-14 pb-6;
+            }
+            [data-nav-type="boxed-dropdown"] & {
+              @apply absolute top-full mt-2 min-w-48;
+            }
             &.active {
               @apply pointer-events-auto opacity-100;
             }
 
             & .desktop-nav-list {
-              @apply grid w-max list-none grid-cols-4 gap-x-4 gap-y-2;
+              [data-nav-type="mega-menu"] & {
+                @apply grid w-max grid-cols-4 gap-x-4 gap-y-2;
+              }
 
+              [data-nav-type="boxed-dropdown"] & {
+                @apply flex flex-col gap-y-1 rounded-3xl border border-slate-200/70 bg-white/80 py-2 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-gray-700/70 dark:bg-gray-900/90;
+              }
               & > li {
                 @apply m-0 list-none;
 
                 & > a {
-                  @apply block px-4 py-3 whitespace-nowrap text-slate-700 no-underline hover:text-slate-900 hover:underline hover:decoration-2 hover:underline-offset-4 dark:text-slate-300 hover:dark:text-slate-100;
+                  @apply block px-4 whitespace-nowrap text-slate-700 no-underline hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-100;
+
+                  [data-nav-type="mega-menu"] & {
+                    @apply py-3 hover:underline hover:decoration-2 hover:underline-offset-4;
+                  }
+                  [data-nav-type="boxed-dropdown"] & {
+                    @apply mx-2 rounded-2xl py-2 hover:bg-slate-200/60 dark:hover:bg-slate-700/70;
+                  }
                 }
               }
             }
@@ -654,7 +622,8 @@
 
   @layer button {
     button,
-    .btn {
+    .btn,
+    .cbi-button {
       @apply inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-2xl border px-3 py-1.5 text-sm font-medium antialiased shadow-sm transition-all duration-200 max-md:text-base max-md:font-medium;
       &[disabled] {
         @apply cursor-not-allowed opacity-40 dark:opacity-30;
@@ -672,7 +641,6 @@
     .cbi-button-link,
     .cbi-button-up,
     .cbi-button-down,
-    .btn-secondary,
     .drag-handle {
       @apply border-muted bg-muted text-muted-text hover:bg-muted-hover;
     }
@@ -991,6 +959,9 @@
   @layer progress {
     .cbi-progressbar {
       @apply relative h-3.5 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-2xl before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:content-[attr(title)] max-md:h-4 max-md:rounded-2xl max-md:before:text-xs max-md:before:leading-normal dark:bg-slate-700 before:dark:border-slate-600 before:dark:text-slate-100 dark:before:text-slate-100;
+      [data-page="admin-system-package-manager"] & {
+        @apply max-sm:before:text-[10px];
+      }
 
       & > div {
         @apply from-progress-start to-progress-end h-full bg-gradient-to-r transition-all duration-300;
@@ -1473,11 +1444,13 @@
       }
     }
 
-    .desktop-menu-overlay {
-      @apply pointer-events-none fixed inset-0 z-50 bg-black/20 opacity-0 transition-all duration-300 max-md:hidden;
+    [data-nav-type="mega-menu"] {
+      & .desktop-menu-overlay {
+        @apply pointer-events-none fixed inset-0 z-50 bg-black/20 opacity-0 transition-all duration-300 max-md:hidden;
 
-      &.active {
-        @apply pointer-events-auto opacity-100 backdrop-blur-sm;
+        &.active {
+          @apply pointer-events-auto opacity-100 backdrop-blur-sm;
+        }
       }
     }
   }
@@ -1833,10 +1806,6 @@
 
     .cbi-section-node-tabbed {
       @apply mt-6;
-    }
-
-    [id^="container."] {
-      @apply relative;
     }
   }
 }
