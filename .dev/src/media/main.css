@@ -93,9 +93,9 @@
   --primary-text: oklch(0.779 0.168 188.745);
   --primary-hover: oklch(0.58 0.13 189.632);
 
-  --muted: oklch(0.27 0 0);
-  --muted-text: oklch(0.92 0 0);
-  --muted-hover: oklch(0.32 0 0);
+  --muted: oklch(0.373 0.026 259.733);
+  --muted-text: oklch(0.92 0.01 259.733);
+  --muted-hover: oklch(0.395 0.026 259.733);
 
   --destructive: oklch(0.28 0.12 25/0.3);
   --destructive-text: oklch(0.88 0.14 25);
@@ -137,13 +137,13 @@
   --error-mid: oklch(0.28 0.12 25/0.3);
   --error-end: oklch(0.35 0.12 25/0.4);
 
-  --default: oklch(0.269 0 0);
-  --default-text: oklch(0.985 0 0);
-  --default-border: oklch(0.275 0 0/0.3);
-  --default-shadow: oklch(0 0 0/0.3);
-  --default-start: oklch(0.28 0 0/0.8);
-  --default-mid: oklch(0.26 0 0/0.6);
-  --default-end: oklch(0.28 0 0/0.8);
+  --default: oklch(0.372 0.044 257.287);
+  --default-text: oklch(0.985 0.01 257.287);
+  --default-border: oklch(0.39 0.044 257.287 / 0.3);
+  --default-shadow: oklch(0 0 0 / 0.3);
+  --default-start: oklch(0.39 0.044 257.287 / 0.8);
+  --default-mid: oklch(0.355 0.044 257.287 / 0.6);
+  --default-end: oklch(0.39 0.044 257.287 / 0.8);
 }
 
 @theme inline {
@@ -550,6 +550,42 @@
     .cbi-page-actions > div,
     .cbi-section-actions > div {
       @apply flex flex-row flex-nowrap items-center gap-2 max-md:flex-wrap max-md:gap-1;
+    }
+  }
+
+  @layer floatButton {
+    .floating-button-group {
+      @apply fixed right-4 bottom-4 z-50 flex flex-col items-center max-md:right-3 max-md:bottom-3;
+
+      & .button-group-items {
+        @apply mb-2 flex flex-col items-center gap-2 rounded-full border border-slate-200/40 bg-white/90 p-2 shadow-lg backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 ease-out max-md:mb-1.5 max-md:gap-1.5 max-md:p-1.5 dark:border-slate-700/30 dark:bg-slate-900/90;
+      }
+
+      & .button-group-item {
+        @apply flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full p-2 no-underline opacity-90 transition-all duration-200 ease-out hover:scale-110 hover:bg-slate-100/70 hover:opacity-100 active:scale-95 max-md:h-9 max-md:w-9 max-md:p-1.5 dark:hover:bg-slate-800/70;
+
+        & .button-group-icon {
+          @apply h-5 w-5 flex-shrink-0 object-contain brightness-15 transition-all duration-200 ease-out max-md:h-4 max-md:w-4 dark:brightness-100 dark:invert;
+        }
+      }
+
+      & .button-group-toggle {
+        @apply flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-white/90 p-2 transition-all duration-200 ease-out active:scale-95 max-md:h-9 max-md:w-9 max-md:p-1.5 dark:bg-slate-900/90;
+
+        & .button-group-toggle-icon {
+          @apply h-5 w-5 text-slate-600 transition-transform duration-300 ease-in-out max-md:h-4 max-md:w-4 dark:text-slate-300;
+        }
+      }
+
+      &.collapsed {
+        & .button-group-items {
+          @apply pointer-events-none max-h-0 gap-0 overflow-hidden border-0 bg-transparent p-0 opacity-0 shadow-none;
+        }
+
+        & .button-group-toggle .button-group-toggle-icon {
+          @apply rotate-45;
+        }
+      }
     }
   }
 
@@ -1139,7 +1175,7 @@
 
         & > span {
           @apply space-y-1.5 text-slate-800 max-md:space-y-1 max-md:text-sm max-md:leading-5 dark:text-slate-200;
-          @apply has-[.cbi-tooltip-container]:flex has-[.cbi-tooltip-container]:flex-wrap has-[.cbi-tooltip-container]:items-center has-[.cbi-tooltip-container]:justify-center;
+          @apply has-[>.cbi-tooltip-container]:flex has-[>.cbi-tooltip-container]:flex-wrap has-[>.cbi-tooltip-container]:items-center has-[>.cbi-tooltip-container]:justify-center;
 
           .network-status-table & {
             @apply w-full;
@@ -1177,7 +1213,7 @@
         }
 
         & .cbi-tooltip-container {
-          @apply static flex cursor-help items-center justify-center text-slate-800 dark:text-slate-200;
+          @apply static inline-flex cursor-help items-center justify-center text-slate-800 dark:text-slate-200;
 
           & .cbi-tooltip {
             @apply bottom-0 md:left-0;
@@ -1304,15 +1340,15 @@
           }
 
           & ins {
-            @apply border border-emerald-300/60 bg-emerald-100 text-emerald-800 dark:border-emerald-600/40 dark:bg-emerald-900/20 dark:text-emerald-200;
+            @apply border-success-border bg-success text-success-text border;
           }
 
           & del {
-            @apply border border-red-300/60 bg-red-100 text-red-800 dark:border-red-600/40 dark:bg-red-900/20 dark:text-red-200;
+            @apply border-error-border bg-error text-error-text border;
           }
 
           & var {
-            @apply border border-blue-300/60 bg-blue-100 text-blue-800 dark:border-blue-600/40 dark:bg-blue-900/20 dark:text-blue-200;
+            @apply border-info-border bg-info text-info-text border;
           }
 
           & .uci-change-legend {
@@ -1332,14 +1368,6 @@
                 & del {
                   @apply ml-1 h-4 min-w-4 px-1;
                 }
-
-                & ins {
-                  @apply border-emerald-400/60 bg-emerald-200 dark:border-emerald-500/40 dark:bg-emerald-800/40;
-                }
-
-                & del {
-                  @apply border-red-400/60 bg-red-200 dark:border-red-500/40 dark:bg-red-800/40;
-                }
               }
             }
           }
@@ -1348,7 +1376,7 @@
             @apply mt-4 space-y-3;
 
             & h5 {
-              @apply mt-6 mb-2 rounded-xl bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-800 first:mt-0 dark:bg-slate-700/60 dark:text-slate-200;
+              @apply bg-default text-default-text mt-6 mb-2 rounded-xl px-3 py-2 text-sm font-semibold first:mt-0;
             }
 
             & ins,
@@ -1356,16 +1384,8 @@
               @apply block rounded-xl px-4 py-3 text-sm;
 
               & strong {
-                @apply font-bold;
+                @apply text-sm;
               }
-            }
-
-            & ins strong {
-              @apply text-emerald-700 dark:text-emerald-300;
-            }
-
-            & del strong {
-              @apply text-red-700 dark:text-red-300;
             }
 
             & var {
@@ -1374,14 +1394,6 @@
               & ins,
               & del {
                 @apply ml-1 inline-block px-1.5 py-0.5 text-xs;
-              }
-
-              & ins {
-                @apply border-emerald-300/60 bg-emerald-100 text-emerald-800 dark:border-emerald-500/40 dark:bg-emerald-800/40 dark:text-emerald-200;
-              }
-
-              & del {
-                @apply border-red-300/60 bg-red-100 text-red-800 dark:border-red-500/40 dark:bg-red-800/40 dark:text-red-200;
               }
             }
           }
@@ -1602,6 +1614,12 @@
           &[data-sort-direction="desc"] {
             @apply after:content-['\25BC'];
           }
+        }
+      }
+
+      &[id*="status_leases"] {
+        & .td {
+          @apply max-w-62 max-md:max-w-full;
         }
       }
 
