@@ -471,7 +471,7 @@
       @apply fixed right-4 bottom-4 z-40 flex flex-col items-center max-md:right-3 max-md:bottom-3;
 
       .toolbar-list {
-        @apply mb-2 flex flex-col items-center gap-2 rounded-full border border-slate-200/40 bg-white/90 p-2 shadow-lg backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 ease-out max-md:mb-1.5 max-md:gap-1.5 max-md:p-1.5 dark:border-slate-700/30 dark:bg-slate-900/90;
+        @apply mb-2 flex flex-col items-center gap-2 rounded-full border border-slate-200/40 bg-white/90 p-1 shadow-sm transition-all duration-300 ease-out max-md:mb-1.5 max-md:gap-1.5 max-md:p-0.5 dark:border-slate-700/30 dark:bg-slate-900/90;
       }
 
       .toolbar-btn {
