@@ -27,8 +27,11 @@
 	];
 
 	if (toolbar_enabled) {
+		let has_config = false;
 		const custom_items = [];
+
 		uci.foreach('aurora', 'toolbar_item', (section) => {
+			has_config = true;
 			if (section.enabled == '1') {
 				push(custom_items, {
 					title: section.title || '',
@@ -38,7 +41,7 @@
 			}
 		});
 
-		if (length(custom_items) > 0) {
+		if (has_config) {
 			toolbar_items = custom_items;
 		}
 	}
