@@ -19,11 +19,12 @@
 	const nav_submenu_type = tokens.nav_submenu_type || 'mega-menu';
 	const toolbar_enabled = tokens.toolbar_enabled ? tokens.toolbar_enabled == '1' : true;
 	const icon_cache_version = tokens.icon_cache_version || '0';
+	const logo_svg = tokens.logo_svg || 'logo.svg';
+	const logo_png = tokens.logo_png || 'logo_32.png';
 
 	let toolbar_items = [
 		{ url: '/cgi-bin/luci/admin/status/overview', icon: 'overview.svg', title: 'Overview' },
 		{ url: '/cgi-bin/luci/admin/system/system', icon: 'system.svg', title: 'System' },
-		{ url: '/cgi-bin/luci/admin/system/package-manager', icon: 'software.svg', title: 'Software' },
 		{ url: '/cgi-bin/luci/admin/network/network', icon: 'network.svg', title: 'Network' }
 	];
 
@@ -54,7 +55,7 @@
 <html lang="{{ dispatcher.lang }}">
 	<head>
 		<meta charset="utf-8">
-		<title>{{ striptags(`${dispatched ? `${dispatched.title} - ` : ''}${boardinfo.hostname ?? '?'}`) }}</title>
+		<title>{{ striptags(`${dispatched?.title ?  `${_(dispatched.title)} - ` : ''}${boardinfo.hostname ?? '?'}`) }}</title>
 		<script>
 			const setTheme = (theme) => {
 				const current = ['light', 'dark', 'device'].includes(theme) ? theme : 'device';
@@ -89,9 +90,6 @@
 				const toolbarToggle = document.getElementById('toolbar-toggle');
 				const floatingToolbar = document.getElementById('floating-toolbar');
 				if (toolbarToggle && floatingToolbar) {
-					const isCollapsed = localStorage.getItem('aurora.toolbarCollapsed') === 'true';
-					isCollapsed && floatingToolbar.classList.add('collapsed');
-
 					toolbarToggle.addEventListener('click', () => {
 						const collapsed = floatingToolbar.classList.toggle('collapsed');
 						localStorage.setItem('aurora.toolbarCollapsed', collapsed);
@@ -104,8 +102,8 @@
 		<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 		<meta name="color-scheme" content="light dark">
 		<link rel="stylesheet" href="{{ media }}/main.css">
-		<link rel="icon" href="{{ media }}/images/logo_48.png?v={{ icon_cache_version }}" sizes="48x48">
-		<link rel="icon" href="{{ media }}/images/logo.svg?v={{ icon_cache_version }}" sizes="any">
+		<link rel="icon" href="{{ media }}/images/{{ logo_png }}?v={{ icon_cache_version }}" sizes="32x32">
+		<link rel="icon" href="{{ media }}/images/{{ logo_svg }}?v={{ icon_cache_version }}" sizes="any">
 		{% if (node?.css): %}
 		<link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
 		{% endif %}
@@ -216,6 +214,14 @@
 				</span>
 			</button>
 		</div>
+		<script>
+			(function() {
+				const toolbar = document.getElementById('floating-toolbar');
+				if (toolbar && localStorage.getItem('aurora.toolbarCollapsed') === 'true') {
+					toolbar.classList.add('collapsed');
+				}
+			})();
+		</script>
 		{% endif %}
 
 		<div id="maincontent">
