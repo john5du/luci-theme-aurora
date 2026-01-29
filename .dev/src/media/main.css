@@ -1065,10 +1065,6 @@
 
         & > h3 {
           @apply flex-1;
-        }
-
-        & > div {
-          @apply ml-auto flex flex-shrink-0 items-center;
 
           & .label[data-clickable] {
             @apply text-base-text bg-slate-100/40 dark:bg-slate-900/30;
