@@ -21,7 +21,7 @@
 		
 		<div class="login-row">
 			<label class="cbi-value-title" for="luci_username">{{ _('Username') }}</label>
-			<input name="luci_username" id="luci_username" type="text" class="cbi-input-text" value="{{ entityencode(duser ?? '', true) }}" autocomplete="username" autofocus>
+			<input name="luci_username" id="luci_username" type="text" class="cbi-input-text" value="{{ entityencode(duser ?? '', true) }}" autocomplete="username">
 		</div>
 
 		<div class="login-row">
@@ -38,11 +38,12 @@
 </div>
 
 <div class="login-footer">
-	<p>© 2025 | <a href="https://github.com/eamonxg/luci-theme-aurora" target="_blank">Aurora Theme</a></p>
+	<p>© 2025–<span id="current-year"></span> | <a href="https://github.com/eamonxg/luci-theme-aurora" target="_blank">Aurora Theme</a></p>
 </div>
 
 <script>
-	document.getElementById('luci_username').value ? document.getElementById('luci_password').focus() : null;
+document.getElementById('current-year').textContent = new Date().getFullYear();
+document.getElementById('luci_username').value ? document.getElementById('luci_password').focus() : document.getElementById('luci_username').focus();
 </script>
 
 {% include('footer', { blank_page: true }) %}
