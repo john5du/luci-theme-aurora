@@ -920,7 +920,7 @@
       }
 
       .login-shell & {
-        @apply rounded-2xl px-2 py-2.5 text-center text-base max-md:px-0.5;
+        @apply mb-0 rounded-2xl px-2 py-2.5 text-center text-base max-md:px-0.5;
       }
 
       &.success {
